@@ -25,7 +25,7 @@ Integration and adaptation for use with Paradox:
 
 The theme also uses the tabs component from [Material Components for the web] (Apache-2.0),
 [Modernizr] (available under BSD/MIT licenses) and [Prettify] (Apache-2.0).
-In addition the it loads the [Roboto font] (Apache-2.0), the [Material Icon font] (Apache-2.0),
+In addition, it loads the [Roboto font] (Apache-2.0), the [Material Icon font] (Apache-2.0),
 as well as [FontAwesome] (SIL Open Font License) from various CDNs. All copyright
 of their respective authors.
 

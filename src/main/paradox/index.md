@@ -41,7 +41,7 @@ For detailed instructions see the @ref:[getting started guide](getting-started.m
 * Easily customizable primary and accent color, fonts, favicon and logo;
   integrated with Google Analytics and GitHub.
 
-* Support for most Paradox features except for [groups].
+* Support most Paradox features except for [groups].
 
 The @ref:[specimen pages] show examples of the theme in action, such as
 [callouts] and [tabbed snippets].
