@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content='$page.properties.("project.description")$'/>
+    <meta name="description" content="$page.properties.("project.description")$">
     <meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.10.2">
 
     $ if (page.properties.("description")) $

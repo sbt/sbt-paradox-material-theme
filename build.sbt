@@ -1,6 +1,26 @@
 name := "paradox-material-theme"
 organization := "io.github.jonas"
 licenses += "MIT" -> url("https://github.com/jonas/paradox-material-theme/blob/master/LICENSE")
+homepage := Some(url("https://jonas.github.io/paradox-material-theme"))
+description := "Material Design theme for Paradox"
+
+scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/jonas/paradox-material-theme"),
+    "scm:git:git@github.com:jonas/paradox-material-theme.git"
+  )
+)
+
+developers := List(
+  Developer("jonas", "Jonas Fonseca", "jonas.fonseca@gmail.com", url("https://github.com/jonas"))
+)
+
+enablePlugins(GitPlugin, GhpagesPlugin)
+versionWithGit
+git.useGitDescribe := true
+git.remoteRepo := "git@github.com:jonas/paradox-material-theme.git"
+siteSourceDirectory := (target in (Compile, paradox)).value
+makeSite := makeSite.dependsOn(paradox in Compile).value
 
 enablePlugins(ParadoxThemePlugin, ParadoxPlugin)
 paradoxTheme := None
