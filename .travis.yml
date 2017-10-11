@@ -1,7 +1,7 @@
 language: scala
 jdk: oraclejdk8
 scala: 2.10.6
-script: sbt compile
+script: sbt publishLocal makeSite
 
 cache:
   directories:
