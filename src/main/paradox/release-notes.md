@@ -1,6 +1,6 @@
 # Release notes
 
-## master
+## 0.1.0
 
  - Initial version based on [MkDocs Material] version 1.10.2. Unsupported
    features from the upstream theme includes: Disqus integration, search,
