@@ -129,7 +129,7 @@ Furthermore, set `material.repo.type` to `github`, `bitbucket` or `gitlab` to
 render the respective service logo next to the name of the repository.
 When the type is set to GitHub, the number of stars and forks is shown.
 
-@@@ warning { title="Why is there an edit button at the top of every article?" }
+@@@ note { title="Why is there an edit button at the bottom of every article?" .question }
 
 If `github.base_url` is set, an edit button will appear at the bottom of every
 article. This behaviour is provided by Paradox. See the [Paradox documentation][15]
