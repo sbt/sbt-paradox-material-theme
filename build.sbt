@@ -116,7 +116,7 @@ val optionExamples = Def.setting(
   ,
   //#custom-stylesheet
   paradoxProperties in Compile ++= Map(
-    "material.custom.stylesheet" -> "custom.css"
+    "material.custom.stylesheet" -> "assets/custom.css"
   )
   //#custom-stylesheet
   ,
