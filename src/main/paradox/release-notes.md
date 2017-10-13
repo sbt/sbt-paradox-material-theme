@@ -1,5 +1,9 @@
 # Release notes
 
+## 0.1.1
+
+ - Show the project version number in both drawer and "desktop" mode.
+
 ## 0.1.0
 
  - Initial version based on [MkDocs Material] version 1.10.2. Unsupported

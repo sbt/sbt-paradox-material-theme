@@ -13,11 +13,6 @@
       $page.home.title$
     </a>
   </label>
-  <div class="md-nav__source">
-    <div class="md-source__repository" title="Version">
-      $page.properties.("project.version.short")$
-    </div>
-  </div>
   $ if (page.properties.("material.repo")) $
     <div class="md-nav__source">
       $source()$
@@ -26,4 +21,7 @@
   $page.groups$
   $page.navigation$
   $toc()$
+  <div class="md-nav__title--site md-version" title="Version">
+    <i class="md-icon">label_outline</i> $page.properties.("project.version.short")$
+  </div>
 </nav>
