@@ -12,6 +12,22 @@
   display: none;
 }
 
+.md-nav--primary .md-version {
+  padding: 1.2rem 1.2rem 0rem;
+}
+
+.md-nav--primary .md-version .md-icon {
+  position: relative;
+  top: .2rem;
+  left: 0;
+}
+
+@media only screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-version {
+    padding: 1.2rem 1.6rem;
+  }
+}
+
 .md-nav--secondary {
   visibility: hidden;
 }
