@@ -111,6 +111,11 @@ $!
                   </a>
                 </div>
               $ endif $
+              <div class="print-only">
+                <span class="md-source-file md-version">
+                  $page.properties.("project.version.short")$
+                </span>
+              </div>
             </article>
           </div>
         </div>
