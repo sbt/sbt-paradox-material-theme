@@ -10,7 +10,10 @@ paradoxTheme := Some("io.github.jonas" % "paradox-material-theme" % "$project.ve
 @@@
 
 The theme can be configured via Paradox properties configured in your
-project's `build.sbt`. See the following sections for available options.
+project's `build.sbt` or for each individual page via the [front matter].
+See the following sections for available options.
+
+ [front matter]: http://developer.lightbend.com/docs/paradox/latest/features/templating.html#properties-front-matter
 
 ## Changing the color palette
 
@@ -183,6 +186,23 @@ To display a copyright notice in the footer set `material.copyright` to the
 text you want to show. Any HTML markup, such as links, can be used:
 
 @@ snip [build.sbt]($root$/build.sbt) { #copyright }
+
+## Language
+
+You can define the language of each page with `material.language`:
+
+@@ snip [build.sbt]($root$/build.sbt) { #language }
+
+This will add a `lang` attribute to the top-level `html` element:
+
+```html
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  ...
+</html>
+```
+
+If no language is set English (`en`) is assumed.
 
 ## Google Analytics integration
 

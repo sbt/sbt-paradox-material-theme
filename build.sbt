@@ -51,6 +51,12 @@ paradoxProperties in Compile ++= Map(
 )
 //#social
 
+//#language
+paradoxProperties in Compile ++= Map(
+  "material.language" -> "en"
+)
+//#language
+
 //#analytics
 paradoxProperties in Compile ++= Map(
   "material.google.analytics" -> "UA-107934279-1" // Remember to change this!
