@@ -128,7 +128,7 @@ $!
     </div>
     <script src="$page.base$assets/javascripts/application-268d62d82d.js"></script>
     <script src="$page.base$assets/javascripts/paradox-material-theme.js"></script>
-    <script>app.initialize({url:{base:"$page.base$."}})</script>
+    <script>app.initialize({url:{base:"$page.base$./"}})</script>
     <script type="text/javascript" src="$page.base$lib/prettify/prettify.js"></script>
     <script type="text/javascript" src="$page.base$lib/prettify/lang-scala.js"></script>
     <script type="text/javascript">
