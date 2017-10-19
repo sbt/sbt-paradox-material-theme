@@ -5,13 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Material Design theme for Paradox">
-<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.10.2">
+<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.11.0">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+<meta name="lang:search.languages" content="">
+
 
 <meta name="description" content="Material Design theme for Paradox">
 <link rel="shortcut icon" href="assets/images/favicon.png">
 <title>Release notes · Paradox Material Theme</title>
 <script src="lib/modernizr/modernizr.min.js"></script>
-<link rel="stylesheet" href="assets/stylesheets/application-408828a02a.css">
+<link rel="stylesheet" href="assets/stylesheets/application-0741cbeb94.css">
 <link rel="stylesheet" href="assets/stylesheets/application-23f75ab9c7.palette.css">
 <link rel="stylesheet" href="lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="lib/prettify/prettify.css">
@@ -46,7 +55,7 @@ data-md-color-accent="indigo">
 Release notes
 </span>
 </div>
-<div class="md-flex__cell md-flex__cell--shrink" style="display: none">
+<div class="md-flex__cell md-flex__cell--shrink">
 <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
 <div class="md-search" data-md-component="search" role="dialog">
 <label class="md-search__overlay" for="search"></label>
@@ -58,8 +67,8 @@ Release notes
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix>
-<div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
-<div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
 Type to start searching
 </div>
 <ol class="md-search-result__list"></ol>
@@ -121,6 +130,7 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="getting-started.html" class="page">Getting started</a></li>
+  <li><a href="search.html" class="page">Search index generation</a></li>
   <li><a href="customization.html" class="page">Customization</a></li>
   <li><a href="specimen/index.html" class="page">Specimen</a>
   <ul>
@@ -135,6 +145,7 @@ jonas/paradox-material-theme
 <ul>
   <li><a href="release-notes.html#release-notes" class="header">Release notes</a>
   <ul>
+    <li><a href="release-notes.html#master" class="header">master</a></li>
     <li><a href="release-notes.html#0-1-1" class="header">0.1.1</a></li>
     <li><a href="release-notes.html#0-1-0" class="header">0.1.0</a></li>
   </ul></li>
@@ -142,7 +153,7 @@ jonas/paradox-material-theme
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 0.1.1
+<i class="md-icon">label_outline</i> 0.1.1-6-g1725f03*
 </div>
 </nav>
 
@@ -157,6 +168,7 @@ jonas/paradox-material-theme
 <ul>
   <li><a href="release-notes.html#release-notes" class="header">Release notes</a>
   <ul>
+    <li><a href="release-notes.html#master" class="header">master</a></li>
     <li><a href="release-notes.html#0-1-1" class="header">0.1.1</a></li>
     <li><a href="release-notes.html#0-1-0" class="header">0.1.0</a></li>
   </ul></li>
@@ -168,7 +180,16 @@ jonas/paradox-material-theme
 </div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
 <h1><a href="#release-notes" name="release-notes" class="anchor"><span class="anchor-link"></span></a>Release notes</h1>
+<h2><a href="#master" name="master" class="anchor"><span class="anchor-link"></span></a>master</h2>
+<ul>
+  <li>Update to <a href="https://github.com/squidfunk/mkdocs-material/releases/tag/1.11.0">mkdocs-material-1.11.0</a>.</li>
+  <li>Support site search. <a href="https://github.com/jonas/paradox-material-theme/issues/1">#1</a></li>
+  <li>Show version, wrap code and hide clipboard icon when printing. <a href="https://github.com/jonas/paradox-material-theme/issues/4">#4</a></li>
+  <li>Document <code>material.language</code>.</li>
+  <li>Make certain messages translatable.</li>
+</ul>
 <h2><a href="#0-1-1" name="0-1-1" class="anchor"><span class="anchor-link"></span></a>0.1.1</h2>
 <ul>
   <li>Show the project version number in both drawer and &ldquo;desktop&rdquo; mode.</li>
@@ -177,10 +198,16 @@ jonas/paradox-material-theme
 <ul>
   <li>Initial version based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a> version 1.10.2. Unsupported  features from the upstream theme includes: Disqus integration, search,  tabs navigation and localization.</li>
 </ul>
+</div>
 <div>
 <a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/release-notes.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.1-6-g1725f03*
+</span>
 </div>
 </article>
 </div>
@@ -229,7 +256,7 @@ and
 </footer>
 
 </div>
-<script src="assets/javascripts/application-f3ab9e5ff8.js"></script>
+<script src="assets/javascripts/application-268d62d82d.js"></script>
 <script src="assets/javascripts/paradox-material-theme.js"></script>
 <script>app.initialize({url:{base:""}})</script>
 <script type="text/javascript" src="lib/prettify/prettify.js"></script>

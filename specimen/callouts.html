@@ -5,13 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Material Design theme for Paradox">
-<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.10.2">
+<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.11.0">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+<meta name="lang:search.languages" content="">
+
 
 <meta name="description" content="Material Design theme for Paradox">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
 <title>Callouts · Paradox Material Theme</title>
 <script src="../lib/modernizr/modernizr.min.js"></script>
-<link rel="stylesheet" href="../assets/stylesheets/application-408828a02a.css">
+<link rel="stylesheet" href="../assets/stylesheets/application-0741cbeb94.css">
 <link rel="stylesheet" href="../assets/stylesheets/application-23f75ab9c7.palette.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -46,7 +55,7 @@ data-md-color-accent="indigo">
 Callouts
 </span>
 </div>
-<div class="md-flex__cell md-flex__cell--shrink" style="display: none">
+<div class="md-flex__cell md-flex__cell--shrink">
 <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
 <div class="md-search" data-md-component="search" role="dialog">
 <label class="md-search__overlay" for="search"></label>
@@ -58,8 +67,8 @@ Callouts
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix>
-<div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
-<div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
 Type to start searching
 </div>
 <ol class="md-search-result__list"></ol>
@@ -121,6 +130,7 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="../getting-started.html" class="page">Getting started</a></li>
+  <li><a href="../search.html" class="page">Search index generation</a></li>
   <li><a href="../customization.html" class="page">Customization</a></li>
   <li><a href="../specimen/index.html" class="page">Specimen</a>
   <ul>
@@ -131,11 +141,36 @@ jonas/paradox-material-theme
   <li><a href="../release-notes.html" class="page">Release notes</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="toc">Table of contents</label>
+<ul>
+  <li><a href="../specimen/callouts.html#callouts" class="header">Callouts</a>
+  <ul>
+    <li><a href="../specimen/callouts.html#notes" class="header">Notes</a></li>
+    <li><a href="../specimen/callouts.html#warnings" class="header">Warnings</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 0.1.1
+<i class="md-icon">label_outline</i> 0.1.1-6-g1725f03*
 </div>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="toc">Table of contents</label>
+<ul>
+  <li><a href="../specimen/callouts.html#callouts" class="header">Callouts</a>
+  <ul>
+    <li><a href="../specimen/callouts.html#notes" class="header">Notes</a></li>
+    <li><a href="../specimen/callouts.html#warnings" class="header">Warnings</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </div>
@@ -143,24 +178,48 @@ jonas/paradox-material-theme
 </div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
 <h1><a href="#callouts" name="callouts" class="anchor"><span class="anchor-link"></span></a>Callouts</h1>
-<p>Examples of the many different types of <a href="http://developer.lightbend.com/docs/paradox/latest/features/callouts.html">callouts</a>.</p><div class="callout note "><div class="callout-title">Note</div>
+<p>Examples of the many different types of <a href="http://developer.lightbend.com/docs/paradox/latest/features/callouts.html">callouts</a>. Additional CSS classes may be added to make the basic <code>note</code> and <code>warning</code> callouts more specific. For example:</p>
+<pre><code>@@@ note { .tip title=&quot;Applying an additional CSS class&quot; }
+
+Additional CSS classes can be applied to a callout directive by adding a dot `.`
+followed by the class name inside the directive attribute section, e.g. `.tip`.
+
+The special `.no-title` CSS class will hide the callout&#39;s title.
+
+@@@
+</code></pre>
+<p>Will give</p><div class="callout note tip"><div class="callout-title">Applying an additional CSS class</div>
+<p>Additional CSS classes can be applied to a callout directive by adding a dot <code>.</code> followed by the class name inside the directive attribute section, e.g. <code>.tip</code>.</p>
+<p>The special <code>.no-title</code> CSS class will hide the callout&rsquo;s title.</p></div>
+<h2><a href="#notes" name="notes" class="anchor"><span class="anchor-link"></span></a>Notes</h2><div class="callout note "><div class="callout-title">Note</div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note no-title"><div class="callout-title">Note</div>
 <p>With <code>no-title</code> class. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note summary"><div class="callout-title">With summary class</div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note info"><div class="callout-title">With info or todo class</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note tip"><div class="callout-title">With tip, hint, important class</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note success"><div class="callout-title">With success, check, done class</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note question"><div class="callout-title">With question, help, faq class</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note quote"><div class="callout-title">With quote, cite class</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout warning "><div class="callout-title">Warning</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout warning failure"><div class="callout-title">With failure, fail, missing class</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout warning error"><div class="callout-title">With error, danger class</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout warning bug"><div class="callout-title">With bug class</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note tip"><div class="callout-title">With tip, hint or important class</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note success"><div class="callout-title">With success, check or done class</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note question"><div class="callout-title">With question, help or faq class</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div><div class="callout note quote"><div class="callout-title">With quote or cite class</div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div>
+<h2><a href="#warnings" name="warnings" class="anchor"><span class="anchor-link"></span></a>Warnings</h2><div class="callout warning "><div class="callout-title">Warning</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div>
+<h3><a href="#failure" name="failure" class="anchor"><span class="anchor-link"></span></a>Failure</h3><div class="callout warning failure"><div class="callout-title">With failure, fail or missing class</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div>
+<h3><a href="#error" name="error" class="anchor"><span class="anchor-link"></span></a>Error</h3><div class="callout warning error"><div class="callout-title">With error or danger class</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div>
+<h3><a href="#bug" name="bug" class="anchor"><span class="anchor-link"></span></a>Bug</h3><div class="callout warning bug"><div class="callout-title">With bug class</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero, mollis sed massa vel, <em>ornare viverra ex</em>. Mauris a ullamcorper lacus.</p></div>
+</div>
 <div>
 <a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/specimen/callouts.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.1-6-g1725f03*
+</span>
 </div>
 </article>
 </div>
@@ -222,7 +281,7 @@ and
 </footer>
 
 </div>
-<script src="../assets/javascripts/application-f3ab9e5ff8.js"></script>
+<script src="../assets/javascripts/application-268d62d82d.js"></script>
 <script src="../assets/javascripts/paradox-material-theme.js"></script>
 <script>app.initialize({url:{base:"../"}})</script>
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>

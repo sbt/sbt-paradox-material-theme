@@ -5,13 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Material Design theme for Paradox">
-<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.10.2">
+<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.11.0">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+<meta name="lang:search.languages" content="">
+
 
 <meta name="description" content="Material Design theme for Paradox">
 <link rel="shortcut icon" href="assets/images/favicon.png">
 <title>Getting started · Paradox Material Theme</title>
 <script src="lib/modernizr/modernizr.min.js"></script>
-<link rel="stylesheet" href="assets/stylesheets/application-408828a02a.css">
+<link rel="stylesheet" href="assets/stylesheets/application-0741cbeb94.css">
 <link rel="stylesheet" href="assets/stylesheets/application-23f75ab9c7.palette.css">
 <link rel="stylesheet" href="lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="lib/prettify/prettify.css">
@@ -46,7 +55,7 @@ data-md-color-accent="indigo">
 Getting started
 </span>
 </div>
-<div class="md-flex__cell md-flex__cell--shrink" style="display: none">
+<div class="md-flex__cell md-flex__cell--shrink">
 <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
 <div class="md-search" data-md-component="search" role="dialog">
 <label class="md-search__overlay" for="search"></label>
@@ -58,8 +67,8 @@ Getting started
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix>
-<div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
-<div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
 Type to start searching
 </div>
 <ol class="md-search-result__list"></ol>
@@ -121,6 +130,7 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="getting-started.html" class="active page">Getting started</a></li>
+  <li><a href="search.html" class="page">Search index generation</a></li>
   <li><a href="customization.html" class="page">Customization</a></li>
   <li><a href="specimen/index.html" class="page">Specimen</a>
   <ul>
@@ -142,6 +152,8 @@ jonas/paradox-material-theme
     <li><a href="getting-started.html#adding-a-logo" class="header">Adding a logo</a></li>
     <li><a href="getting-started.html#adding-social-links" class="header">Adding social links</a></li>
     <li><a href="getting-started.html#copyright-notice" class="header">Copyright Notice</a></li>
+    <li><a href="getting-started.html#language" class="header">Language</a></li>
+    <li><a href="getting-started.html#site-search" class="header">Site search</a></li>
     <li><a href="getting-started.html#google-analytics-integration" class="header">Google Analytics integration</a></li>
     <li><a href="getting-started.html#more-advanced-customization" class="header">More advanced customization</a></li>
   </ul></li>
@@ -149,7 +161,7 @@ jonas/paradox-material-theme
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 0.1.1
+<i class="md-icon">label_outline</i> 0.1.1-6-g1725f03*
 </div>
 </nav>
 
@@ -171,6 +183,8 @@ jonas/paradox-material-theme
     <li><a href="getting-started.html#adding-a-logo" class="header">Adding a logo</a></li>
     <li><a href="getting-started.html#adding-social-links" class="header">Adding social links</a></li>
     <li><a href="getting-started.html#copyright-notice" class="header">Copyright Notice</a></li>
+    <li><a href="getting-started.html#language" class="header">Language</a></li>
+    <li><a href="getting-started.html#site-search" class="header">Site search</a></li>
     <li><a href="getting-started.html#google-analytics-integration" class="header">Google Analytics integration</a></li>
     <li><a href="getting-started.html#more-advanced-customization" class="header">More advanced customization</a></li>
   </ul></li>
@@ -182,11 +196,12 @@ jonas/paradox-material-theme
 </div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
 <h1><a href="#getting-started" name="getting-started" class="anchor"><span class="anchor-link"></span></a>Getting started</h1>
 <p>In order to enable the theme just add one of the following lines to your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxTheme := Some(&quot;io.github.jonas&quot; % &quot;paradox-material-theme&quot; % &quot;0.1.1&quot;)
+<pre class="prettyprint"><code class="language-sbt">paradoxTheme := Some(&quot;io.github.jonas&quot; % &quot;paradox-material-theme&quot; % &quot;0.1.1-6-g1725f03-SNAPSHOT&quot;)
 </code></pre>
-<p>The theme can be configured via Paradox properties configured in your project&rsquo;s <code>build.sbt</code>. See the following sections for available options.</p>
+<p>The theme can be configured via Paradox properties configured in your project&rsquo;s <code>build.sbt</code> or for each individual page via the <a href="http://developer.lightbend.com/docs/paradox/latest/features/templating.html#properties-front-matter">front matter</a>. See the following sections for available options.</p>
 <h2><a href="#changing-the-color-palette" name="changing-the-color-palette" class="anchor"><span class="anchor-link"></span></a>Changing the color palette</h2>
 <p>A default hue is defined for every primary and accent color on Google&rsquo;s Material Design <a href="http://www.materialui.co/colors">color palette</a>, which makes it very easy to change the overall look of the theme. Just set the primary and accent colors using the following variables:</p>
 <pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
@@ -298,6 +313,57 @@ jonas/paradox-material-theme
     by &lt;a href=&quot;https://github.com/squidfunk&quot;&gt;Martin Donath&lt;/a&gt;
   &quot;&quot;&quot;
 )</code></pre>
+<h2><a href="#language" name="language" class="anchor"><span class="anchor-link"></span></a>Language</h2>
+<p>You can define the language of each page with <code>material.language</code>:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
+  &quot;material.language&quot; -&gt; &quot;en&quot;
+)</code></pre>
+<p>This will add a <code>lang</code> attribute to the top-level <code>html</code> element:</p>
+<pre class="prettyprint"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; class=&quot;no-js&quot;&gt;
+  ...
+&lt;/html&gt;
+</code></pre>
+<p>If no language is set English (<code>en</code>) is assumed.</p>
+<h2><a href="#site-search" name="site-search" class="anchor"><span class="anchor-link"></span></a>Site search</h2>
+<p>Site search must be explicitly enabled by setting <code>material.search</code>:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
+  &quot;material.search&quot; -&gt; &quot;true&quot; // NOTE: Any value will do
+)</code></pre>
+<p>In addition, you need to generate a <code>search_index.json</code> that contains all your site&rsquo;s content and add it to your site. See the <a href="search.html">search index generation instructions</a> on how to do this.</p>
+<!--
+
+### Search language
+
+Site search is implemented using [lunr.js][22], which includes stemmers for the
+English language by default, while stemmers for other languages are included
+with [lunr-languages][23], both of which are integrated with this theme. Support
+for other languages and even multilingual search can be activated by setting
+`material.search` to a comma-separated list of supported 2-letter
+language codes, e.g.:
+
+@@ snip [build.sbt]($root$/build.sbt) { #search-multi }
+
+This will automatically load the stemmers for the specified languages and
+set them up with site search, nothing else to be done.
+
+At the time of writing, the following languages are supported: English `en`,
+French `fr`, Spanish `es`, Italian `it`, Japanese `jp`, Dutch `du`, Danish `da`,
+Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
+Norwegian `no`, Swedish `sv` and Turkish `tr`.
+
+@@@ warning { title="Only specify the languages you really need" }
+Be aware that including support for other languages increases the general
+JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
+language.
+@@@
+
+-->
+<h3><a href="#search-tokenization" name="search-tokenization" class="anchor"><span class="anchor-link"></span></a>Search tokenization</h3>
+<p>The separator for tokenization can also be customized, which makes it possible to index parts of words that are separated by <code>-</code> or <code>.</code> for example:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
+  &quot;material.search.tokenizer&quot; -&gt; &quot;[\\s\\-\\.]+&quot;
+)</code></pre>
 <h2><a href="#google-analytics-integration" name="google-analytics-integration" class="anchor"><span class="anchor-link"></span></a>Google Analytics integration</h2>
 <p>The theme makes it easy to integrate site tracking with Google Analytics. Besides basic tracking, clicks on all outgoing links can be tracked as well as how site search is used. Tracking can be activated in your project&rsquo;s <code>build.sbt</code>:</p>
 <pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
@@ -305,10 +371,16 @@ jonas/paradox-material-theme
 )</code></pre>
 <h2><a href="#more-advanced-customization" name="more-advanced-customization" class="anchor"><span class="anchor-link"></span></a>More advanced customization</h2>
 <p>If you want to change the general appearance of the Material theme, see <a href="customization.html">the customization guide</a> for more information.</p>
+</div>
 <div>
 <a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/getting-started.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.1-6-g1725f03*
+</span>
 </div>
 </article>
 </div>
@@ -330,13 +402,13 @@ Paradox Material Theme
 </span>
 </div>
 </a>
-<a href="customization.html" title="Customization" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="search.html" title="Search index generation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Customization
+Search index generation
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -370,7 +442,7 @@ and
 </footer>
 
 </div>
-<script src="assets/javascripts/application-f3ab9e5ff8.js"></script>
+<script src="assets/javascripts/application-268d62d82d.js"></script>
 <script src="assets/javascripts/paradox-material-theme.js"></script>
 <script>app.initialize({url:{base:""}})</script>
 <script type="text/javascript" src="lib/prettify/prettify.js"></script>

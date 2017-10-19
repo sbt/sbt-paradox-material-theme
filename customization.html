@@ -5,13 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Material Design theme for Paradox">
-<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.10.2">
+<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.11.0">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+<meta name="lang:search.languages" content="">
+
 
 <meta name="description" content="Material Design theme for Paradox">
 <link rel="shortcut icon" href="assets/images/favicon.png">
 <title>Customization · Paradox Material Theme</title>
 <script src="lib/modernizr/modernizr.min.js"></script>
-<link rel="stylesheet" href="assets/stylesheets/application-408828a02a.css">
+<link rel="stylesheet" href="assets/stylesheets/application-0741cbeb94.css">
 <link rel="stylesheet" href="assets/stylesheets/application-23f75ab9c7.palette.css">
 <link rel="stylesheet" href="lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="lib/prettify/prettify.css">
@@ -46,7 +55,7 @@ data-md-color-accent="indigo">
 Customization
 </span>
 </div>
-<div class="md-flex__cell md-flex__cell--shrink" style="display: none">
+<div class="md-flex__cell md-flex__cell--shrink">
 <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
 <div class="md-search" data-md-component="search" role="dialog">
 <label class="md-search__overlay" for="search"></label>
@@ -58,8 +67,8 @@ Customization
 </form>
 <div class="md-search__output">
 <div class="md-search__scrollwrap" data-md-scrollfix>
-<div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
-<div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
 Type to start searching
 </div>
 <ol class="md-search-result__list"></ol>
@@ -121,6 +130,7 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="getting-started.html" class="page">Getting started</a></li>
+  <li><a href="search.html" class="page">Search index generation</a></li>
   <li><a href="customization.html" class="active page">Customization</a></li>
   <li><a href="specimen/index.html" class="page">Specimen</a>
   <ul>
@@ -144,7 +154,7 @@ jonas/paradox-material-theme
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 0.1.1
+<i class="md-icon">label_outline</i> 0.1.1-6-g1725f03*
 </div>
 </nav>
 
@@ -172,6 +182,7 @@ jonas/paradox-material-theme
 </div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
 <h1><a href="#customization" name="customization" class="anchor"><span class="anchor-link"></span></a>Customization</h1>
 <p>Project documentation is as diverse as the projects themselves and the Material theme is a good starting point for making it look great. However, as you write your documentation, you may reach a point where some small adjustments are necessary to preserve the desired style.</p>
 <p>The theme provides several ways to customize from including a custom stylesheet and JavaScript code to overriding the individual templates.</p>
@@ -208,7 +219,7 @@ touch src/main/paradox/assets/custom.js
 │   ├── header.st                  # Page header
 │   ├── nav.st                     # Main navigation
 │   ├── poweredby.st               # Powered-by footer message
-│   ├── search.st                  # Search (currently not used)
+│   ├── search.st                  # Search box
 │   ├── social.st                  # Social links
 │   ├── source.st                  # Repository information
 │   └── toc.st                     # Table of contents
@@ -216,10 +227,16 @@ touch src/main/paradox/assets/custom.js
 </code></pre>
 <h2><a href="#overriding-partials" name="overriding-partials" class="anchor"><span class="anchor-link"></span></a>Overriding partials</h2>
 <p>In order to override the footer, we can replace the <code>footer.st</code> partial with our own partial. To do this, create the file <code>partials/footer.st</code> in the theme directory. Paradox will now use the new partial when rendering the theme. This can be done with any file.</p>
+</div>
 <div>
 <a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/customization.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.1-6-g1725f03*
+</span>
 </div>
 </article>
 </div>
@@ -228,7 +245,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="getting-started.html" title="Getting started" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="search.html" title="Search index generation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -237,7 +254,7 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Getting started
+Search index generation
 </span>
 </div>
 </a>
@@ -281,7 +298,7 @@ and
 </footer>
 
 </div>
-<script src="assets/javascripts/application-f3ab9e5ff8.js"></script>
+<script src="assets/javascripts/application-268d62d82d.js"></script>
 <script src="assets/javascripts/paradox-material-theme.js"></script>
 <script>app.initialize({url:{base:""}})</script>
 <script type="text/javascript" src="lib/prettify/prettify.js"></script>

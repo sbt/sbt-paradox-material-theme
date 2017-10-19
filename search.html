@@ -18,7 +18,7 @@
 
 <meta name="description" content="Material Design theme for Paradox">
 <link rel="shortcut icon" href="assets/images/favicon.png">
-<title>Paradox Material Theme</title>
+<title>Search index generation · Paradox Material Theme</title>
 <script src="lib/modernizr/modernizr.min.js"></script>
 <link rel="stylesheet" href="assets/stylesheets/application-0741cbeb94.css">
 <link rel="stylesheet" href="assets/stylesheets/application-23f75ab9c7.palette.css">
@@ -52,7 +52,7 @@ data-md-color-accent="indigo">
 </div>
 <div class="md-flex__cell md-flex__cell--stretch">
 <span class="md-flex__ellipsis md-header-nav__title">
-Paradox Material Theme
+Search index generation
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -130,7 +130,7 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="getting-started.html" class="page">Getting started</a></li>
-  <li><a href="search.html" class="page">Search index generation</a></li>
+  <li><a href="search.html" class="active page">Search index generation</a></li>
   <li><a href="customization.html" class="page">Customization</a></li>
   <li><a href="specimen/index.html" class="page">Specimen</a>
   <ul>
@@ -143,11 +143,11 @@ jonas/paradox-material-theme
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="toc">Table of contents</label>
 <ul>
-  <li><a href="index.html#paradox-material-theme" class="header">Paradox Material Theme</a>
+  <li><a href="search.html#search-index-generation" class="header">Search index generation</a>
   <ul>
-    <li><a href="index.html#beautiful-project-documentation" class="header">Beautiful project documentation</a></li>
-    <li><a href="index.html#quick-start" class="header">Quick start</a></li>
-    <li><a href="index.html#what-to-expect" class="header">What to expect</a></li>
+    <li><a href="search.html#project-dependencies" class="header">Project dependencies</a></li>
+    <li><a href="search.html#add-generator-output-to-the-site" class="header">Add generator output to the site</a></li>
+    <li><a href="search.html#generate-the-search-index" class="header">Generate the search index</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -166,11 +166,11 @@ jonas/paradox-material-theme
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="toc">Table of contents</label>
 <ul>
-  <li><a href="index.html#paradox-material-theme" class="header">Paradox Material Theme</a>
+  <li><a href="search.html#search-index-generation" class="header">Search index generation</a>
   <ul>
-    <li><a href="index.html#beautiful-project-documentation" class="header">Beautiful project documentation</a></li>
-    <li><a href="index.html#quick-start" class="header">Quick start</a></li>
-    <li><a href="index.html#what-to-expect" class="header">What to expect</a></li>
+    <li><a href="search.html#project-dependencies" class="header">Project dependencies</a></li>
+    <li><a href="search.html#add-generator-output-to-the-site" class="header">Add generator output to the site</a></li>
+    <li><a href="search.html#generate-the-search-index" class="header">Generate the search index</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -181,30 +181,106 @@ jonas/paradox-material-theme
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#paradox-material-theme" name="paradox-material-theme" class="anchor"><span class="anchor-link"></span></a>Paradox Material Theme</h1>
-<h2><a href="#beautiful-project-documentation" name="beautiful-project-documentation" class="anchor"><span class="anchor-link"></span></a>Beautiful project documentation</h2>
-<p>Paradox Material Theme is a theme for <a href="https://github.com/lightbend/paradox">Paradox</a>, a static site generator geared towards project documentation. It is based on the excellent <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a> theme which is built using Google&rsquo;s <a href="https://material.io/guidelines/material-design/">Material Design</a> guidelines.</p>
-<p><a href="images/material.png"><img src="images/material.png" alt="Material for MkDocs" /></a></p>
-<h2><a href="#quick-start" name="quick-start" class="anchor"><span class="anchor-link"></span></a>Quick start</h2>
-<p>Install the latest version of the theme by adding the following line to your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxTheme := Some(&quot;io.github.jonas&quot; % &quot;paradox-material-theme&quot; % &quot;0.1.1-6-g1725f03-SNAPSHOT&quot;)
-</code></pre>
-<p>For detailed instructions see the <a href="getting-started.html">getting started guide</a>.</p>
-<h2><a href="#what-to-expect" name="what-to-expect" class="anchor"><span class="anchor-link"></span></a>What to expect</h2>
-<ul>
-  <li>
-  <p>Responsive design and fluid layout for all kinds of screens and devices,  designed to serve your project documentation in a user-friendly way with  optimal readability.</p></li>
-  <li>
-  <p>Easily customizable primary and accent color, fonts, favicon and logo;  integrated with Google Analytics and GitHub.</p></li>
-  <li>
-  <p>Well-designed <a href="search.md">search interface</a> accessible through hotkeys (<kbd>F</kbd> or  <kbd>S</kbd>), intelligent grouping of search results, search term  highlighting and lazy loading.</p></li>
-  <li>
-  <p>Support most Paradox features except for <a href="http://developer.lightbend.com/docs/paradox/latest/features/groups.html">groups</a>.</p></li>
-</ul>
-<p>The <a href="specimen/index.html">specimen pages</a> show examples of the theme in action, such as <a href="specimen/callouts.md">callouts</a> and <a href="specimen/tabbed-snippets.md">tabbed snippets</a>.</p>
+<h1><a href="#search-index-generation" name="search-index-generation" class="anchor"><span class="anchor-link"></span></a>Search index generation</h1>
+<p>To enable <a href="getting-started.html#site-search">site search</a> you must also generate a <code>search_index.json</code> file which contains the content of your site. The following sections describe how to configure sbt to extract text from the HTML files generated by Paradox.</p>
+<h2><a href="#project-dependencies" name="project-dependencies" class="anchor"><span class="anchor-link"></span></a>Project dependencies</h2>
+<p>Add the following lines to either <code>project/plugins.sbt</code> or <code>project/build.sbt</code> so the index generator can use <a href="https://jsoup.org/">jsoup</a> to process the HTML content and <a href="http://circe.io/">circe</a> to serialize the index to JSON.</p>
+<pre class="prettyprint"><code class="language-sbt">libraryDependencies += &quot;org.jsoup&quot; % &quot;jsoup&quot; % &quot;1.10.3&quot;
+libraryDependencies += &quot;io.circe&quot; %% &quot;circe-core&quot; % &quot;0.8.0&quot;</code></pre>
+<h2><a href="#add-generator-output-to-the-site" name="add-generator-output-to-the-site" class="anchor"><span class="anchor-link"></span></a>Add generator output to the site</h2>
+<p>Depending on whether you are using Paradox in a stand-alone fashion or sbt-site&rsquo;s <a href="http://www.scala-sbt.org/sbt-site/generators/paradox.html">Paradox generator</a>, you need to add a line to your <code>build.sbt</code> to make the search index part of your site.</p>
+<dl>
+  <dt>Stand-alone Paradox
+  </dt>
+  <dd>
+  <pre class="prettyprint"><code class="language-sbt">mappings in (Compile, paradox) += SearchIndex.mapping(Compile).value</code></pre></dd>
+  <dt>Paradox using sbt-site
+  </dt>
+  <dd>
+  <pre class="prettyprint"><code class="language-sbt">mappings in makeSite += SearchIndex.mapping(Paradox).value</code></pre></dd>
+</dl>
+<h2><a href="#generate-the-search-index" name="generate-the-search-index" class="anchor"><span class="anchor-link"></span></a>Generate the search index</h2>
+<p>The following code does the bulk work of reading in each HTML file to extract the text for each header. You should place it in a file named <code>project/SearchIndex.scala</code>.</p>
+<pre class="prettyprint"><code class="language-scala">import sbt._
+import sbt.Keys._
+import scala.collection.JavaConverters._
+import com.lightbend.paradox.sbt.ParadoxPlugin.autoImport.paradoxMarkdownToHtml
+import io.circe._
+import io.circe.syntax._
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Element
+
+case class SearchIndex(docs: Seq[SearchIndex.Section])
+
+object SearchIndex {
+  implicit val encoder: ObjectEncoder[SearchIndex] = Encoder.forProduct1(&quot;docs&quot;)(_.docs)
+
+  case class Section(location: String, title: String, text: String)
+  object Section {
+    implicit val encoder: ObjectEncoder[Section] = Encoder.forProduct3(&quot;location&quot;, &quot;text&quot;, &quot;title&quot;)(
+      page =&gt; (page.location, page.text, page.title))
+  }
+
+  val Headers = Set(&quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;, &quot;h6&quot;)
+
+  def generate(target: File, mappings: Seq[(File, String)]): File = {
+    def readSections(mapping: (File, String)): Seq[Section] = {
+      val (file, location) = mapping
+      val doc = Jsoup.parse(file, &quot;UTF-8&quot;)
+      val docTitle = {
+        val title = doc.select(&quot;head title&quot;).text()
+        Option(title.lastIndexOf(&quot; · &quot;))
+          .filter(_ &gt; 0)
+          .map(title.substring(0, _))
+          .getOrElse(title)
+      }
+
+      def headerLocation(header: Element) =
+        Option(header.select(&quot;a[name]&quot;).first()) match {
+          case Some(anchor) =&gt; location + &quot;#&quot; + anchor.attr(&quot;name&quot;)
+          case None         =&gt; location
+        }
+
+      def processElement(section: Section, elements: List[Element]): Seq[Section] =
+        elements match {
+          case header :: tail if Headers(header.tagName) =&gt;
+            val location = headerLocation(header)
+            val next = Section(location, header.text, &quot;&quot;)
+            Vector(section) ++ processElement(next, tail)
+          case element :: tail =&gt;
+            val text =
+              if (section.text.isEmpty) element.text
+              else section.text + &quot;\n&quot; + element.text
+            processElement(section.copy(text = text.trim), tail)
+          case Nil =&gt;
+            Vector(section)
+        }
+
+      val elements =
+        doc.select(&quot;body .md-content__searchable&quot;).asScala.flatMap(_.children.asScala).toList
+
+      processElement(Section(location, docTitle, &quot;&quot;), elements)
+    }
+
+    val sections = mappings.flatMap(readSections).toList
+    val searchIndex = SearchIndex(sections)
+    val json = searchIndex.asJson.noSpaces
+    val out = target / &quot;search_index.json&quot;
+    IO.write(out, json)
+    out
+  }
+
+  def mapping(scope: Configuration) = Def.task {
+    val index = generate(
+      (target in scope).value / &quot;paradox-material-theme&quot;,
+      (paradoxMarkdownToHtml in scope).value
+    )
+    index -&gt; &quot;mkdocs/search_index.json&quot;
+  }
+}</code></pre>
 </div>
 <div>
-<a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/search.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -220,13 +296,26 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="getting-started.html" title="Getting started" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="getting-started.html" title="Getting started" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Getting started
+</span>
+</div>
+</a>
+<a href="customization.html" title="Customization" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Getting started
+Customization
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
