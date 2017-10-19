@@ -5,3 +5,8 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.2")
 addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.6")
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.0")
+
+//#search-dependencies
+libraryDependencies += "org.jsoup" % "jsoup" % "1.10.3"
+libraryDependencies += "io.circe" %% "circe-core" % "0.8.0"
+//#search-dependencies

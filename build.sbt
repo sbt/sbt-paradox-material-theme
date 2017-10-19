@@ -3,6 +3,7 @@ organization := "io.github.jonas"
 licenses += "MIT" -> url("https://github.com/jonas/paradox-material-theme/blob/master/LICENSE")
 description := "Material Design theme for Paradox"
 
+mappings in makeSite += SearchIndex.mapping(Compile).value
 siteSourceDirectory := (target in (Compile, paradox)).value
 makeSite := makeSite.dependsOn(paradox in Compile).value
 
@@ -35,6 +36,12 @@ paradoxProperties in Compile ++= Map(
   "material.color.accent" -> "indigo"
 )
 //#color
+
+//#search
+paradoxProperties in Compile ++= Map(
+  "material.search" -> "true" // NOTE: Any value will do
+)
+//#search
 
 //#repository
 paradoxProperties in Compile ++= Map(
@@ -115,4 +122,18 @@ val optionExamples = Def.setting(
     "material.custom.javascript" -> "assets/custom.js"
   )
   //#custom-javascript
+  ,
+  //#search-tokenizer
+  paradoxProperties in Compile ++= Map(
+    "material.search.tokenizer" -> "[\\s\\-\\.]+"
+  )
+  //#search-tokenizer
+  ,
+  //#search-paradox
+  mappings in (Compile, paradox) += SearchIndex.mapping(Compile).value
+  //#search-paradox
+  ,
+  //#search-sbt-site
+  mappings in makeSite += SearchIndex.mapping(Paradox).value
+  //#search-sbt-site
 )

@@ -68,7 +68,7 @@ The directory layout of the theme is as follows:
 │   ├── header.st                  # Page header
 │   ├── nav.st                     # Main navigation
 │   ├── poweredby.st               # Powered-by footer message
-│   ├── search.st                  # Search (currently not used)
+│   ├── search.st                  # Search box
 │   ├── social.st                  # Social links
 │   ├── source.st                  # Repository information
 │   └── toc.st                     # Table of contents

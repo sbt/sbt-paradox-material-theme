@@ -2,6 +2,7 @@
 
 @@@ index
  - [getting-started](getting-started.md)
+ - [search](search.md)
  - [customization](customization.md)
  - [specimen](specimen/index.md)
  - [release notes](release-notes.md)
@@ -41,11 +42,16 @@ For detailed instructions see the @ref:[getting started guide](getting-started.m
 * Easily customizable primary and accent color, fonts, favicon and logo;
   integrated with Google Analytics and GitHub.
 
+* Well-designed [search interface] accessible through hotkeys (<kbd>F</kbd> or
+  <kbd>S</kbd>), intelligent grouping of search results, search term
+  highlighting and lazy loading.
+
 * Support most Paradox features except for [groups].
 
 The @ref:[specimen pages] show examples of the theme in action, such as
 [callouts] and [tabbed snippets].
 
+ [search interface]: search.md
  [specimen pages]: specimen/index.md
  [callouts]: specimen/callouts.md
  [tabbed snippets]: specimen/tabbed-snippets.md

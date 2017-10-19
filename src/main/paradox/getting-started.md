@@ -204,6 +204,55 @@ This will add a `lang` attribute to the top-level `html` element:
 
 If no language is set English (`en`) is assumed.
 
+## Site search
+
+Site search must be explicitly enabled by setting `material.search`:
+
+@@ snip [build.sbt]($root$/build.sbt) { #search }
+
+In addition, you need to generate a `search_index.json` that contains all your
+site's content and add it to your site.
+See the @ref:[search index generation instructions](search.md) on how to do this.
+
+<!--
+
+### Search language
+
+Site search is implemented using [lunr.js][22], which includes stemmers for the
+English language by default, while stemmers for other languages are included
+with [lunr-languages][23], both of which are integrated with this theme. Support
+for other languages and even multilingual search can be activated by setting
+`material.search` to a comma-separated list of supported 2-letter
+language codes, e.g.:
+
+@@ snip [build.sbt]($root$/build.sbt) { #search-multi }
+
+This will automatically load the stemmers for the specified languages and
+set them up with site search, nothing else to be done.
+
+At the time of writing, the following languages are supported: English `en`,
+French `fr`, Spanish `es`, Italian `it`, Japanese `jp`, Dutch `du`, Danish `da`,
+Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
+Norwegian `no`, Swedish `sv` and Turkish `tr`.
+
+@@@ warning { title="Only specify the languages you really need" }
+Be aware that including support for other languages increases the general
+JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
+language.
+@@@
+
+-->
+
+### Search tokenization
+
+The separator for tokenization can also be customized, which makes it possible
+to index parts of words that are separated by `-` or `.` for example:
+
+@@ snip [build.sbt]($root$/build.sbt) { #search-tokenizer }
+
+  [22]: https://lunrjs.com
+  [23]: https://github.com/MihaiValentin/lunr-languages
+
 ## Google Analytics integration
 
 The theme makes it easy to integrate site tracking with Google Analytics.

@@ -51,10 +51,16 @@ $!
           $page.title$
         </span>
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink" style="display: none">
-        <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
-        $search()$
-      </div>
+      $ if (page.properties.("material.search")) $
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          $search()$
+        </div>
+      $ else $
+        <form name="search" style="display: none">
+          <input type="text" name="query">
+        </form>
+      $ endif $
       $ if (page.properties.("material.repo")) $
         <div class="md-flex__cell md-flex__cell--shrink">
           <div class="md-header-nav__source">
