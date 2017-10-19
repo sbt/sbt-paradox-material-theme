@@ -75,15 +75,11 @@ pre.prettyprint {
     display: block;
   }
 
-  .md-clipboard, .md-edit, h1 a.anchor {
+  .md-edit, h1 a.anchor {
     display: none;
   }
 
   .md-version:before {
     content: "\E893";
-  }
-
-  pre {
-      white-space: pre-wrap;
   }
 }

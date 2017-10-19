@@ -2,11 +2,12 @@
 
 ## master
 
- - Update to [mkdocs-material-1.10.3].
+ - Update to [mkdocs-material-1.11.0].
  - Show version, wrap code and hide clipboard icon when printing. [#4]
  - Document `material.language`.
+ - Make certain messages translatable.
 
- [mkdocs-material-1.10.3]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.10.3
+ [mkdocs-material-1.11.0]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.11.0
  [#4]: https://github.com/jonas/paradox-material-theme/issues/4
 
 ## 0.1.1
