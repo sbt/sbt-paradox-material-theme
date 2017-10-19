@@ -1,6 +1,6 @@
 # Release notes
 
-## master
+## 0.2.0
 
  - Update to [mkdocs-material-1.11.0].
  - Support site search. [#1]
