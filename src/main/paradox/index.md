@@ -2,7 +2,6 @@
 
 @@@ index
  - [getting-started](getting-started.md)
- - [search](search.md)
  - [customization](customization.md)
  - [specimen](specimen/index.md)
  - [release notes](release-notes.md)
@@ -23,13 +22,22 @@ theme which is built using Google's [Material Design] guidelines.
 ## Quick start
 
 Install the latest version of the theme by adding the following line to your
-project's `build.sbt`:
+project's `project/plugins.sbt`:
 
 @@@ vars
 ``` sbt
-paradoxTheme := Some("io.github.jonas" % "paradox-material-theme" % "$project.version$")
+addSbtPlugin("io.github.jonas" % "sbt-paradox-material-theme" % "$project.version$")
 ```
 @@@
+
+And adding the following to your project's `build.sbt` depending on whether or
+not you are also using sbt-site:
+
+Stand-alone Paradox
+:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
+
+Paradox with sbt-site
+:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #enable-plugin }
 
 For detailed instructions see the @ref:[getting started guide](getting-started.md).
 
@@ -42,7 +50,7 @@ For detailed instructions see the @ref:[getting started guide](getting-started.m
 * Easily customizable primary and accent color, fonts, favicon and logo;
   integrated with Google Analytics and GitHub.
 
-* Well-designed [search interface] accessible through hotkeys (<kbd>F</kbd> or
+* Well-designed search interface accessible through hotkeys (<kbd>F</kbd> or
   <kbd>S</kbd>), intelligent grouping of search results, search term
   highlighting and lazy loading.
 
@@ -51,7 +59,6 @@ For detailed instructions see the @ref:[getting started guide](getting-started.m
 The @ref:[specimen pages] show examples of the theme in action, such as
 [callouts] and [tabbed snippets].
 
- [search interface]: search.md
  [specimen pages]: specimen/index.md
  [callouts]: specimen/callouts.md
  [tabbed snippets]: specimen/tabbed-snippets.md

@@ -1,11 +1,13 @@
-import sbt._
-import sbt.Keys._
+package io.github.jonas.paradox.material.theme
+
 import scala.collection.JavaConverters._
 import com.lightbend.paradox.sbt.ParadoxPlugin.autoImport.paradoxMarkdownToHtml
 import io.circe._
 import io.circe.syntax._
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
+import sbt._
+import sbt.Keys._
 
 case class SearchIndex(docs: Seq[SearchIndex.Section])
 

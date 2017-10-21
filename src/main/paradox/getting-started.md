@@ -1,13 +1,22 @@
 # Getting started
 
-In order to enable the theme just add one of the following lines to your
-project's `build.sbt`:
+In order to enable the theme add the following line to your
+project's `project/plugins.sbt`:
 
 @@@ vars
-``` sbt
-paradoxTheme := Some("io.github.jonas" % "paradox-material-theme" % "$project.version$")
+```sbt
+addSbtPlugin("io.github.jonas" % "sbt-paradox-material-theme" % "$project.version$")
 ```
 @@@
+
+And add the following to your project's `build.sbt` depending on whether you
+are using Paradox with sbt-site or stand-alone:
+
+Stand-alone Paradox
+:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
+
+Paradox with sbt-site
+:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #enable-plugin }
 
 The theme can be configured via Paradox properties configured in your
 project's `build.sbt` or for each individual page via the [front matter].
@@ -208,11 +217,20 @@ If no language is set English (`en`) is assumed.
 
 Site search must be explicitly enabled by setting `material.search`:
 
-@@ snip [build.sbt]($root$/build.sbt) { #search }
+@@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-search }
 
 In addition, you need to generate a `search_index.json` that contains all your
-site's content and add it to your site.
-See the @ref:[search index generation instructions](search.md) on how to do this.
+site's content and add it to your site. Depending on whether you are using
+Paradox in a stand-alone fashion or sbt-site's [Paradox generator], you need to
+add a line to your `build.sbt` to make the search index part of your site.
+
+Stand-alone Paradox
+:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #add-search-index }
+
+Paradox with sbt-site
+:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #add-search-index }
+
+ [Paradox generator]: http://www.scala-sbt.org/sbt-site/generators/paradox.html
 
 <!--
 
