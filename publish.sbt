@@ -17,6 +17,8 @@ inThisBuild(Def.settings(
   developers := List(
     Developer("jonas", "Jonas Fonseca", "jonas.fonseca@gmail.com", url("https://github.com/jonas"))
   ),
+  // Workaround NPE when publishing: https://github.com/sbt/sbt/issues/3519
+  updateOptions := updateOptions.value.withGigahorse(false),
   publishMavenStyle := true,
   publishArtifact in Test := false,
   pomIncludeRepository := { _ => false },

@@ -101,7 +101,6 @@ lazy val plugin = project.in(file("plugin"))
     },
     // fixed in https://github.com/sbt/sbt/pull/3397 (for sbt 0.13.17)
     sbtBinaryVersion in update := (sbtBinaryVersion in pluginCrossBuild).value,
-    ScriptedPlugin.scriptedSettings,
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
     scriptedBufferLog := false,
     publishLocal := publishLocal.dependsOn(publishLocal in theme).value,
