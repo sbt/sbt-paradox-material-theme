@@ -42,6 +42,9 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
       "search.tokenizer" -> tokenizer
     )
 
+  def withoutSearch() =
+    copy(properties = properties -- Seq("search", "search.tokenizer"))
+
   def withCopyright(copyright: String) =
     withProperties("copyright" -> copyright)
 
@@ -92,5 +95,6 @@ object ParadoxMaterialTheme {
   def apply(): ParadoxMaterialTheme = {
     ParadoxMaterialTheme(Map.empty)
       .withFont("Roboto", "Roboto Mono")
+      .withSearch()
   }
 }

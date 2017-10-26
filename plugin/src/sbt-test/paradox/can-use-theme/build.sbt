@@ -8,12 +8,6 @@ paradoxProperties in Compile ++= Map(
   "github.base_url" -> "https://github.com/jonas/paradox-material-theme"
 )
 
-//#enable-search
-paradoxProperties in Compile ++= Map(
-  "material.search" -> "true"
-)
-//#enable-search
-
 paradoxMaterialTheme in Compile ~= {
   _.withCopyright("OURS")
 }

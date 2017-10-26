@@ -240,9 +240,11 @@ If no language is set English (`en`) is assumed.
 
 ## Site search
 
-Site search must be explicitly enabled:
+Site search is enabled by default and will automatically generate a
+`search_index.json` file that contains all your site's content and add it to
+your site. If you want to disable search use:
 
-@@ snip [build.sbt]($root$/build.sbt) { #search }
+@@ snip [build.sbt]($root$/build.sbt) { #disable-search }
 
 <!--
 

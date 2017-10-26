@@ -43,12 +43,6 @@ lazy val root = project.in(file("."))
     }
     //#color
     ,
-    //#search
-    paradoxMaterialTheme in Compile ~= {
-      _.withSearch()
-    }
-    //#search
-    ,
     //#repository
     paradoxMaterialTheme in Compile ~= {
       _.withRepository(uri("https://github.com/jonas/paradox-material-theme"))
@@ -192,6 +186,12 @@ lazy val optionExamples = Def.settings(
     _.withCustomJavaScript("assets/custom.js")
   }
   //#custom-javascript
+  ,
+  //#disable-search
+  paradoxMaterialTheme in Compile ~= {
+    _.withoutSearch()
+  }
+  //#disable-search
   ,
   //#search-tokenizer
   paradoxMaterialTheme in Compile ~= {

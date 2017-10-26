@@ -10,12 +10,6 @@ paradoxProperties in Paradox ++= Map(
   "github.base_url" -> "https://github.com/jonas/paradox-material-theme"
 )
 
-//#enable-search
-paradoxMaterialTheme in Paradox ~= {
-  _.withSearch()
-}
-//#enable-search
-
 paradoxMaterialTheme in Paradox ~= {
   _.withCopyright("OURS")
 }
