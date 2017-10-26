@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="description" content="Material Design theme for Paradox">
-<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.11.0">
+<meta name="description" content="paradox-material-theme-parent">
+<meta name="generator" content="Paradox, paradox-material-theme=0.3.0, mkdocs-material=1.11.0">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -16,7 +16,7 @@
 <meta name="lang:search.tokenizer" content="[\s\-]+">
 
 
-<meta name="description" content="Material Design theme for Paradox">
+<meta name="description" content="paradox-material-theme-parent">
 <link rel="shortcut icon" href="assets/images/favicon.png">
 <title>Customization · Paradox Material Theme</title>
 <script src="lib/modernizr/modernizr.min.js"></script>
@@ -130,13 +130,13 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="getting-started.html" class="page">Getting started</a></li>
-  <li><a href="search.html" class="page">Search index generation</a></li>
   <li><a href="customization.html" class="active page">Customization</a></li>
   <li><a href="specimen/index.html" class="page">Specimen</a>
   <ul>
     <li><a href="specimen/typography.html" class="page">Typography</a></li>
     <li><a href="specimen/callouts.html" class="page">Callouts</a></li>
     <li><a href="specimen/tabbed-snippets.html" class="page">Tabbed snippets</a></li>
+    <li><a href="specimen/front-matter.html" class="page">Front matter</a></li>
   </ul></li>
   <li><a href="release-notes.html" class="page">Release notes</a></li>
 </ul>
@@ -154,7 +154,7 @@ jonas/paradox-material-theme
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 0.2.0
+<i class="md-icon">label_outline</i> 0.3.0
 </div>
 </nav>
 
@@ -192,9 +192,9 @@ jonas/paradox-material-theme
 touch src/main/paradox/assets/custom.css
 </code></pre>
 <p>Then, add the following line to your <code>build.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.custom.stylesheet&quot; -&gt; &quot;assets/custom.css&quot;
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withCustomStylesheet(&quot;assets/custom.css&quot;)
+}</code></pre>
 <p>Start typing your changes in your additional stylesheet file – you can see them after saving and running <code>paradox</code>.</p>
 <h2><a href="#additional-javascript" name="additional-javascript" class="anchor"><span class="anchor-link"></span></a>Additional JavaScript</h2>
 <p>The same is true for additional JavaScript. If you want to integrate another syntax highlighter or add some custom logic to your theme, create a new JavaScript file in your <code>src/main/paradox</code> directory:</p>
@@ -202,9 +202,9 @@ touch src/main/paradox/assets/custom.css
 touch src/main/paradox/assets/custom.js
 </code></pre>
 <p>Then, add the following line to your <code>build.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.custom.javascript&quot; -&gt; &quot;assets/custom.js&quot;
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withCustomJavaScript(&quot;assets/custom.js&quot;)
+}</code></pre>
 <h2><a href="#extending-the-theme" name="extending-the-theme" class="anchor"><span class="anchor-link"></span></a>Extending the theme</h2>
 <p>If you want to alter the HTML source (e.g. add or remove some part), you can extend the theme. Paradox allowing a way to <a href="http://developer.lightbend.com/docs/paradox/latest/features/theming.html#modify-a-theme">modify a theme</a> without forking and changing the main theme. By default, files can be added in <code>src/main/paradox/_template</code> to override those provided by the theme.</p>
 <p>The structure in the theme directory must mirror the directory structure of the original theme, as any file in the theme directory will replace the file with the same name which is part of the original theme. Besides, further assets may also be put in the theme directory.</p>
@@ -235,7 +235,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-0.2.0
+0.3.0
 </span>
 </div>
 </article>
@@ -245,7 +245,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="search.html" title="Search index generation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="getting-started.html" title="Getting started" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -254,7 +254,7 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Search index generation
+Getting started
 </span>
 </div>
 </a>
@@ -278,9 +278,9 @@ Specimen
 <div class="md-footer-copyright">
 <div class="md-footer-copyright__highlight">
 
-    Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
-    by <a href="https://github.com/squidfunk">Martin Donath</a>
-  
+        Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
+        by <a href="https://github.com/squidfunk">Martin Donath</a>
+      
 </div>
 Powered by
 <a href="https://github.com/lightbend/paradox" title="Paradox">Paradox</a>
@@ -289,8 +289,7 @@ and
 
 </div>
 <div class="md-footer-social">
-<a href="https://github.com/jonas" class="md-footer-social__link fa fa-github"></a>
-<a href="https://twitter.com/priorarts" class="md-footer-social__link fa fa-twitter"></a>
+<a href="https://github.com/jonas" class="md-footer-social__link fa fa-github"></a><a href="https://twitter.com/priorarts" class="md-footer-social__link fa fa-twitter"></a>
 </div>
 
 </div>

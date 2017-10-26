@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="description" content="Material Design theme for Paradox">
-<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.11.0">
+<meta name="description" content="paradox-material-theme-parent">
+<meta name="generator" content="Paradox, paradox-material-theme=0.3.0, mkdocs-material=1.11.0">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -16,7 +16,7 @@
 <meta name="lang:search.tokenizer" content="[\s\-]+">
 
 
-<meta name="description" content="Material Design theme for Paradox">
+<meta name="description" content="paradox-material-theme-parent">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
 <title>Tabbed snippets · Paradox Material Theme</title>
 <script src="../lib/modernizr/modernizr.min.js"></script>
@@ -130,13 +130,13 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="../getting-started.html" class="page">Getting started</a></li>
-  <li><a href="../search.html" class="page">Search index generation</a></li>
   <li><a href="../customization.html" class="page">Customization</a></li>
   <li><a href="../specimen/index.html" class="page">Specimen</a>
   <ul>
     <li><a href="../specimen/typography.html" class="page">Typography</a></li>
     <li><a href="../specimen/callouts.html" class="page">Callouts</a></li>
     <li><a href="../specimen/tabbed-snippets.html" class="active page">Tabbed snippets</a></li>
+    <li><a href="../specimen/front-matter.html" class="page">Front matter</a></li>
   </ul></li>
   <li><a href="../release-notes.html" class="page">Release notes</a></li>
 </ul>
@@ -152,7 +152,7 @@ jonas/paradox-material-theme
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 0.2.0
+<i class="md-icon">label_outline</i> 0.3.0
 </div>
 </nav>
 
@@ -181,7 +181,7 @@ jonas/paradox-material-theme
 <div class="md-content__searchable">
 <h1><a href="#tabbed-snippets" name="tabbed-snippets" class="anchor"><span class="anchor-link"></span></a>Tabbed snippets</h1>
 <h2><a href="#library-dependencies" name="library-dependencies" class="anchor"><span class="anchor-link"></span></a>Library dependencies</h2>
-<p>Example of the <a href="http://developer.lightbend.com/docs/paradox/latest/features/dependencies.html"><code>@@dependency</code> directive</a>:</p><dl class="dependency"><dt>sbt</dt><dd><pre class="prettyprint"><code class="language-scala">libraryDependencies += "com.typesafe.akka" % "akka-http_2.12" % "10.0.10"</code></pre></dd><dt>Maven</dt><dd><pre class="prettyprint"><code class="language-xml">&lt;dependency&gt;
+<p>Example of the <a href="http://developer.lightbend.com/docs/paradox/latest/features/dependencies.html"><code>@@dependency</code> directive</a>:</p><dl class="dependency"><dt>sbt</dt><dd><pre class="prettyprint"><code class="language-scala">libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.0.10"</code></pre></dd><dt>Maven</dt><dd><pre class="prettyprint"><code class="language-xml">&lt;dependency&gt;
   &lt;groupId&gt;com.typesafe.akka&lt;/groupId&gt;
   &lt;artifactId&gt;akka-http_2.12&lt;/artifactId&gt;
   &lt;version&gt;10.0.10&lt;/version&gt;
@@ -193,30 +193,27 @@ jonas/paradox-material-theme
 <dl>
   <dt>Favicon</dt>
   <dd>
-  <pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.favicon&quot; -&gt; &quot;assets/images/favicon.png&quot;
-)</code></pre></dd>
+  <pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withFavicon(&quot;assets/images/favicon.png&quot;)
+}</code></pre></dd>
   <dt>Repository</dt>
   <dd>
-  <pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.repo&quot; -&gt; &quot;https://github.com/jonas/paradox-material-theme&quot;,
-  &quot;material.repo.type&quot; -&gt; &quot;github&quot;,
-  &quot;material.repo.name&quot; -&gt; &quot;jonas/paradox-material-theme&quot;
-)</code></pre></dd>
+  <pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withRepository(uri(&quot;https://github.com/jonas/paradox-material-theme&quot;))
+}</code></pre></dd>
   <dt>Copyright notice</dt>
   <dd>
-  <pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.copyright&quot; -&gt; &quot;&quot;&quot;
+  <pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withCopyright(&quot;&quot;&quot;
     Based on &lt;a href=&quot;https://github.com/squidfunk/mkdocs-material&quot;&gt;MkDocs Material&lt;/a&gt;
     by &lt;a href=&quot;https://github.com/squidfunk&quot;&gt;Martin Donath&lt;/a&gt;
-  &quot;&quot;&quot;
-)</code></pre></dd>
+  &quot;&quot;&quot;)
+}</code></pre></dd>
   <dt>Font</dt>
   <dd>
-  <pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.font.text&quot; -&gt; &quot;Ubuntu&quot;,
-  &quot;material.font.code&quot; -&gt; &quot;Ubuntu Mono&quot;
-)</code></pre></dd>
+  <pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withFont(&quot;Ubuntu&quot;, &quot;Ubuntu Mono&quot;)
+}</code></pre></dd>
 </dl>
 </div>
 <div>
@@ -226,7 +223,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-0.2.0
+0.3.0
 </span>
 </div>
 </article>
@@ -249,13 +246,13 @@ Callouts
 </span>
 </div>
 </a>
-<a href="../release-notes.html" title="Release notes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../specimen/front-matter.html" title="Front matter" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Release notes
+Front matter
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -269,9 +266,9 @@ Release notes
 <div class="md-footer-copyright">
 <div class="md-footer-copyright__highlight">
 
-    Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
-    by <a href="https://github.com/squidfunk">Martin Donath</a>
-  
+        Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
+        by <a href="https://github.com/squidfunk">Martin Donath</a>
+      
 </div>
 Powered by
 <a href="https://github.com/lightbend/paradox" title="Paradox">Paradox</a>
@@ -280,8 +277,7 @@ and
 
 </div>
 <div class="md-footer-social">
-<a href="https://github.com/jonas" class="md-footer-social__link fa fa-github"></a>
-<a href="https://twitter.com/priorarts" class="md-footer-social__link fa fa-twitter"></a>
+<a href="https://github.com/jonas" class="md-footer-social__link fa fa-github"></a><a href="https://twitter.com/priorarts" class="md-footer-social__link fa fa-twitter"></a>
 </div>
 
 </div>

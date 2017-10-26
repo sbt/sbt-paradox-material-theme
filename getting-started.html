@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="description" content="Material Design theme for Paradox">
-<meta name="generator" content="Paradox, paradox-material-theme, mkdocs-material=1.11.0">
+<meta name="description" content="paradox-material-theme-parent">
+<meta name="generator" content="Paradox, paradox-material-theme=0.3.0, mkdocs-material=1.11.0">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -16,7 +16,7 @@
 <meta name="lang:search.tokenizer" content="[\s\-]+">
 
 
-<meta name="description" content="Material Design theme for Paradox">
+<meta name="description" content="paradox-material-theme-parent">
 <link rel="shortcut icon" href="assets/images/favicon.png">
 <title>Getting started · Paradox Material Theme</title>
 <script src="lib/modernizr/modernizr.min.js"></script>
@@ -130,13 +130,13 @@ jonas/paradox-material-theme
 </div>
 <ul>
   <li><a href="getting-started.html" class="active page">Getting started</a></li>
-  <li><a href="search.html" class="page">Search index generation</a></li>
   <li><a href="customization.html" class="page">Customization</a></li>
   <li><a href="specimen/index.html" class="page">Specimen</a>
   <ul>
     <li><a href="specimen/typography.html" class="page">Typography</a></li>
     <li><a href="specimen/callouts.html" class="page">Callouts</a></li>
     <li><a href="specimen/tabbed-snippets.html" class="page">Tabbed snippets</a></li>
+    <li><a href="specimen/front-matter.html" class="page">Front matter</a></li>
   </ul></li>
   <li><a href="release-notes.html" class="page">Release notes</a></li>
 </ul>
@@ -145,6 +145,7 @@ jonas/paradox-material-theme
 <ul>
   <li><a href="getting-started.html#getting-started" class="header">Getting started</a>
   <ul>
+    <li><a href="getting-started.html#configuring-the-theme" class="header">Configuring the theme</a></li>
     <li><a href="getting-started.html#changing-the-color-palette" class="header">Changing the color palette</a></li>
     <li><a href="getting-started.html#changing-the-font-family" class="header">Changing the font family</a></li>
     <li><a href="getting-started.html#adding-a-source-repository" class="header">Adding a source repository</a></li>
@@ -161,7 +162,7 @@ jonas/paradox-material-theme
 </nav>
 
 <div class="md-nav__title--site md-version" title="Version">
-<i class="md-icon">label_outline</i> 0.2.0
+<i class="md-icon">label_outline</i> 0.3.0
 </div>
 </nav>
 
@@ -176,6 +177,7 @@ jonas/paradox-material-theme
 <ul>
   <li><a href="getting-started.html#getting-started" class="header">Getting started</a>
   <ul>
+    <li><a href="getting-started.html#configuring-the-theme" class="header">Configuring the theme</a></li>
     <li><a href="getting-started.html#changing-the-color-palette" class="header">Changing the color palette</a></li>
     <li><a href="getting-started.html#changing-the-font-family" class="header">Changing the font family</a></li>
     <li><a href="getting-started.html#adding-a-source-repository" class="header">Adding a source repository</a></li>
@@ -198,17 +200,42 @@ jonas/paradox-material-theme
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#getting-started" name="getting-started" class="anchor"><span class="anchor-link"></span></a>Getting started</h1>
-<p>In order to enable the theme just add one of the following lines to your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxTheme := Some(&quot;io.github.jonas&quot; % &quot;paradox-material-theme&quot; % &quot;0.2.0&quot;)
+<p>In order to enable the theme add the following line to your project&rsquo;s <code>project/plugins.sbt</code>:</p>
+<pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;io.github.jonas&quot; % &quot;sbt-paradox-material-theme&quot; % &quot;0.3.0&quot;)
 </code></pre>
-<p>The theme can be configured via Paradox properties configured in your project&rsquo;s <code>build.sbt</code> or for each individual page via the <a href="http://developer.lightbend.com/docs/paradox/latest/features/templating.html#properties-front-matter">front matter</a>. See the following sections for available options.</p>
+<p>And enable the theme plugin in your project&rsquo;s <code>build.sbt</code>:</p>
+<pre class="prettyprint"><code class="language-sbt">enablePlugins(ParadoxMaterialThemePlugin)</code></pre>
+<p>If you are generating your site with <a href="http://www.scala-sbt.org/sbt-site/generators/paradox.html">sbt-site</a> you also need to add a few additional settings in <code>build.sbt</code>:</p>
+<pre class="prettyprint"><code class="language-sbt">ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox)</code></pre>
+<h2><a href="#configuring-the-theme" name="configuring-the-theme" class="anchor"><span class="anchor-link"></span></a>Configuring the theme</h2>
+<p>The theme is configurable via Paradox properties which means that you can provide defaults in your project&rsquo;s <code>build.sbt</code> and override properties in each page&rsquo;s <a href="specimen/front-matter.md">front matter</a>. The preferred way to configure the theme is to use the utility the theme plugin provides which help configure the theme in a concise manner using a builder-like API:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile := {
+  ParadoxMaterialTheme()
+    .withColor(&quot;red&quot;, &quot;orange&quot;)
+    .withLogoIcon(&quot;cloud&quot;)
+    .withCopyright(&quot;Copyleft © Jonas Fonseca&quot;)
+}</code></pre>
+<p>The examples given in the following sections use an alternative syntax. The equivalent of the above configuration using this alternative syntax is:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withColor(&quot;red&quot;, &quot;orange&quot;)
+   .withLogoIcon(&quot;cloud&quot;)
+   .withCopyright(&quot;Copyleft © Jonas Fonseca&quot;)
+}</code></pre>
+<p>In both cases, the theme&rsquo;s configuration is added to the Paradox properties. As a result it is also possible to set properties directly using <code>paradoxProperties</code> or <a href="specimen/front-matter.html">front matter</a>. Front matter allows you to tweak the look-and-feel for specific pages. The equivalent of the above configuration can be defined in front matter as:</p>
+<pre class="prettyprint"><code class="language-yaml">---
+material.color.primary: red
+material.color.accent: orange
+material.logo.icon: cloud
+material.copyright: Copyleft © Jonas Fonseca
+---
+</code></pre>
+<p>See the following sections for available options.</p>
 <h2><a href="#changing-the-color-palette" name="changing-the-color-palette" class="anchor"><span class="anchor-link"></span></a>Changing the color palette</h2>
 <p>A default hue is defined for every primary and accent color on Google&rsquo;s Material Design <a href="http://www.materialui.co/colors">color palette</a>, which makes it very easy to change the overall look of the theme. Just set the primary and accent colors using the following variables:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.color.primary&quot; -&gt; &quot;teal&quot;,
-  &quot;material.color.accent&quot; -&gt; &quot;indigo&quot;
-)</code></pre>
-<p>Color names are case-insensitive, but must match the names of the Material Design color palette. Valid values are: <code>red</code>, <code>pink</code>, <code>purple</code>, <code>deep purple</code>, <code>indigo</code>, <code>blue</code>, <code>light blue</code>, <code>cyan</code>, <code>teal</code>, <code>green</code>, <code>light green</code>, <code>lime</code>, <code>yellow</code>, <code>amber</code>, <code>orange</code>, <code>deep orange</code>, <code>brown</code>, <code>grey</code> and <code>blue grey</code>. The last three colors can only be used as a primary color.</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withColor(&quot;teal&quot;, &quot;indigo&quot;)
+}</code></pre>
+<p>Color names are case-insensitive, but must match the names of the Material Design color palette. Valid values are: <code>red</code>, <code>pink</code>, <code>purple</code>, <code>deep-purple</code>, <code>indigo</code>, <code>blue</code>, <code>light-blue</code>, <code>cyan</code>, <code>teal</code>, <code>green</code>, <code>light-green</code>, <code>lime</code>, <code>yellow</code>, <code>amber</code>, <code>orange</code>, <code>deep-orange</code>, <code>brown</code>, <code>grey</code> and <code>blue-grey</code>. The last three colors can only be used as a primary color.</p>
 <p>If the color is set via this configuration, an additional CSS file that defines the color palette is automatically included. If you want to keep things lean, clone the repository and recompile the theme with your custom colors set. See the guide on <a href="customization.html">customization</a> for more information.</p>
 <h3><a href="#primary-colors" name="primary-colors" class="anchor"><span class="anchor-link"></span></a>Primary colors</h3>
 <p>Click on a tile to change the primary color of the theme:</p>
@@ -267,57 +294,55 @@ jonas/paradox-material-theme
 </script>
 <h2><a href="#changing-the-font-family" name="changing-the-font-family" class="anchor"><span class="anchor-link"></span></a>Changing the font family</h2>
 <p>By default the <a href="https://fonts.google.com/specimen/Roboto">Roboto font family</a> is included with the theme, specifically the regular sans-serif type for text and the <code>monospaced</code> type for code. Both fonts are loaded from <a href="https://fonts.google.com">Google Fonts</a> and can be changed to other fonts, like for example the <a href="https://fonts.google.com/specimen/Ubuntu">Ubuntu font family</a>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.font.text&quot; -&gt; &quot;Ubuntu&quot;,
-  &quot;material.font.code&quot; -&gt; &quot;Ubuntu Mono&quot;
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withFont(&quot;Ubuntu&quot;, &quot;Ubuntu Mono&quot;)
+}</code></pre>
 <p>The text font will be loaded in weights 400 and <strong>700</strong>, the <code>monospaced</code> font in regular weight. If you want to load fonts from other destinations or don&rsquo;t want to use the Google Fonts loading magic, just set <code>font</code> to <code>false</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.font.disabled&quot; -&gt; &quot;true&quot; // NOTE: Any value will do
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withoutFont()
+}</code></pre>
 <h2><a href="#adding-a-source-repository" name="adding-a-source-repository" class="anchor"><span class="anchor-link"></span></a>Adding a source repository</h2>
 <p>To include a link to the repository of your project within your documentation, set the following variables via your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.repo&quot; -&gt; &quot;https://github.com/jonas/paradox-material-theme&quot;,
-  &quot;material.repo.type&quot; -&gt; &quot;github&quot;,
-  &quot;material.repo.name&quot; -&gt; &quot;jonas/paradox-material-theme&quot;
-)</code></pre>
-<p>The name of the repository will be rendered next to the search bar on big screens and as part of the main navigation drawer on smaller screen sizes. Furthermore, set <code>material.repo.type</code> to <code>github</code>, <code>bitbucket</code> or <code>gitlab</code> to render the respective service logo next to the name of the repository. When the type is set to GitHub, the number of stars and forks is shown.</p><div class="callout note question"><div class="callout-title">Why is there an edit button at the bottom of every article?</div>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withRepository(uri(&quot;https://github.com/jonas/paradox-material-theme&quot;))
+}</code></pre>
+<p>The name of the repository will be rendered next to the search bar on big screens and as part of the main navigation drawer on smaller screen sizes. Furthermore, if the repository is hosted on GitHub, Bitbucker or Gitlab a logo of the service is shown next to the name of the repository. When the type is set to GitHub, the number of stars and forks is shown.</p><div class="callout note question"><div class="callout-title">Why is there an edit button at the bottom of every article?</div>
 <p>If <code>github.base_url</code> is set, an edit button will appear at the bottom of every article. This behaviour is provided by Paradox. See the <a href="http://developer.lightbend.com/docs/paradox/latest/features/templating.html">Paradox documentation</a> on more guidance regarding the <code>$page.source_url$</code> attribute, which defines whether the edit button is shown or not.</p></div>
 <h2><a href="#adding-a-favicon" name="adding-a-favicon" class="anchor"><span class="anchor-link"></span></a>Adding a favicon</h2>
-<p>A favicon can be added by setting the <code>material.favicon</code> variable to an <code>.ico</code> or image file:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.favicon&quot; -&gt; &quot;assets/images/favicon.png&quot;
-)</code></pre>
+<p>A favicon can be changed by providing a path toto an <code>.ico</code> or image file:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withFavicon(&quot;assets/images/favicon.png&quot;)
+}</code></pre>
 <h2><a href="#adding-a-logo" name="adding-a-logo" class="anchor"><span class="anchor-link"></span></a>Adding a logo</h2>
 <p>Your logo should have a rectangular shape with a minimum resolution of 128x128, leave some room towards the edges and be composed of high contrast areas on a transparent ground, as it will be placed on the colored header bar and drawer. Simply create the folder <code>assets/images</code>, add your logo and embed it with:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.logo&quot; -&gt; &quot;assets/images/logo.png&quot;
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withLogo(&quot;assets/images/logo.png&quot;)
+}</code></pre>
 <p>Additionally, the default icon can be changed by setting an arbitrary ligature (or Unicode code point) from the <a href="https://material.io/icons/">Material Design icon font</a>, e.g.</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.logo.icon&quot; -&gt; &quot;cloud&quot;
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withLogoIcon(&quot;cloud&quot;)
+}</code></pre>
 <h2><a href="#adding-social-links" name="adding-social-links" class="anchor"><span class="anchor-link"></span></a>Adding social links</h2>
-<p>Social accounts can be linked in the footer of the documentation using the automatically included <a href="http://fontawesome.io/icons/">FontAwesome</a> webfont. They are configured by setting <code>material.social.&lt;service&gt;</code> to the URL you want to link to. The following social services are supported: <code>github</code>, <code>gitlab</code>, <code>bitbucket</code>, <code>linkedin</code>, <code>twitter</code>, <code>facebook</code> and finally <code>web</code> for website links:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.social.github&quot; -&gt; &quot;https://github.com/jonas&quot;,
-  &quot;material.social.twitter&quot; -&gt; &quot;https://twitter.com/priorarts&quot;
-)</code></pre>
-<p>The links are generated in a pre-defined order and cannot be changed.</p>
+<p>Social accounts can be linked in the footer of the documentation using an icon from the <a href="http://fontawesome.io/icons/">FontAwesome</a> webfont. The icons are automatically detected based on the URL:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withSocial(
+    uri(&quot;https://github.com/jonas&quot;),
+    uri(&quot;https://twitter.com/priorarts&quot;)
+  )
+}</code></pre>
 <h2><a href="#copyright-notice" name="copyright-notice" class="anchor"><span class="anchor-link"></span></a>Copyright Notice</h2>
-<p>To display a copyright notice in the footer set <code>material.copyright</code> to the text you want to show. Any HTML markup, such as links, can be used:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.copyright&quot; -&gt; &quot;&quot;&quot;
+<p>To display a copyright notice in the footer configure the text you want to show. Any HTML markup, such as links, can be used:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withCopyright(&quot;&quot;&quot;
     Based on &lt;a href=&quot;https://github.com/squidfunk/mkdocs-material&quot;&gt;MkDocs Material&lt;/a&gt;
     by &lt;a href=&quot;https://github.com/squidfunk&quot;&gt;Martin Donath&lt;/a&gt;
-  &quot;&quot;&quot;
-)</code></pre>
+  &quot;&quot;&quot;)
+}</code></pre>
 <h2><a href="#language" name="language" class="anchor"><span class="anchor-link"></span></a>Language</h2>
-<p>You can define the language of each page with <code>material.language</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.language&quot; -&gt; &quot;en&quot;
-)</code></pre>
+<p>You can define the language of your site:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withLanguage(java.util.Locale.ENGLISH)
+}</code></pre>
 <p>This will add a <code>lang</code> attribute to the top-level <code>html</code> element:</p>
 <pre class="prettyprint"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; class=&quot;no-js&quot;&gt;
@@ -326,11 +351,10 @@ jonas/paradox-material-theme
 </code></pre>
 <p>If no language is set English (<code>en</code>) is assumed.</p>
 <h2><a href="#site-search" name="site-search" class="anchor"><span class="anchor-link"></span></a>Site search</h2>
-<p>Site search must be explicitly enabled by setting <code>material.search</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.search&quot; -&gt; &quot;true&quot; // NOTE: Any value will do
-)</code></pre>
-<p>In addition, you need to generate a <code>search_index.json</code> that contains all your site&rsquo;s content and add it to your site. See the <a href="search.html">search index generation instructions</a> on how to do this.</p>
+<p>Site search is enabled by default and will automatically generate a <code>search_index.json</code> file that contains all your site&rsquo;s content and add it to your site. If you want to disable search use:</p>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withoutSearch()
+}</code></pre>
 <!--
 
 ### Search language
@@ -361,14 +385,14 @@ language.
 -->
 <h3><a href="#search-tokenization" name="search-tokenization" class="anchor"><span class="anchor-link"></span></a>Search tokenization</h3>
 <p>The separator for tokenization can also be customized, which makes it possible to index parts of words that are separated by <code>-</code> or <code>.</code> for example:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.search.tokenizer&quot; -&gt; &quot;[\\s\\-\\.]+&quot;
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withSearch(tokenizer = &quot;[\\s\\-\\.]+&quot;)
+}</code></pre>
 <h2><a href="#google-analytics-integration" name="google-analytics-integration" class="anchor"><span class="anchor-link"></span></a>Google Analytics integration</h2>
 <p>The theme makes it easy to integrate site tracking with Google Analytics. Besides basic tracking, clicks on all outgoing links can be tracked as well as how site search is used. Tracking can be activated in your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">paradoxProperties in Compile ++= Map(
-  &quot;material.google.analytics&quot; -&gt; &quot;UA-107934279-1&quot; // Remember to change this!
-)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">paradoxMaterialTheme in Compile ~= {
+  _.withGoogleAnalytics(&quot;UA-107934279-1&quot;) // Remember to change this!
+}</code></pre>
 <h2><a href="#more-advanced-customization" name="more-advanced-customization" class="anchor"><span class="anchor-link"></span></a>More advanced customization</h2>
 <p>If you want to change the general appearance of the Material theme, see <a href="customization.html">the customization guide</a> for more information.</p>
 </div>
@@ -379,7 +403,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-0.2.0
+0.3.0
 </span>
 </div>
 </article>
@@ -402,13 +426,13 @@ Paradox Material Theme
 </span>
 </div>
 </a>
-<a href="search.html" title="Search index generation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="customization.html" title="Customization" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Search index generation
+Customization
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -422,9 +446,9 @@ Search index generation
 <div class="md-footer-copyright">
 <div class="md-footer-copyright__highlight">
 
-    Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
-    by <a href="https://github.com/squidfunk">Martin Donath</a>
-  
+        Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
+        by <a href="https://github.com/squidfunk">Martin Donath</a>
+      
 </div>
 Powered by
 <a href="https://github.com/lightbend/paradox" title="Paradox">Paradox</a>
@@ -433,8 +457,7 @@ and
 
 </div>
 <div class="md-footer-social">
-<a href="https://github.com/jonas" class="md-footer-social__link fa fa-github"></a>
-<a href="https://twitter.com/priorarts" class="md-footer-social__link fa fa-twitter"></a>
+<a href="https://github.com/jonas" class="md-footer-social__link fa fa-github"></a><a href="https://twitter.com/priorarts" class="md-footer-social__link fa fa-twitter"></a>
 </div>
 
 </div>
