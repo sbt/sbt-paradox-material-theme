@@ -32,6 +32,7 @@ object ParadoxMaterialThemePlugin extends AutoPlugin {
   def paradoxMaterialThemeSettings(config: Configuration): Seq[Setting[_]] =
     inConfig(config)(Def.settings(
       paradoxMaterialTheme := ParadoxMaterialTheme(),
+      paradoxProperties += ("material.theme.version" -> (version in paradoxMaterialTheme).value),
       paradoxProperties ++= paradoxMaterialTheme.value.paradoxProperties,
       mappings in paradoxMaterialTheme := Def.taskDyn {
         if (paradoxProperties.value.contains("material.search"))

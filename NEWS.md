@@ -5,6 +5,7 @@
  - Add sbt plugin to help configure the theme using a builder-like API.
  - Enable search by default.
  - Build with sbt 1.0.
+ - Add the theme version to the generator string.
 
 ## 0.2.0
 
