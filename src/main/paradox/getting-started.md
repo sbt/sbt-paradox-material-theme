@@ -9,20 +9,50 @@ addSbtPlugin("io.github.jonas" % "sbt-paradox-material-theme" % "$project.versio
 ```
 @@@
 
-And add the following to your project's `build.sbt` depending on whether you
-are using Paradox with sbt-site or stand-alone:
+And enable the theme plugin in your project's `build.sbt`:
 
-Stand-alone Paradox
-:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
+@@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
 
-Paradox with sbt-site
-:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #enable-plugin }
+If you are generating your site with [sbt-site] you also need to add a few
+additional settings in `build.sbt`:
 
-The theme can be configured via Paradox properties configured in your
-project's `build.sbt` or for each individual page via the [front matter].
+@@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #theme-site-settings }
+
+ [sbt-site]: http://www.scala-sbt.org/sbt-site/generators/paradox.html
+
+## Configuring the theme
+
+The theme is configurable via Paradox properties which means that you can
+provide defaults in your project's `build.sbt` and override properties in each
+page's [front matter]. The preferred way to configure the theme is to use the
+utility the theme plugin provides which help configure the theme in a concise
+manner using a builder-like API:
+
+@@ snip [build.sbt]($root$/build.sbt) { #builder-api }
+
+The examples given in the following sections use an alternative syntax.
+The equivalent of the above configuration using this alternative syntax is:
+
+@@ snip [build.sbt]($root$/build.sbt) { #builder-api-v2 }
+
+In both cases, the theme's configuration is added to the Paradox properties. As
+a result it is also possible to set properties directly using
+`paradoxProperties` or @ref:[front matter]. Front matter allows you to tweak the
+look-and-feel for specific pages. The equivalent of the above configuration can
+be defined in front matter as:
+
+```yaml
+---
+material.color.primary: red
+material.color.accent: orange
+material.logo.icon: cloud
+material.copyright: Copyleft © Jonas Fonseca
+---
+```
+
 See the following sections for available options.
 
- [front matter]: http://developer.lightbend.com/docs/paradox/latest/features/templating.html#properties-front-matter
+ [front matter]: specimen/front-matter.md
 
 ## Changing the color palette
 
@@ -34,9 +64,9 @@ following variables:
 @@ snip [build.sbt]($root$/build.sbt) { #color }
 
 Color names are case-insensitive, but must match the names of the Material
-Design color palette. Valid values are: `red`, `pink`, `purple`, `deep purple`,
-`indigo`, `blue`, `light blue`, `cyan`, `teal`, `green`, `light green`, `lime`,
-`yellow`, `amber`, `orange`, `deep orange`, `brown`, `grey` and `blue grey`.
+Design color palette. Valid values are: `red`, `pink`, `purple`, `deep-purple`,
+`indigo`, `blue`, `light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,
+`yellow`, `amber`, `orange`, `deep-orange`, `brown`, `grey` and `blue-grey`.
 The last three colors can only be used as a primary color.
 
 If the color is set via this configuration, an additional CSS file that
@@ -137,8 +167,8 @@ set the following variables via your project's `build.sbt`:
 
 The name of the repository will be rendered next to the search bar on big
 screens and as part of the main navigation drawer on smaller screen sizes.
-Furthermore, set `material.repo.type` to `github`, `bitbucket` or `gitlab` to
-render the respective service logo next to the name of the repository.
+Furthermore, if the repository is hosted on GitHub, Bitbucker or Gitlab a logo
+of the service is shown next to the name of the repository.
 When the type is set to GitHub, the number of stars and forks is shown.
 
 @@@ note { title="Why is there an edit button at the bottom of every article?" .question }
@@ -154,8 +184,7 @@ button is shown or not.
 
 ## Adding a favicon
 
-A favicon can be added by setting the `material.favicon` variable to an `.ico` or
-image file:
+A favicon can be changed by providing a path toto an `.ico` or image file:
 
 @@ snip [build.sbt]($root$/build.sbt) { #favicon }
 
@@ -177,28 +206,24 @@ Additionally, the default icon can be changed by setting an arbitrary ligature
 
 ## Adding social links
 
-Social accounts can be linked in the footer of the documentation using the
-automatically included [FontAwesome][17] webfont. They are configured by setting
-`material.social.<service>` to the URL you want to link to. The following social
-services are supported: `github`, `gitlab`, `bitbucket`, `linkedin`, `twitter`,
-`facebook` and finally `web` for website links:
+Social accounts can be linked in the footer of the documentation using an icon
+from the [FontAwesome][17] webfont. The icons are automatically detected based
+on the URL:
 
 @@ snip [build.sbt]($root$/build.sbt) { #social }
-
-The links are generated in a pre-defined order and cannot be changed.
 
   [17]: http://fontawesome.io/icons/
 
 ## Copyright Notice
 
-To display a copyright notice in the footer set `material.copyright` to the
+To display a copyright notice in the footer configure the
 text you want to show. Any HTML markup, such as links, can be used:
 
 @@ snip [build.sbt]($root$/build.sbt) { #copyright }
 
 ## Language
 
-You can define the language of each page with `material.language`:
+You can define the language of your site:
 
 @@ snip [build.sbt]($root$/build.sbt) { #language }
 
@@ -215,22 +240,9 @@ If no language is set English (`en`) is assumed.
 
 ## Site search
 
-Site search must be explicitly enabled by setting `material.search`:
+Site search must be explicitly enabled:
 
-@@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-search }
-
-In addition, you need to generate a `search_index.json` that contains all your
-site's content and add it to your site. Depending on whether you are using
-Paradox in a stand-alone fashion or sbt-site's [Paradox generator], you need to
-add a line to your `build.sbt` to make the search index part of your site.
-
-Stand-alone Paradox
-:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #add-search-index }
-
-Paradox with sbt-site
-:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #add-search-index }
-
- [Paradox generator]: http://www.scala-sbt.org/sbt-site/generators/paradox.html
+@@ snip [build.sbt]($root$/build.sbt) { #search }
 
 <!--
 

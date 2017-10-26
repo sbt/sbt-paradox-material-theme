@@ -28,7 +28,7 @@ lazy val root = project.in(file("."))
       )
     },
     ghpagesNoJekyll := true,
-    mappings in makeSite += ParadoxMaterialThemePlugin.SearchIndex.mapping(Compile).value,
+    mappings in makeSite ++= (mappings in (Compile, paradoxMaterialTheme)).value,
     siteSourceDirectory := (target in (Compile, paradox)).value,
     paradox in Compile := (paradox in Compile).dependsOn(publishLocal in theme).value,
     makeSite := makeSite.dependsOn(paradox in Compile).value,
@@ -38,52 +38,51 @@ lazy val root = project.in(file("."))
       "github.base_url" -> "https://github.com/jonas/paradox-material-theme"
     ),
     //#color
-    paradoxProperties in Compile ++= Map(
-      "material.color.primary" -> "teal",
-      "material.color.accent" -> "indigo"
-    )
+    paradoxMaterialTheme in Compile ~= {
+      _.withColor("teal", "indigo")
+    }
     //#color
     ,
     //#search
-    paradoxProperties in Compile ++= Map(
-      "material.search" -> "true" // NOTE: Any value will do
-    )
+    paradoxMaterialTheme in Compile ~= {
+      _.withSearch()
+    }
     //#search
     ,
     //#repository
-    paradoxProperties in Compile ++= Map(
-      "material.repo" -> "https://github.com/jonas/paradox-material-theme",
-      "material.repo.type" -> "github",
-      "material.repo.name" -> "jonas/paradox-material-theme"
-    )
+    paradoxMaterialTheme in Compile ~= {
+      _.withRepository(uri("https://github.com/jonas/paradox-material-theme"))
+    }
     //#repository
     ,
     //#social
-    paradoxProperties in Compile ++= Map(
-      "material.social.github" -> "https://github.com/jonas",
-      "material.social.twitter" -> "https://twitter.com/priorarts"
-    )
+    paradoxMaterialTheme in Compile ~= {
+      _.withSocial(
+        uri("https://github.com/jonas"),
+        uri("https://twitter.com/priorarts")
+      )
+    }
     //#social
     ,
     //#language
-    paradoxProperties in Compile ++= Map(
-      "material.language" -> "en"
-    )
+    paradoxMaterialTheme in Compile ~= {
+      _.withLanguage(java.util.Locale.ENGLISH)
+    }
     //#language
     ,
     //#analytics
-    paradoxProperties in Compile ++= Map(
-      "material.google.analytics" -> "UA-107934279-1" // Remember to change this!
-    )
+    paradoxMaterialTheme in Compile ~= {
+      _.withGoogleAnalytics("UA-107934279-1") // Remember to change this!
+    }
     //#analytics
     ,
     //#copyright
-    paradoxProperties in Compile ++= Map(
-      "material.copyright" -> """
+    paradoxMaterialTheme in Compile ~= {
+      _.withCopyright("""
         Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
         by <a href="https://github.com/squidfunk">Martin Donath</a>
-      """
-    )
+      """)
+    }
     //#copyright
   )
   .aggregate(theme, plugin)
@@ -135,52 +134,68 @@ lazy val theme = project.in(file("theme"))
   )
 
 lazy val optionExamples = Def.settings(
+  //#builder-api
+  paradoxMaterialTheme in Compile := {
+    ParadoxMaterialTheme()
+      .withColor("red", "orange")
+      .withLogoIcon("cloud")
+      .withCopyright("Copyleft © Jonas Fonseca")
+  }
+  //#builder-api
+  ,
+  //#builder-api-v2
+  paradoxMaterialTheme in Compile ~= {
+    _.withColor("red", "orange")
+     .withLogoIcon("cloud")
+     .withCopyright("Copyleft © Jonas Fonseca")
+  }
+  //#builder-api-v2
+  ,
   //#font
-  paradoxProperties in Compile ++= Map(
-    "material.font.text" -> "Ubuntu",
-    "material.font.code" -> "Ubuntu Mono"
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withFont("Ubuntu", "Ubuntu Mono")
+  }
   //#font
   ,
   //#font-disable
-  paradoxProperties in Compile ++= Map(
-    "material.font.disabled" -> "true" // NOTE: Any value will do
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withoutFont()
+  }
   //#font-disable
   ,
   //#favicon
-  paradoxProperties in Compile ++= Map(
-    "material.favicon" -> "assets/images/favicon.png"
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withFavicon("assets/images/favicon.png")
+  }
   //#favicon
   ,
   //#logo
-  paradoxProperties in Compile ++= Map(
-    "material.logo" -> "assets/images/logo.png"
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withLogo("assets/images/logo.png")
+  }
   //#logo
   ,
   //#logo-icon
-  paradoxProperties in Compile ++= Map(
-    "material.logo.icon" -> "cloud"
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withLogoIcon("cloud")
+  }
   //#logo-icon
   ,
   //#custom-stylesheet
-  paradoxProperties in Compile ++= Map(
-    "material.custom.stylesheet" -> "assets/custom.css"
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withCustomStylesheet("assets/custom.css")
+  }
   //#custom-stylesheet
   ,
   //#custom-javascript
-  paradoxProperties in Compile ++= Map(
-    "material.custom.javascript" -> "assets/custom.js"
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withCustomJavaScript("assets/custom.js")
+  }
   //#custom-javascript
   ,
   //#search-tokenizer
-  paradoxProperties in Compile ++= Map(
-    "material.search.tokenizer" -> "[\\s\\-\\.]+"
-  )
+  paradoxMaterialTheme in Compile ~= {
+    _.withSearch(tokenizer = "[\\s\\-\\.]+")
+  }
   //#search-tokenizer
 )

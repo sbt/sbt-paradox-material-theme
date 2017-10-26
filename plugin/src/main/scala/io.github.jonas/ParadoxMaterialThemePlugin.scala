@@ -2,14 +2,13 @@ package io.github.jonas.paradox.material.theme
 
 import com.lightbend.paradox.sbt.ParadoxPlugin
 import sbt._
-import sbt.Keys.version
+import sbt.Keys._
 
 object ParadoxMaterialThemePlugin extends AutoPlugin {
-  type SearchIndex = _root_.io.github.jonas.paradox.material.theme.SearchIndex
-  val SearchIndex = _root_.io.github.jonas.paradox.material.theme.SearchIndex
-
   object autoImport {
-    class ParadoxMaterialTheme()
+    type ParadoxMaterialTheme = _root_.io.github.jonas.paradox.material.theme.ParadoxMaterialTheme
+    val ParadoxMaterialTheme = _root_.io.github.jonas.paradox.material.theme.ParadoxMaterialTheme
+
     val paradoxMaterialTheme = settingKey[ParadoxMaterialTheme]("Material theme options")
   }
   import autoImport._
@@ -32,7 +31,15 @@ object ParadoxMaterialThemePlugin extends AutoPlugin {
 
   def paradoxMaterialThemeSettings(config: Configuration): Seq[Setting[_]] =
     inConfig(config)(Def.settings(
-      paradoxMaterialTheme := new ParadoxMaterialTheme()
+      paradoxMaterialTheme := ParadoxMaterialTheme(),
+      paradoxProperties ++= paradoxMaterialTheme.value.paradoxProperties,
+      mappings in paradoxMaterialTheme := Def.taskDyn {
+        if (paradoxProperties.value.contains("material.search"))
+          Def.task(Seq(SearchIndex.mapping(config).value))
+        else
+          Def.task(Seq.empty[(File, String)])
+      }.value,
+      mappings in paradox ++= (mappings in paradoxMaterialTheme).value
     ))
 
 }

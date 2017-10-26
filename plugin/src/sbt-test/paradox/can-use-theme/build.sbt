@@ -4,16 +4,19 @@ name := "test"
 enablePlugins(ParadoxMaterialThemePlugin)
 //#enable-plugin
 
+paradoxProperties in Compile ++= Map(
+  "github.base_url" -> "https://github.com/jonas/paradox-material-theme"
+)
+
 //#enable-search
 paradoxProperties in Compile ++= Map(
   "material.search" -> "true"
 )
 //#enable-search
 
-//#add-search-index
-mappings in (Compile, paradox) +=
-  ParadoxMaterialThemePlugin.SearchIndex.mapping(Compile).value
-//#add-search-index
+paradoxMaterialTheme in Compile ~= {
+  _.withCopyright("OURS")
+}
 
 def fileContains(file: File, texts: String*) = {
   assert(file.exists, s"${file.getAbsolutePath} did not exist")
@@ -30,7 +33,7 @@ TaskKey[Unit]("checkContent") := {
 
   fileContains(
     dest / "index.html",
-    "Paradox Site", "Nicely themed", "mkdocs-material"
+    "Paradox Site", "Nicely themed", "mkdocs-material", "OURS"
   )
 
   fileContains(

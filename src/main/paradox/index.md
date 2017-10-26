@@ -30,14 +30,9 @@ addSbtPlugin("io.github.jonas" % "sbt-paradox-material-theme" % "$project.versio
 ```
 @@@
 
-And adding the following to your project's `build.sbt` depending on whether or
-not you are also using sbt-site:
+And enabling the theme plugin in your project's `build.sbt`:
 
-Stand-alone Paradox
-:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
-
-Paradox with sbt-site
-:  @@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #enable-plugin }
+@@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
 
 For detailed instructions see the @ref:[getting started guide](getting-started.md).
 
