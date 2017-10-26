@@ -63,11 +63,11 @@ $!
     $ endif $
     <link rel="stylesheet" href="$page.base$lib/material__tabs/dist/mdc.tabs.min.css">
     <link rel="stylesheet" href="$page.base$lib/prettify/prettify.css">
-    $ if (!page.properties.("material.font.disabled")) $
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=$page.properties.("material.font.text"); null="Roboto"$:300,400,400i,700|$page.properties.("material.font.code"); null="Roboto+Mono"$">
+    $ if (page.properties.("material.font.text")) $
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=$page.properties.("material.font.text.url")$:300,400,400i,700|$page.properties.("material.font.code.url")$">
       <style>
-        body,input{font-family:"$page.properties.("material.font.text"); null="Roboto"$","Helvetica Neue",Helvetica,Arial,sans-serif}
-        code,kbd,pre{font-family:"$page.properties.("material.font.code"); null="Roboto Mono"$","Courier New",Courier,monospace}
+        body,input{font-family:"$page.properties.("material.font.text")$","Helvetica Neue",Helvetica,Arial,sans-serif}
+        code,kbd,pre{font-family:"$page.properties.("material.font.code")$","Courier New",Courier,monospace}
       </style>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

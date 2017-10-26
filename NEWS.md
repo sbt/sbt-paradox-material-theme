@@ -1,5 +1,10 @@
 # Release notes
 
+## master
+
+ - Add theme plugin that configures the theme and provides the search index
+   generator.
+
 ## 0.2.0
 
  - Update to [mkdocs-material-1.11.0].
