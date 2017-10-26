@@ -1,6 +1,6 @@
 # Release notes
 
-## master
+## 0.3.0
 
  - Add sbt plugin to help configure the theme using a builder-like API.
  - Enable search by default.
