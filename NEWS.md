@@ -2,8 +2,9 @@
 
 ## master
 
- - Add theme plugin that configures the theme and provides the search index
-   generator.
+ - Add sbt plugin to help configure the theme using a builder-like API.
+ - Enable search by default.
+ - Build with sbt 1.0.
 
 ## 0.2.0
 
