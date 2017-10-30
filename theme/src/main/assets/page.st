@@ -128,7 +128,19 @@ $!
     </div>
     <script src="$page.base$assets/javascripts/application-268d62d82d.js"></script>
     <script src="$page.base$assets/javascripts/paradox-material-theme.js"></script>
-    <script>app.initialize({url:{base:"$page.base$./"}})</script>
+    $!
+
+      The ending "." enables search to work without providing the site URL, since the
+      theme JavaScript fetches the index by concatenating the base URL to an absolute
+      path: "/mkdocs/search_index.json".
+
+      It originally was "./" but this breaks previewSite because it leads to a double
+      slash when fetching the index, i.e. ".//mkdocs/...". To complete the workaround
+      all locations in the search index now start with a "/" so the JavaScript can
+      safely do: `url.base + doc.location`.
+
+    !$
+    <script>app.initialize({url:{base:"$page.base$."}})</script>
     <script type="text/javascript" src="$page.base$lib/prettify/prettify.js"></script>
     <script type="text/javascript" src="$page.base$lib/prettify/lang-scala.js"></script>
     <script type="text/javascript">

@@ -17,7 +17,7 @@ object SearchIndex {
   case class Section(location: String, title: String, text: String)
   object Section {
     implicit val encoder: ObjectEncoder[Section] = Encoder.forProduct3("location", "text", "title")(
-      page => (page.location, page.text, page.title))
+      page => ("/" + page.location, page.text, page.title))
   }
 
   val Headers = Set("h1", "h2", "h3", "h4", "h5", "h6")

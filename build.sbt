@@ -92,6 +92,7 @@ lazy val plugin = project.in(file("plugin"))
         case _      => "2.12.3"
       }
     },
+    previewSite := {},
     // fixed in https://github.com/sbt/sbt/pull/3397 (for sbt 0.13.17)
     sbtBinaryVersion in update := (sbtBinaryVersion in pluginCrossBuild).value,
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
@@ -118,6 +119,7 @@ lazy val theme = project.in(file("theme"))
         "*.min.js" | "*.min.css" | "lang-*.js" | "prettify.css" | "prettify.js"
       ).get.filter(_.isFile)
     },
+    previewSite := {},
     libraryDependencies += "org.webjars" % "prettify" % "4-Mar-2013-1" % Provided,
     libraryDependencies += "org.webjars" % "modernizr" % "2.8.3" % Provided,
     libraryDependencies +=
