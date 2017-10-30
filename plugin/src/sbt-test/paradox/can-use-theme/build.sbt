@@ -9,7 +9,9 @@ paradoxProperties in Compile ++= Map(
 )
 
 paradoxMaterialTheme in Compile ~= {
-  _.withCopyright("OURS")
+  _.withCopyright("test-copyright")
+   .withLogo("test-logo")
+   .withFavicon("test-favicon")
 }
 
 def fileContains(file: File, texts: String*) = {
@@ -27,7 +29,8 @@ TaskKey[Unit]("checkContent") := {
 
   fileContains(
     dest / "index.html",
-    "Paradox Site", "Nicely themed", "mkdocs-material", "OURS"
+    "Paradox Site", "Nicely themed", "mkdocs-material", "test-copyright",
+    "test-logo", "test-favicon"
   )
 
   fileContains(
