@@ -27,7 +27,7 @@ $!
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="$page.properties.("project.description")$">
-    <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=1.11.0">
+    <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=2.2.2">
 
     $partials/language()$
 
@@ -44,11 +44,7 @@ $!
     $ elseif (page.properties.("material.author")) $
       <meta name="author" content="$page.properties.("site.author")$">
     $ endif $
-    $ if (page.properties.("material.favicon")) $
-      <link rel="shortcut icon" href="$page.base$$page.properties.("material.favicon")$">
-    $ else $
-      <link rel="shortcut icon" href="$page.base$assets/images/favicon.png">
-    $ endif $
+    <link rel="shortcut icon" href="$page.base$$page.properties.("material.favicon")$">
     $ if (page.properties.("title")) $
       <title>$page.properties.("title")$</title>
     $ elseif (page.title) $
@@ -56,13 +52,13 @@ $!
     $ else $
       <title>$page.home.title$</title>
     $ endif $
-    <script src="$page.base$lib/modernizr/modernizr.min.js"></script>
-    <link rel="stylesheet" href="$page.base$assets/stylesheets/application-0741cbeb94.css">
+    <link rel="stylesheet" href="$page.base$assets/stylesheets/application.7a4cdee3.css">
     $ if (page.properties.("material.color.primary")) $
-      <link rel="stylesheet" href="$page.base$assets/stylesheets/application-23f75ab9c7.palette.css">
+      <link rel="stylesheet" href="$page.base$assets/stylesheets/application-palette.792431c1.css">
     $ endif $
     <link rel="stylesheet" href="$page.base$lib/material__tabs/dist/mdc.tabs.min.css">
     <link rel="stylesheet" href="$page.base$lib/prettify/prettify.css">
+    <script src="$page.base$lib/modernizr/modernizr.min.js"></script>
     $ if (page.properties.("material.font.text")) $
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=$page.properties.("material.font.text.url")$:300,400,400i,700|$page.properties.("material.font.code.url")$">
       <style>
@@ -78,13 +74,21 @@ $!
     $ endif $
   </head>
   <body
-      data-md-color-primary="$page.properties.("material.color.primary"); null="indigo"$"
-      data-md-color-accent="$page.properties.("material.color.accent"); null="indigo"$">
+    $ if (page.properties.("material.color.primary")) $
+      data-md-color-primary="$page.properties.("material.color.primary")$"
+    $ endif $
+    $ if (page.properties.("material.color.accent")) $
+      data-md-color-accent="$page.properties.("material.color.accent")$"
+    $ endif $
+  >
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     $partials/header()$
     <div class="md-container">
+      $ if (page.properties.("material.hero")) $
+        $partials/hero()$
+      $ endif $
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
@@ -126,7 +130,7 @@ $!
       </main>
       $partials/footer()$
     </div>
-    <script src="$page.base$assets/javascripts/application-268d62d82d.js"></script>
+    <script src="$page.base$assets/javascripts/application.5165553b.js"></script>
     <script src="$page.base$assets/javascripts/paradox-material-theme.js"></script>
     $!
 
@@ -140,7 +144,7 @@ $!
       safely do: `url.base + doc.location`.
 
     !$
-    <script>app.initialize({url:{base:"$page.base$."}})</script>
+    <script>app.initialize({version:"0.16",url:{base:"$page.base$."}})</script>
     <script type="text/javascript" src="$page.base$lib/prettify/prettify.js"></script>
     <script type="text/javascript" src="$page.base$lib/prettify/lang-scala.js"></script>
     <script type="text/javascript">
@@ -152,7 +156,7 @@ $!
       <script src="$page.base$$page.properties.("material.custom.javascript")$"></script>
     $ endif $
     $ if (page.properties.("material.google.analytics")) $
-      <script>!function(e,t,a,n,o,c,i){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=t.createElement(a),i=t.getElementsByTagName(a)[0],c.async=1,c.src=n,i.parentNode.insertBefore(c,i)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","$page.properties.("material.google.analytics")$","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var t=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",t,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
+      $partials/integrations/analytics()$
     $ endif $
   </body>
 </html>

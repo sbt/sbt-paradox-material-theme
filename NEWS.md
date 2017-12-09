@@ -1,5 +1,12 @@
 # Release notes
 
+## master
+
+ - Update to [mkdocs-material-2.2.2].
+ - Add support for hero text by defining `material.hero` in the front matter.
+
+ [mkdocs-material-2.2.2]: https://github.com/squidfunk/mkdocs-material/releases/tag/2.2.2
+
 ## 0.3.0
 
  - Add sbt plugin to help configure the theme using a builder-like API.

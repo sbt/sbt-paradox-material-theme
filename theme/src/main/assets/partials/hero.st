@@ -20,28 +20,9 @@ $!
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 !$
-<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
-      $ if (page.properties.("material.logo.icon")) $
-        <i class="md-icon">$page.properties.("material.logo.icon")$</i>
-      $ else $
-        <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
-      $endif$
-    </span>
-    <a href="$page.home.href$" title="$page.home.title$">
-      $page.home.title$
-    </a>
-  </label>
-  $ if (page.properties.("material.repo")) $
-    <div class="md-nav__source">
-      $source()$
-    </div>
-  $ endif $
-  $page.groups$
-  $page.navigation$
-  $toc()$
-  <div class="md-nav__title--site md-version" title="Version">
-    <i class="md-icon">label_outline</i> $page.properties.("project.version.short")$
+$! FIXME: {% if not feature.tabs %} {% set class = "md-hero md-hero--expand" %} {% endif %} !$
+<div class="md-hero md-hero--expand" data-md-component="hero">
+  <div class="md-hero__inner md-grid">
+    $page.properties.("material.hero")$
   </div>
-</nav>
+</div>

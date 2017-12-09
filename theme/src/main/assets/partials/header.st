@@ -27,10 +27,8 @@ $!
         <a href="$page.home.href$" title="$page.home.title$" class="md-header-nav__button md-logo">
           $ if (page.properties.("material.logo.icon")) $
             <i class="md-icon">$page.properties.("material.logo.icon")$</i>
-          $ elseif (page.properties.("material.logo")) $
-            <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
           $ else $
-            <i class="md-icon md-icon--home"></i>
+            <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
           $endif$
         </a>
       </div>
@@ -38,18 +36,18 @@ $!
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
-          $! FIXME: breadcrumbs in the title?
-          {% if page %}
-            {% for parent in page.ancestors %}
-              <span class="md-header-nav__parent">
-                {{ parent.title }}
-              </span>
-            {% endfor %}
-          {% endif %}
-          !$
-          $page.title$
-        </span>
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          $ if (page.home.active) $
+            $page.home.title$
+          $ else $
+            <span class="md-header-nav__topic">
+              $page.home.title$
+            </span>
+            <span class="md-header-nav__topic">
+              $page.title$
+            </span>
+          $ endif $
+        </div>
       </div>
       $ if (page.properties.("material.search")) $
         <div class="md-flex__cell md-flex__cell--shrink">

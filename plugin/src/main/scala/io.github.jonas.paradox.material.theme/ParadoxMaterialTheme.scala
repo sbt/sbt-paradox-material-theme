@@ -95,6 +95,8 @@ object ParadoxMaterialTheme {
   def apply(): ParadoxMaterialTheme = {
     ParadoxMaterialTheme(Map.empty)
       .withFont("Roboto", "Roboto Mono")
+      .withLogoIcon("local_library")
+      .withFavicon("assets/images/favicon.png")
       .withSearch()
   }
 }
