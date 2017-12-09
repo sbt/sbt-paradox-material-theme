@@ -74,6 +74,6 @@ object SearchIndex {
       (target in scope).value / "paradox-material-theme",
       (paradoxMarkdownToHtml in scope).value
     )
-    index -> "mkdocs/search_index.json"
+    index -> "search/search_index.json"
   }
 }
