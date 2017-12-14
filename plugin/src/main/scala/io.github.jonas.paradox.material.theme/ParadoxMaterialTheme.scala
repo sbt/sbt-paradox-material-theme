@@ -20,10 +20,10 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
     withProperties("favicon" -> favicon)
 
   def withLogo(logo: String) =
-    withProperties("logo" -> logo)
+    withProperties("logo" -> logo).withoutProperties("logo.icon")
 
   def withLogoIcon(icon: String) =
-    withProperties("logo.icon" -> icon)
+    withProperties("logo.icon" -> icon).withoutProperties("logo")
 
   def withFont(text: String, code: String) =
     withProperties(
@@ -34,7 +34,7 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
     )
 
   def withoutFont() =
-    copy(properties = properties -- Seq("font.text", "font.code"))
+    withoutProperties("font.text", "font.code")
 
   def withSearch(tokenizer: String = "[\\s\\-]+") =
     withProperties(
@@ -43,7 +43,7 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
     )
 
   def withoutSearch() =
-    copy(properties = properties -- Seq("search", "search.tokenizer"))
+    withoutProperties("search", "search.tokenizer")
 
   def withCopyright(copyright: String) =
     withProperties("copyright" -> copyright)
@@ -80,6 +80,9 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
 
   private def withProperties(props: (String, String)*): ParadoxMaterialTheme =
     copy(properties = properties ++ props.toMap)
+
+  private def withoutProperties(keys: String*): ParadoxMaterialTheme =
+    copy(properties = properties -- keys)
 }
 
 object ParadoxMaterialTheme {
