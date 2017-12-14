@@ -85,11 +85,11 @@ lazy val plugin = project.in(file("plugin"))
   .settings(
     sbtPlugin := true,
     name := "sbt-paradox-material-theme",
-    crossSbtVersions := List("0.13.16", "1.0.2"),
+    crossSbtVersions := List("0.13.16", "1.0.4"),
     scalaVersion := {
       (sbtBinaryVersion in pluginCrossBuild).value match {
         case "0.13" => "2.10.6"
-        case _      => "2.12.3"
+        case _      => "2.12.4"
       }
     },
     previewSite := {},
