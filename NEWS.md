@@ -1,11 +1,13 @@
 # Release notes
 
-## master
+## 0.4.0
 
  - Update to [mkdocs-material-2.2.2].
  - Add support for hero text by defining `material.hero` in the front matter.
+ - Add workaround for using `previewSite` when developing. [#7]
 
  [mkdocs-material-2.2.2]: https://github.com/squidfunk/mkdocs-material/releases/tag/2.2.2
+ [#7]: https://github.com/jonas/paradox-material-theme/issues/7
 
 ## 0.3.0
 
