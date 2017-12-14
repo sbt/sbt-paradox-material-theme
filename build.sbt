@@ -18,7 +18,7 @@ lazy val root = project.in(file("."))
         },
         releaseStepTask(makeSite),
         releaseStepCommandAndRemaining("^test"),
-        releaseStepCommandAndRemaining("^scripted"),
+        releaseStepCommandAndRemaining("^plugin/scripted"),
         setReleaseVersion,
         tagRelease,
         releaseStepCommandAndRemaining("^publish"),

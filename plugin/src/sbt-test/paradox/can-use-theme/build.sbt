@@ -34,7 +34,7 @@ TaskKey[Unit]("checkContent") := {
   )
 
   fileContains(
-    dest / "mkdocs" / "search_index.json",
+    dest / "search" / "search_index.json",
     "Paradox Site", "Nicely themed"
   )
 }
