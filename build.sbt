@@ -1,19 +1,16 @@
-lazy val root = project.in(file("."))
+lazy val root = project("paradox-material-theme-parent", file("."))
   .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin, ReleasePlugin)
   .settings(
-    name := "paradox-material-theme-parent",
-    addCommandAlias("verify", "; theme/publishLocal ; ^plugin/scripted ; makeSite"),
-    publish := {},
-    publishLocal := {},
-    publishArtifact := false,
+    addCommandAlias("verify", "; ^sbt-paradox-material-theme/scripted ; makeSite"),
+    publish / skip := true,
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
-    releaseTagName := (version in ThisBuild).value,
+    releaseTagName := (ThisBuild / version).value,
     releaseVersionFile := target.value / "unused-version.sbt",
     releaseProcess := {
       import ReleaseTransformations._
       Seq[ReleaseStep](
         { st: State =>
-          val v = (version in ThisBuild).value
+          val v = (ThisBuild / version).value
           st.put(ReleaseKeys.versions, (v, v))
         },
         releaseStepTask(makeSite),
@@ -28,29 +25,29 @@ lazy val root = project.in(file("."))
       )
     },
     ghpagesNoJekyll := true,
-    mappings in makeSite ++= (mappings in (Compile, paradoxMaterialTheme)).value,
-    siteSourceDirectory := (target in (Compile, paradox)).value,
-    paradox in Compile := (paradox in Compile).dependsOn(publishLocal in theme).value,
-    makeSite := makeSite.dependsOn(paradox in Compile).value,
-    version in paradoxMaterialTheme := version.value,
-    paradoxProperties in Compile ++= Map(
+    makeSite / mappings ++= (Compile / paradoxMaterialTheme / mappings).value,
+    siteSourceDirectory := (Compile / paradox / target).value,
+    Compile / paradox := (Compile / paradox).dependsOn(theme / publishLocal).value,
+    makeSite := makeSite.dependsOn(Compile / paradox).value,
+    paradoxMaterialTheme / version := version.value,
+    Compile / paradoxProperties ++= Map(
       "project.name" -> "Paradox Material Theme",
       "github.base_url" -> "https://github.com/jonas/paradox-material-theme"
     ),
     //#color
-    paradoxMaterialTheme in Compile ~= {
+    Compile / paradoxMaterialTheme ~= {
       _.withColor("teal", "indigo")
     }
     //#color
     ,
     //#repository
-    paradoxMaterialTheme in Compile ~= {
+    Compile / paradoxMaterialTheme ~= {
       _.withRepository(uri("https://github.com/jonas/paradox-material-theme"))
     }
     //#repository
     ,
     //#social
-    paradoxMaterialTheme in Compile ~= {
+    Compile / paradoxMaterialTheme ~= {
       _.withSocial(
         uri("https://github.com/jonas"),
         uri("https://twitter.com/priorarts")
@@ -59,19 +56,19 @@ lazy val root = project.in(file("."))
     //#social
     ,
     //#language
-    paradoxMaterialTheme in Compile ~= {
+    Compile / paradoxMaterialTheme ~= {
       _.withLanguage(java.util.Locale.ENGLISH)
     }
     //#language
     ,
     //#analytics
-    paradoxMaterialTheme in Compile ~= {
+    Compile / paradoxMaterialTheme ~= {
       _.withGoogleAnalytics("UA-107934279-1") // Remember to change this!
     }
     //#analytics
     ,
     //#copyright
-    paradoxMaterialTheme in Compile ~= {
+    Compile / paradoxMaterialTheme ~= {
       _.withCopyright("""
         Based on <a href="https://github.com/squidfunk/mkdocs-material">MkDocs Material</a>
         by <a href="https://github.com/squidfunk">Martin Donath</a>
@@ -81,39 +78,31 @@ lazy val root = project.in(file("."))
   )
   .aggregate(theme, plugin)
 
-lazy val plugin = project.in(file("plugin"))
+lazy val plugin = project("sbt-paradox-material-theme", file("plugin"))
+  .enablePlugins(ScriptedPlugin)
   .settings(
     sbtPlugin := true,
-    name := "sbt-paradox-material-theme",
-    crossSbtVersions := Seq("0.13.17", "1.0.4"),
-    scalaVersion := {
-      (sbtBinaryVersion in pluginCrossBuild).value match {
-        case "0.13" => "2.10.7"
-        case _      => "2.12.6"
-      }
-    },
     previewSite := {},
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
     scriptedBufferLog := false,
-    publishLocal := publishLocal.dependsOn(publishLocal in theme).value,
+    publishLocal := publishLocal.dependsOn(theme / publishLocal).value,
     addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.3.1"),
     libraryDependencies += "org.jsoup" % "jsoup" % "1.10.3",
     libraryDependencies += "io.circe" %% "circe-core" % "0.8.0",
-    resourceGenerators in Compile += Def.task {
-      val file = (resourceManaged in Compile).value / "paradox-material-theme.properties"
+    Compile / resourceGenerators += Def.task {
+      val file = (Compile / resourceManaged).value / "paradox-material-theme.properties"
       IO.write(file, s"version=${version.value}")
       Seq(file)
     }
   )
 
-lazy val theme = project.in(file("theme"))
+lazy val theme = project("paradox-material-theme", file("theme"))
   .enablePlugins(ParadoxThemePlugin)
   .settings(
-    name := "paradox-material-theme",
     description := "Material Design theme for Paradox",
-    WebKeys.webJars in Assets := {
-      val out = (WebKeys.webJars in Assets).value
-      (WebKeys.webJarsDirectory in Assets).value.**(
+    Assets / WebKeys.webJars := {
+      val out = (Assets / WebKeys.webJars).value
+      (Assets / WebKeys.webJarsDirectory).value.**(
         "*.min.js" | "*.min.css" | "lang-*.js" | "prettify.css" | "prettify.js"
       ).get.filter(_.isFile)
     },
@@ -128,7 +117,7 @@ lazy val theme = project.in(file("theme"))
 
 lazy val optionExamples = Def.settings(
   //#builder-api
-  paradoxMaterialTheme in Compile := {
+  Compile / paradoxMaterialTheme := {
     ParadoxMaterialTheme()
       .withColor("red", "orange")
       .withLogoIcon("cloud")
@@ -137,7 +126,7 @@ lazy val optionExamples = Def.settings(
   //#builder-api
   ,
   //#builder-api-v2
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withColor("red", "orange")
      .withLogoIcon("cloud")
      .withCopyright("Copyleft © Jonas Fonseca")
@@ -145,56 +134,69 @@ lazy val optionExamples = Def.settings(
   //#builder-api-v2
   ,
   //#font
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withFont("Ubuntu", "Ubuntu Mono")
   }
   //#font
   ,
   //#font-disable
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withoutFont()
   }
   //#font-disable
   ,
   //#favicon
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withFavicon("assets/images/favicon.png")
   }
   //#favicon
   ,
   //#logo
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withLogo("assets/images/logo.png")
   }
   //#logo
   ,
   //#logo-icon
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withLogoIcon("cloud")
   }
   //#logo-icon
   ,
   //#custom-stylesheet
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withCustomStylesheet("assets/custom.css")
   }
   //#custom-stylesheet
   ,
   //#custom-javascript
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withCustomJavaScript("assets/custom.js")
   }
   //#custom-javascript
   ,
   //#disable-search
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withoutSearch()
   }
   //#disable-search
   ,
   //#search-tokenizer
-  paradoxMaterialTheme in Compile ~= {
+  Compile / paradoxMaterialTheme ~= {
     _.withSearch(tokenizer = "[\\s\\-\\.]+")
   }
   //#search-tokenizer
 )
+
+def project(id: String, base: File): Project = {
+  Project(id = id, base = base)
+    .settings(
+      crossSbtVersions := Seq("0.13.17", "1.0.4"),
+      scalaVersion := {
+        (pluginCrossBuild / sbtBinaryVersion).value match {
+          case "0.13" => "2.10.7"
+          case _      => "2.12.6"
+        }
+      }
+  )
+}
