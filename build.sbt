@@ -2,7 +2,7 @@ lazy val root = project.in(file("."))
   .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin, ReleasePlugin)
   .settings(
     name := "paradox-material-theme-parent",
-    addCommandAlias("validate", ";theme/publishLocal;test;plugin/scripted;makeSite"),
+    addCommandAlias("verify", "; theme/publishLocal ; ^plugin/scripted ; makeSite"),
     publish := {},
     publishLocal := {},
     publishArtifact := false,
@@ -85,16 +85,14 @@ lazy val plugin = project.in(file("plugin"))
   .settings(
     sbtPlugin := true,
     name := "sbt-paradox-material-theme",
-    crossSbtVersions := List("0.13.16", "1.0.4"),
+    crossSbtVersions := Seq("0.13.17", "1.0.4"),
     scalaVersion := {
       (sbtBinaryVersion in pluginCrossBuild).value match {
-        case "0.13" => "2.10.6"
-        case _      => "2.12.4"
+        case "0.13" => "2.10.7"
+        case _      => "2.12.6"
       }
     },
     previewSite := {},
-    // fixed in https://github.com/sbt/sbt/pull/3397 (for sbt 0.13.17)
-    sbtBinaryVersion in update := (sbtBinaryVersion in pluginCrossBuild).value,
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
     scriptedBufferLog := false,
     publishLocal := publishLocal.dependsOn(publishLocal in theme).value,
