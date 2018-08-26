@@ -1,5 +1,11 @@
 # Release notes
 
+## master
+
+ - Update to [mkdocs-material-3.0.3].
+
+ [mkdocs-material-3.0.3]: https://github.com/squidfunk/mkdocs-material/releases/tag/3.0.3
+
 ## 0.4.0
 
  - Update to [mkdocs-material-2.2.2].

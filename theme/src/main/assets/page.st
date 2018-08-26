@@ -1,6 +1,6 @@
 $!
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
-  Copyright (c) 2017 Jonas Fonseca <jonas.fonseca@gmail.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2017-2018 Jonas Fonseca <jonas.fonseca@gmail.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -52,22 +52,25 @@ $!
     $ else $
       <title>$page.home.title$</title>
     $ endif $
-    <link rel="stylesheet" href="$page.base$assets/stylesheets/application.7a4cdee3.css">
+    <link rel="stylesheet" href="$page.base$assets/stylesheets/application.451f80e5.css">
     $ if (page.properties.("material.color.primary")) $
-      <link rel="stylesheet" href="$page.base$assets/stylesheets/application-palette.792431c1.css">
+      <link rel="stylesheet" href="$page.base$assets/stylesheets/application-palette.22915126.css">
+      $ if (page.properties.("material.color.primary.theme")) $
+        <meta name="theme-color" content="$page.properties.("material.color.primary.theme")$" />
+      $ endif $
     $ endif $
     <link rel="stylesheet" href="$page.base$lib/material__tabs/dist/mdc.tabs.min.css">
     <link rel="stylesheet" href="$page.base$lib/prettify/prettify.css">
-    <script src="$page.base$lib/modernizr/modernizr.min.js"></script>
+    <script src="$page.base$assets/javascripts/modernizr.1aa3b519.js"></script>
     $ if (page.properties.("material.font.text")) $
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=$page.properties.("material.font.text.url")$:300,400,400i,700|$page.properties.("material.font.code.url")$">
       <style>
         body,input{font-family:"$page.properties.("material.font.text")$","Helvetica Neue",Helvetica,Arial,sans-serif}
         code,kbd,pre{font-family:"$page.properties.("material.font.code")$","Courier New",Courier,monospace}
       </style>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     $ endif $
+    <link rel="stylesheet" href="$page.base$assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="$page.base$assets/fonts/material-icons.css">
     <link rel="stylesheet" href="$page.base$assets/stylesheets/paradox-material-theme.css">
     $ if (page.properties.("material.custom.stylesheet")) $
       <link rel="stylesheet" href="$page.base$$page.properties.("material.custom.stylesheet")$">
@@ -81,9 +84,10 @@ $!
       data-md-color-accent="$page.properties.("material.color.accent")$"
     $ endif $
   >
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    $! FIXME: Skip to content (0e1850280a1c25d3bc697419288d97582dacbbc3) !$
     $partials/header()$
     <div class="md-container">
       $ if (page.properties.("material.hero")) $
@@ -130,7 +134,7 @@ $!
       </main>
       $partials/footer()$
     </div>
-    <script src="$page.base$assets/javascripts/application.5165553b.js"></script>
+    <script src="$page.base$assets/javascripts/application.583bbe55.js"></script>
     <script src="$page.base$assets/javascripts/paradox-material-theme.js"></script>
     $!
 

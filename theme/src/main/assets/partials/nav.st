@@ -1,6 +1,6 @@
 $!
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
-  Copyright (c) 2017 Jonas Fonseca <jonas.fonseca@gmail.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2017-2018 Jonas Fonseca <jonas.fonseca@gmail.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -22,13 +22,18 @@ $!
 !$
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
   <label class="md-nav__title md-nav__title--site" for="drawer">
+    <a href="$page.home.href$" title="$page.home.title$" class="md-nav__button md-logo">
     <span class="md-nav__button md-logo">
       $ if (page.properties.("material.logo.icon")) $
         <i class="md-icon">$page.properties.("material.logo.icon")$</i>
       $ else $
-        <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
+        $ if (page.properties.("material.logo.http")) $
+          <img src="$page.properties.("material.logo")$" width="24" height="24">
+        $ else $
+          <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
+        $endif$
       $endif$
-    </span>
+    </a>
     <a href="$page.home.href$" title="$page.home.title$">
       $page.home.title$
     </a>
