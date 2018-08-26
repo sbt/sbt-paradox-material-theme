@@ -1,6 +1,6 @@
 $!
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
-  Copyright (c) 2017 Jonas Fonseca <jonas.fonseca@gmail.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2017-2018 Jonas Fonseca <jonas.fonseca@gmail.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -22,7 +22,7 @@ $!
 !$
 <nav class="md-nav md-nav--secondary">
   $ if (page.subheaders) $
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     $page.toc$
   $ endif $
 </nav>

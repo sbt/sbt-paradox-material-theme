@@ -14,13 +14,13 @@ Many thanks to Martin Donath for creating the [MkDocs Material] theme on which
 this project is based. This goes for the stylesheet and javascript artifacts,
 the HTML templates as well as the great documentation:
 
-    Copyright (c) 2016-2017 Martin Donath
+    Copyright (c) 2016-2018 Martin Donath
     License: MIT
     https://squidfunk.github.io/mkdocs-material/license/
 
 Integration and adaptation for use with Paradox:
 
-    Copyright (c) 2017 Jonas Fonseca
+    Copyright (c) 2017-2018 Jonas Fonseca
     License: MIT
 
 The theme also uses the tabs component from [Material Components for the web] (Apache-2.0),

@@ -1,6 +1,6 @@
 $!
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
-  Copyright (c) 2017 Jonas Fonseca <jonas.fonseca@gmail.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2017-2018 Jonas Fonseca <jonas.fonseca@gmail.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
