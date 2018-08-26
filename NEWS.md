@@ -3,8 +3,10 @@
 ## master
 
  - Update to [mkdocs-material-3.0.3].
+ - Update to [Paradox version 0.4.0] 
 
  [mkdocs-material-3.0.3]: https://github.com/squidfunk/mkdocs-material/releases/tag/3.0.3
+ [Paradox version 0.4.0]: https://github.com/lightbend/paradox/releases/tag/v0.4.0
 
 ## 0.4.0
 
