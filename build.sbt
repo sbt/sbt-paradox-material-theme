@@ -25,6 +25,7 @@ lazy val root = project("paradox-material-theme-parent", file("."))
       )
     },
     ghpagesNoJekyll := true,
+    makeSite / includeFilter := "*.html" | "*.css" | "*.png" | "*.png" | "*.js" | "*.woff" | "*.woff2" | "*.ttf",
     makeSite / mappings ++= (Compile / paradoxMaterialTheme / mappings).value,
     siteSourceDirectory := (Compile / paradox / target).value,
     Compile / paradox := (Compile / paradox).dependsOn(theme / publishLocal).value,
