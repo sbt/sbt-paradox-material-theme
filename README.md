@@ -24,10 +24,10 @@ Integration and adaptation for use with Paradox:
     License: MIT
 
 The theme also uses the tabs component from [Material Components for the web] (Apache-2.0),
-[Modernizr] (available under BSD/MIT licenses) and [Prettify] (Apache-2.0).
-In addition, it loads the [Roboto font] (Apache-2.0), the [Material Icon font] (Apache-2.0),
-as well as [FontAwesome] (SIL Open Font License) from various CDNs. All copyright
-of their respective authors.
+[Modernizr] (available under BSD/MIT licenses), [Prettify] (Apache-2.0),
+[Material Icon font] (Apache-2.0), and [FontAwesome] (SIL Open Font License).
+Optionally, it can load fonts, like the [Roboto font] (Apache-2.0), from Google's font CDN.
+All copyright of their respective authors.
 
  [Paradox]: https://github.com/lightbend/paradox
  [Paradox Material Theme]: https://jonas.github.io/paradox-material-theme/
