@@ -27,15 +27,19 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
     withProperties("favicon" -> favicon)
 
   def withLogo(logo: String) = {
-    val logoProps = withProperties("logo" -> logo).withoutProperties("logo.icon")
-    if (logo.startsWith("http"))
-      logoProps.withProperties("logo.http" -> logo)
-    else
-      logoProps
+    withProperties("logo" -> logo)
+      .withoutProperties("logo.icon", "logo.uri")
   }
 
-  def withLogoIcon(icon: String) =
-    withProperties("logo.icon" -> icon).withoutProperties("logo")
+  def withLogoUri(uri: URI) = {
+    withProperties("logo.uri" -> StringRenderer.escapeHTML(uri.toString))
+      .withoutProperties("logo", "logo.icon")
+  }
+
+  def withLogoIcon(icon: String) = {
+    withProperties("logo.icon" -> icon)
+      .withoutProperties("logo", "logo.uri")
+  }
 
   def withFont(text: String, code: String) =
     withProperties(

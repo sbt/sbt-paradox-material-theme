@@ -164,6 +164,12 @@ lazy val optionExamples = Def.settings(
   }
   //#logo-icon
   ,
+  //#logo-uri
+  Compile / paradoxMaterialTheme ~= {
+    _.withLogoUri(uri("https://example.org/logo.png"))
+  }
+  //#logo-uri
+  ,
   //#custom-stylesheet
   Compile / paradoxMaterialTheme ~= {
     _.withCustomStylesheet("assets/custom.css")

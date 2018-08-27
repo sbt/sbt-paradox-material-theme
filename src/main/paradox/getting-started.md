@@ -198,6 +198,11 @@ Simply create the folder `assets/images`, add your logo and embed it with:
 
 @@ snip [build.sbt]($root$/build.sbt) { #logo }
 
+If you do not want to include the logo in your site you can also link to
+the logo using a URI:
+
+@@ snip [build.sbt]($root$/build.sbt) { #logo-uri }
+
 Additionally, the default icon can be changed by setting an arbitrary ligature
 (or Unicode code point) from the [Material Design icon font][16], e.g.
 
