@@ -5,6 +5,8 @@
  - Update to [mkdocs-material-3.0.3].
  - Update to [Paradox version 0.4.0].
  - Link to logo URI using `withLogoUri()`.
+ - Refactor display of the project version so the right navigation
+   menu's scroll bar is only visible when the page footer overlaps.
 
  [mkdocs-material-3.0.3]: https://github.com/squidfunk/mkdocs-material/releases/tag/3.0.3
  [Paradox version 0.4.0]: https://github.com/lightbend/paradox/releases/tag/v0.4.0

@@ -46,7 +46,11 @@ $!
   $page.groups$
   $page.navigation$
   $toc()$
-  <div class="md-nav__title--site md-version" title="Version">
-    <i class="md-icon">label_outline</i> $page.properties.("project.version.short")$
-  </div>
 </nav>
+<ul style="display: none">
+  <li class="md-nav__item md-version" id="project.version">
+    <label class="md-nav__link" for="__version">
+      <i class="md-icon" title="Version">label_outline</i> $page.properties.("project.version.short")$
+    </label>
+  </li>
+</ul>

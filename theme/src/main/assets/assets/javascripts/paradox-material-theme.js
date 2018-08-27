@@ -126,6 +126,10 @@ function initParadoxMaterialTheme() {
     }
 
     visitList(root, 'nav-' + rootIndex, 1)
+    var projectVersion = document.getElementById("project.version")
+    if (projectVersion) {
+      root.appendChild(projectVersion)
+    }
     root.parentNode.style.visibility = 'visible'
   })
 
