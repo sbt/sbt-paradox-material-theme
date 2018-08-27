@@ -1,6 +1,6 @@
 # Release notes
 
-## master
+## 0.5.0
 
  - Update to [mkdocs-material-3.0.3].
  - Update to [Paradox version 0.4.0].

@@ -15,7 +15,7 @@ lazy val root = project("paradox-material-theme-parent", file("."))
         },
         releaseStepTask(makeSite),
         releaseStepCommandAndRemaining("^test"),
-        releaseStepCommandAndRemaining("^plugin/scripted"),
+        releaseStepCommandAndRemaining("^sbt-paradox-material-theme/scripted"),
         setReleaseVersion,
         tagRelease,
         releaseStepCommandAndRemaining("^publish"),
