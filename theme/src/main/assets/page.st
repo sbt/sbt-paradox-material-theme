@@ -27,7 +27,7 @@ $!
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="$page.properties.("project.description")$">
-    <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=2.2.2">
+    <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=3.0.3">
 
     $partials/language()$
 
