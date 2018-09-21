@@ -29,6 +29,7 @@ lazy val root = project("paradox-material-theme-parent", file("."))
     makeSite / mappings ++= (Compile / paradoxMaterialTheme / mappings).value,
     siteSourceDirectory := (Compile / paradox / target).value,
     Compile / paradox := (Compile / paradox).dependsOn(theme / publishLocal).value,
+    Compile / paradoxNavigationDepth := 3,
     makeSite := makeSite.dependsOn(Compile / paradox).value,
     paradoxMaterialTheme / version := version.value,
     Compile / paradoxProperties ++= Map(
