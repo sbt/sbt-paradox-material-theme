@@ -181,7 +181,7 @@ button is shown or not.
 
 @@@
 
-  [15]: http://developer.lightbend.com/docs/paradox/latest/features/templating.html
+  [15]: http://developer.lightbend.com/docs/paradox/current/customization/templating.html
 
 ## Adding a favicon
 

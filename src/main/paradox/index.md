@@ -57,4 +57,4 @@ The @ref:[specimen pages] show examples of the theme in action, such as
  [specimen pages]: specimen/index.md
  [callouts]: specimen/callouts.md
  [tabbed snippets]: specimen/tabbed-snippets.md
- [groups]: http://developer.lightbend.com/docs/paradox/latest/features/groups.html
+ [groups]: http://developer.lightbend.com/docs/paradox/current/groups.html

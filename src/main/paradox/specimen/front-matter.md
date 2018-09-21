@@ -19,4 +19,4 @@ material.hero: This hero is set in the front-matter
 ---
 ```
 
- [front matter]: http://developer.lightbend.com/docs/paradox/latest/features/templating.html#properties-front-matter
+ [front matter]: http://developer.lightbend.com/docs/paradox/current/customization/templating.html#properties-front-matter

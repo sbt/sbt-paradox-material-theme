@@ -48,7 +48,7 @@ extend the theme. Paradox allowing a way to [modify a theme] without
 forking and changing the main theme. By default, files can be added in
 `src/main/paradox/_template` to override those provided by the theme.
 
- [modify a theme]: http://developer.lightbend.com/docs/paradox/latest/features/theming.html#modify-a-theme
+ [modify a theme]: http://developer.lightbend.com/docs/paradox/current/customization/theming.html#modify-a-theme
 
 The structure in the theme directory must mirror the directory structure of the
 original theme, as any file in the theme directory will replace the file with

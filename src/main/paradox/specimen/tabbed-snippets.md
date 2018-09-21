@@ -4,7 +4,7 @@
 
 Example of the [`@@dependency` directive][dependency]:
 
- [dependency]: http://developer.lightbend.com/docs/paradox/latest/features/dependencies.html
+ [dependency]: http://developer.lightbend.com/docs/paradox/current/directives/dependencies.html
 
 @@dependency[sbt,Maven,Gradle] {
   group="com.typesafe.akka"
@@ -16,7 +16,7 @@ Example of the [`@@dependency` directive][dependency]:
 
 Multiple snippets [included] from files:
 
- [included]: http://developer.lightbend.com/docs/paradox/latest/features/snippet-inclusion.html
+ [included]: http://developer.lightbend.com/docs/paradox/current/directives/snippets.html
 
 Favicon
 :  @@ snip [build.sbt]($root$/build.sbt) { #favicon }

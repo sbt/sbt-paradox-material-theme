@@ -26,7 +26,7 @@ The special `.no-title` CSS class will hide the callout's title.
 
 @@@
 
- [callouts]: http://developer.lightbend.com/docs/paradox/latest/features/callouts.html
+ [callouts]: http://developer.lightbend.com/docs/paradox/current/directives/callouts.html
 
 ## Notes
 
