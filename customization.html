@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="paradox-material-theme-parent">
-<meta name="generator" content="Paradox, paradox-material-theme=0.5.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.5.1, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -167,7 +167,7 @@ jonas/paradox-material-theme
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 0.5.0
+<i class="md-icon" title="Version">label_outline</i> 0.5.1
 </label>
 </li>
 </ul>
@@ -207,7 +207,7 @@ touch src/main/paradox/assets/custom.css
 <p>Then, add the following line to your <code>build.sbt</code>:</p>
 <pre class="prettyprint"><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withCustomStylesheet(&quot;assets/custom.css&quot;)
-}</code></pre><a href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L174-L176">Full source at GitHub</a>
+}</code></pre><a href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L176-L178">Full source at GitHub</a>
 <p>Start typing your changes in your additional stylesheet file – you can see them after saving and running <code>paradox</code>.</p>
 <h2><a href="#additional-javascript" name="additional-javascript" class="anchor"><span class="anchor-link"></span></a>Additional JavaScript</h2>
 <p>The same is true for additional JavaScript. If you want to integrate another syntax highlighter or add some custom logic to your theme, create a new JavaScript file in your <code>src/main/paradox</code> directory:</p>
@@ -217,7 +217,7 @@ touch src/main/paradox/assets/custom.js
 <p>Then, add the following line to your <code>build.sbt</code>:</p>
 <pre class="prettyprint"><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withCustomJavaScript(&quot;assets/custom.js&quot;)
-}</code></pre><a href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L180-L182">Full source at GitHub</a>
+}</code></pre><a href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L182-L184">Full source at GitHub</a>
 <h2><a href="#extending-the-theme" name="extending-the-theme" class="anchor"><span class="anchor-link"></span></a>Extending the theme</h2>
 <p>If you want to alter the HTML source (e.g. add or remove some part), you can extend the theme. Paradox allowing a way to <a href="http://developer.lightbend.com/docs/paradox/current/customization/theming.html#modify-a-theme">modify a theme</a> without forking and changing the main theme. By default, files can be added in <code>src/main/paradox/_template</code> to override those provided by the theme.</p>
 <p>The structure in the theme directory must mirror the directory structure of the original theme, as any file in the theme directory will replace the file with the same name which is part of the original theme. Besides, further assets may also be put in the theme directory.</p>
@@ -248,7 +248,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-0.5.0
+0.5.1
 </span>
 </div>
 </article>
