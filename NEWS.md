@@ -1,5 +1,14 @@
 # Release notes
 
+## 0.5.1
+
+ - Bump sbt to version 1.2.3.
+ - Update to [Paradox version 0.4.2].
+ - Keep the sidebar navigation order when updating link classes. [#15]
+
+ [#15]: https://github.com/jonas/paradox-material-theme/issues/15
+ [Paradox version 0.4.2]: https://github.com/lightbend/paradox/releases/tag/v0.4.2
+
 ## 0.5.0
 
  - Update to [mkdocs-material-3.0.3].

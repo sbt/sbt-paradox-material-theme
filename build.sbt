@@ -18,7 +18,8 @@ lazy val root = project("paradox-material-theme-parent", file("."))
         releaseStepCommandAndRemaining("^sbt-paradox-material-theme/scripted"),
         setReleaseVersion,
         tagRelease,
-        releaseStepCommandAndRemaining("^publish"),
+        releaseStepCommandAndRemaining("paradox-material-theme/publishSigned"),
+        releaseStepCommandAndRemaining("^sbt-paradox-material-theme/publishSigned"),
         // FIXME: releaseStepCommand("sonatypeRelease"),
         pushChanges,
         releaseStepTask(ghpagesPushSite)
