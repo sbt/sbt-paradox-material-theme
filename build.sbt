@@ -89,7 +89,7 @@ lazy val plugin = project("sbt-paradox-material-theme", file("plugin"))
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
     scriptedBufferLog := false,
     publishLocal := publishLocal.dependsOn(theme / publishLocal).value,
-    addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.4.2"),
+    addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.4.4"),
     libraryDependencies += "org.jsoup" % "jsoup" % "1.10.3",
     libraryDependencies += "io.circe" %% "circe-core" % "0.9.3",
     Compile / resourceGenerators += Def.task {

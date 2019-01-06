@@ -1,5 +1,12 @@
 # Release notes
 
+## master
+
+ - Update circe to version [0.9.3](https://github.com/circe/circe/releases/tag/v0.9.3).
+ - Update to [Paradox version 0.4.4].
+
+ [Paradox version 0.4.4]: https://github.com/lightbend/paradox/releases/tag/v0.4.4
+
 ## 0.5.1
 
  - Bump sbt to version 1.2.3.
