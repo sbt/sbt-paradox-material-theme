@@ -1,6 +1,6 @@
 # Release notes
 
-## master
+## 0.6.0
 
  - Update circe to version [0.9.3](https://github.com/circe/circe/releases/tag/v0.9.3).
  - Update to [Paradox version 0.4.4].
