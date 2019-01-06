@@ -200,11 +200,11 @@ lazy val optionExamples = Def.settings(
 def project(id: String, base: File): Project = {
   Project(id = id, base = base)
     .settings(
-      crossSbtVersions := Seq("0.13.17", "1.0.4"),
+      crossSbtVersions := Seq("0.13.18", "1.0.4"),
       scalaVersion := {
         (pluginCrossBuild / sbtBinaryVersion).value match {
           case "0.13" => "2.10.7"
-          case _      => "2.12.6"
+          case _      => "2.12.8"
         }
       }
   )
