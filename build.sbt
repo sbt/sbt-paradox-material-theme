@@ -113,7 +113,7 @@ lazy val theme = project("paradox-material-theme", file("theme"))
     libraryDependencies += "org.webjars" % "prettify" % "4-Mar-2013-1" % Provided,
     libraryDependencies +=
       Seq("animation", "base", "ripple", "rtl", "theme", "typography")
-        .foldLeft("org.webjars.npm" % "material__tabs" % "0.3.1" % Provided) {
+        .foldLeft("org.webjars.npm" % "material__tabs" % "0.37.1" % Provided) {
           (lib, dep) => lib.exclude("org.webjars.npm", s"material__$dep")
         }
   )
