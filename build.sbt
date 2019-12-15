@@ -195,6 +195,12 @@ lazy val optionExamples = Def.settings(
     _.withSearch(tokenizer = "[\\s\\-\\.]+")
   }
   //#search-tokenizer
+  ,
+  //#search-language
+  Compile / paradoxMaterialTheme ~= {
+    _.withSearchLanguage("ru", "jp")
+  }
+  //#search-language
 )
 
 def project(id: String, base: File): Project = {
