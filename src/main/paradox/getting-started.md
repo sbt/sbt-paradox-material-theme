@@ -252,34 +252,18 @@ your site. If you want to disable search use:
 
 @@ snip [build.sbt]($root$/build.sbt) { #disable-search }
 
-<!--
 
 ### Search language
 
-Site search is implemented using [lunr.js][22], which includes stemmers for the
-English language by default, while stemmers for other languages are included
-with [lunr-languages][23], both of which are integrated with this theme. Support
-for other languages and even multilingual search can be activated by setting
-`material.search` to a comma-separated list of supported 2-letter
-language codes, e.g.:
+The multilingual search can be activated by doing the following.
 
-@@ snip [build.sbt]($root$/build.sbt) { #search-multi }
-
-This will automatically load the stemmers for the specified languages and
-set them up with site search, nothing else to be done.
-
-At the time of writing, the following languages are supported: English `en`,
-French `fr`, Spanish `es`, Italian `it`, Japanese `jp`, Dutch `du`, Danish `da`,
-Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
-Norwegian `no`, Swedish `sv` and Turkish `tr`.
+@@ snip [build.sbt]($root$/build.sbt) { #search-language }
 
 @@@ warning { title="Only specify the languages you really need" }
 Be aware that including support for other languages increases the general
 JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
 language.
 @@@
-
--->
 
 ### Search tokenization
 

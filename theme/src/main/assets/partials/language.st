@@ -1,6 +1,6 @@
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
-<meta name="lang:search.language" content="">
+<meta name="lang:search.language" content="$page.properties.("material.search.language")$">
 <meta name="lang:search.pipeline.stopwords" content="true">
 <meta name="lang:search.pipeline.trimmer" content="true">
 <meta name="lang:search.result.none" content="No matching documents">

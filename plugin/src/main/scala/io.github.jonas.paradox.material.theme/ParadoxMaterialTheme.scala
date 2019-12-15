@@ -61,6 +61,21 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
   def withoutSearch() =
     withoutProperties("search", "search.tokenizer")
 
+  def withSearchLanguage(languages: String*) = {
+    // See(mkdocs-material v3.0.3) https://github.com/squidfunk/mkdocs-material/blob/12a79817f057b09f05c3d7cffe8893dfe9c6bde9/material/base.html#L181-L200
+    val scripts = "<script src=\"assets/javascripts/lunr/lunr.stemmer.support.js\"></script>" +: languages.flatMap { lang =>
+      val lunrScript =
+        if (Set("da", "de", "du", "es", "fi", "fr", "hu", "it", "jp", "no", "pt", "ro", "ru", "sv", "tr").contains(lang)) {
+          Seq(s"""<script src="assets/javascripts/lunr/lunr.${lang}.js"></script>""")
+        } else Seq.empty
+      if (lang == "jp") {
+        "<script src=\"assets/javascripts/lunr/tinyseg.js\"></script>" +: lunrScript
+      } else lunrScript
+    } :+ "<script src=\"assets/javascripts/lunr/lunr.multi.js\"></script>"
+    withProperties("search.language" -> languages.mkString(","))
+      .withProperties("search.scripts" -> scripts.mkString("\n"))
+  }
+
   def withCopyright(copyright: String) =
     withProperties("copyright" -> copyright)
 
