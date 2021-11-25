@@ -27,6 +27,15 @@ $!
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="$page.properties.("project.description")$">
+    $ if (page.properties.("project.name")) $
+        <meta property="og:title" content="$page.properties.("project.name")$">
+    $ endif $
+    $ if (page.properties.("project.description")) $
+        <meta property="og:description" content="$page.properties.("project.description")$">
+    $ endif $
+    $ if (page.properties.("project.image")) $
+        <meta property="og:image" content="$page.properties.("project.image")$">
+    $ endif $
     <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=3.0.3">
 
     $partials/language()$
