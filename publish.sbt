@@ -20,7 +20,7 @@ inThisBuild(Def.settings(
   // Workaround NPE when publishing: https://github.com/sbt/sbt/issues/3519
   updateOptions := updateOptions.value.withGigahorse(false),
   publishMavenStyle := true,
-  publishArtifact in Test := false,
+  Test / publishArtifact := false,
   pomIncludeRepository := { _ => false },
   publishTo := {
     val nexus = "https://oss.sonatype.org/"

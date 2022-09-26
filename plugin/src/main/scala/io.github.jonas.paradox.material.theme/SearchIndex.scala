@@ -12,11 +12,11 @@ import sbt.Keys._
 case class SearchIndex(docs: Seq[SearchIndex.Section])
 
 object SearchIndex {
-  implicit val encoder: ObjectEncoder[SearchIndex] = Encoder.forProduct1("docs")(_.docs)
+  implicit val encoder: Encoder[SearchIndex] = Encoder.forProduct1("docs")(_.docs)
 
   case class Section(location: String, title: String, text: String)
   object Section {
-    implicit val encoder: ObjectEncoder[Section] = Encoder.forProduct3("location", "text", "title")(
+    implicit val encoder: Encoder[Section] = Encoder.forProduct3("location", "text", "title")(
       page => ("/" + page.location, page.text, page.title))
   }
 
@@ -71,8 +71,8 @@ object SearchIndex {
 
   def mapping(scope: Configuration) = Def.task {
     val index = generate(
-      (target in scope).value / "paradox-material-theme",
-      (paradoxMarkdownToHtml in scope).value
+      (scope / target).value / "paradox-material-theme",
+      (scope / paradoxMarkdownToHtml).value
     )
     index -> "search/search_index.json"
   }

@@ -1,6 +1,7 @@
-lazy val root = project("paradox-material-theme-parent", file("."))
+lazy val root = (project in file("."))
   .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin, ReleasePlugin)
   .settings(
+    name := "paradox-material-theme-parent",
     addCommandAlias("verify", "; ^sbt-paradox-material-theme/scripted ; makeSite"),
     publish / skip := true,
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
@@ -81,9 +82,10 @@ lazy val root = project("paradox-material-theme-parent", file("."))
   )
   .aggregate(theme, plugin)
 
-lazy val plugin = project("sbt-paradox-material-theme", file("plugin"))
+lazy val plugin = (project in file("plugin"))
   .enablePlugins(ScriptedPlugin)
   .settings(
+    name := "sbt-paradox-material-theme",
     sbtPlugin := true,
     previewSite := {},
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
@@ -99,9 +101,10 @@ lazy val plugin = project("sbt-paradox-material-theme", file("plugin"))
     }
   )
 
-lazy val theme = project("paradox-material-theme", file("theme"))
+lazy val theme = (project in file("theme"))
   .enablePlugins(ParadoxThemePlugin)
   .settings(
+    name := "paradox-material-theme",
     description := "Material Design theme for Paradox",
     Assets / WebKeys.webJars := {
       val out = (Assets / WebKeys.webJars).value
@@ -196,16 +199,3 @@ lazy val optionExamples = Def.settings(
   }
   //#search-tokenizer
 )
-
-def project(id: String, base: File): Project = {
-  Project(id = id, base = base)
-    .settings(
-      crossSbtVersions := Seq("0.13.18", "1.0.4"),
-      scalaVersion := {
-        (pluginCrossBuild / sbtBinaryVersion).value match {
-          case "0.13" => "2.10.7"
-          case _      => "2.12.8"
-        }
-      }
-  )
-}
