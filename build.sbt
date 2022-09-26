@@ -1,4 +1,4 @@
-lazy val root = {project in file(".")}
+lazy val root = (project in file("."))
   .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin, ReleasePlugin)
   .settings(
     name := "paradox-material-theme-parent",
@@ -82,7 +82,7 @@ lazy val root = {project in file(".")}
   )
   .aggregate(theme, plugin)
 
-lazy val plugin = {project in file("plugin")}
+lazy val plugin = (project in file("plugin"))
   .enablePlugins(ScriptedPlugin)
   .settings(
     name := "sbt-paradox-material-theme",
@@ -101,7 +101,7 @@ lazy val plugin = {project in file("plugin")}
     }
   )
 
-lazy val theme = {project in file("theme")}
+lazy val theme = (project in file("theme"))
   .enablePlugins(ParadoxThemePlugin)
   .settings(
     name := "paradox-material-theme",
