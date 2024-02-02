@@ -71,8 +71,8 @@ object SearchIndex {
 
   def mapping(scope: Configuration) = Def.task {
     val index = generate(
-      (target in scope).value / "paradox-material-theme",
-      (paradoxMarkdownToHtml in scope).value
+      (scope / target).value / "paradox-material-theme",
+      (scope / paradoxMarkdownToHtml).value
     )
     index -> "search/search_index.json"
   }
