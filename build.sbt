@@ -197,15 +197,12 @@ lazy val optionExamples = Def.settings(
   //#search-tokenizer
 )
 
+lazy val scala212 = "2.12.18"
+
 def project(id: String, base: File): Project = {
   Project(id = id, base = base)
     .settings(
-      crossSbtVersions := Seq("0.13.18", "1.0.4"),
-      scalaVersion := {
-        (pluginCrossBuild / sbtBinaryVersion).value match {
-          case "0.13" => "2.10.7"
-          case _      => "2.12.8"
-        }
-      }
+      crossScalaVersions := Seq(scala212),
+      scalaVersion := scala212
   )
 }
