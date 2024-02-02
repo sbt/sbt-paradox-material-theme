@@ -35,7 +35,7 @@ lazy val root = project("paradox-material-theme-parent", file("."))
     paradoxMaterialTheme / version := version.value,
     Compile / paradoxProperties ++= Map(
       "project.name" -> "Paradox Material Theme",
-      "github.base_url" -> "https://github.com/jonas/paradox-material-theme"
+      "github.base_url" -> "https://github.com/sbt/sbt-paradox-material-theme"
     ),
     //#color
     Compile / paradoxMaterialTheme ~= {
@@ -45,7 +45,7 @@ lazy val root = project("paradox-material-theme-parent", file("."))
     ,
     //#repository
     Compile / paradoxMaterialTheme ~= {
-      _.withRepository(uri("https://github.com/jonas/paradox-material-theme"))
+      _.withRepository(uri("https://github.com/sbt/sbt-paradox-material-theme"))
     }
     //#repository
     ,

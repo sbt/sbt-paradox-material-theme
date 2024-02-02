@@ -7,7 +7,7 @@ ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox)
 //#theme-site-settings
 
 paradoxProperties in Paradox ++= Map(
-  "github.base_url" -> "https://github.com/jonas/paradox-material-theme"
+  "github.base_url" -> "https://github.com/sbt/sbt-paradox-material-theme"
 )
 
 paradoxMaterialTheme in Paradox ~= {

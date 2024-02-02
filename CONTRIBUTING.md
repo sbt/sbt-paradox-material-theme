@@ -20,4 +20,4 @@ For code contributions, these are the suggested steps:
  - Address any issues raised during the code review.
  - Once you get a "+1" on the pull request, the change can be merged.
 
- [issue tracker]: https://github.com/jonas/paradox-material-theme/issues/new
+ [issue tracker]: https://github.com/sbt/sbt-paradox-material-theme/issues/new
