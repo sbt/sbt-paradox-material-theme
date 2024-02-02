@@ -6,7 +6,7 @@ val repo = new {
 
 inThisBuild(Def.settings(
   organization := "io.github.jonas",
-  licenses += "MIT" -> url("https://github.com/jonas/paradox-material-theme/blob/master/LICENSE"),
+  licenses += "MIT" -> url("https://github.com/sbt/sbt-paradox-material-theme/blob/master/LICENSE"),
   homepage := Some(url(s"https://${repo.org}.github.io/${repo.name}")),
   scmInfo := Some(
     ScmInfo(
