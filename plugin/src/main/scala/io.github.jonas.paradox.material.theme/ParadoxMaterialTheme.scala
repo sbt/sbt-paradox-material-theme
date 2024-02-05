@@ -1,6 +1,6 @@
 package io.github.jonas.paradox.material.theme
 
-import java.net.{URI, URLEncoder}
+import java.net.{ URI, URLEncoder }
 import java.util.Locale
 import org.stringtemplate.v4.StringRenderer
 
@@ -104,9 +104,10 @@ case class ParadoxMaterialTheme(properties: Map[String, String]) {
 object ParadoxMaterialTheme {
   val Tlds = List("com", "org")
   def findSite(sites: String*): URI => Option[String] =
-    uri => sites.find { service =>
-      Tlds.exists(tld => uri.getHost.endsWith(service + "." + tld))
-    }
+    uri =>
+      sites.find { service =>
+        Tlds.exists(tld => uri.getHost.endsWith(service + "." + tld))
+      }
 
   val SocialSite = findSite("bitbucket", "facebook", "github", "gitlab", "linkedin", "twitter")
   val RepositoryType = findSite("bitbucket", "github", "gitlab")
@@ -121,42 +122,42 @@ object ParadoxMaterialTheme {
 
   object Palette {
     val Primary = Map(
-      "red"         -> "#ef5350",
-      "pink"        -> "#e91e63",
-      "purple"      -> "#ab47bc",
+      "red" -> "#ef5350",
+      "pink" -> "#e91e63",
+      "purple" -> "#ab47bc",
       "deep-purple" -> "#7e57c2",
-      "indigo"      -> "#3f51b5",
-      "blue"        -> "#2196f3",
-      "light-blue"  -> "#03a9f4",
-      "cyan"        -> "#00bcd4",
-      "teal"        -> "#009688",
-      "green"       -> "#4caf50",
+      "indigo" -> "#3f51b5",
+      "blue" -> "#2196f3",
+      "light-blue" -> "#03a9f4",
+      "cyan" -> "#00bcd4",
+      "teal" -> "#009688",
+      "green" -> "#4caf50",
       "light-green" -> "#7cb342",
-      "lime"        -> "#c0ca33",
-      "yellow"      -> "#f9a825",
-      "amber"       -> "#ffa000",
-      "orange"      -> "#fb8c00",
+      "lime" -> "#c0ca33",
+      "yellow" -> "#f9a825",
+      "amber" -> "#ffa000",
+      "orange" -> "#fb8c00",
       "deep-orange" -> "#ff7043",
-      "brown"       -> "#795548",
-      "grey"        -> "#757575",
-      "blue-grey"   -> "#546e7a"
+      "brown" -> "#795548",
+      "grey" -> "#757575",
+      "blue-grey" -> "#546e7a"
     )
     val Accent = Map(
-      "red"         -> "#ff1744",
-      "pink"        -> "#f50057",
-      "purple"      -> "#e040fb",
+      "red" -> "#ff1744",
+      "pink" -> "#f50057",
+      "purple" -> "#e040fb",
       "deep-purple" -> "#7c4dff",
-      "indigo"      -> "#536dfe",
-      "blue"        -> "#448aff",
-      "light-blue"  -> "#0091ea",
-      "cyan"        -> "#00b8d4",
-      "teal"        -> "#00bfa5",
-      "green"       -> "#00c853",
+      "indigo" -> "#536dfe",
+      "blue" -> "#448aff",
+      "light-blue" -> "#0091ea",
+      "cyan" -> "#00b8d4",
+      "teal" -> "#00bfa5",
+      "green" -> "#00c853",
       "light-green" -> "#64dd17",
-      "lime"        -> "#aeea00",
-      "yellow"      -> "#ffd600",
-      "amber"       -> "#ffab00",
-      "orange"      -> "#ff9100",
+      "lime" -> "#aeea00",
+      "yellow" -> "#ffd600",
+      "amber" -> "#ffab00",
+      "orange" -> "#ff9100",
       "deep-orange" -> "#ff6e40"
     )
   }
