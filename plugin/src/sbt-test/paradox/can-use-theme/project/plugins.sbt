@@ -1,1 +1,1 @@
-addSbtPlugin("io.github.jonas" % "sbt-paradox-material-theme" % sys.props("project.version"))
+addSbtPlugin("com.github.sbt" % "sbt-paradox-material-theme" % sys.props("project.version"))
