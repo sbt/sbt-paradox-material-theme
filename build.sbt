@@ -1,30 +1,8 @@
 lazy val root = project("paradox-material-theme-parent", file("."))
-  .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin, ReleasePlugin)
+  .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin)
   .settings(
     addCommandAlias("verify", "; ^sbt-paradox-material-theme/scripted ; makeSite"),
     publish / skip := true,
-    releasePublishArtifactsAction := PgpKeys.publishSigned.value,
-    releaseTagName := (ThisBuild / version).value,
-    releaseVersionFile := target.value / "unused-version.sbt",
-    releaseProcess := {
-      import ReleaseTransformations._
-      Seq[ReleaseStep](
-        { st: State =>
-          val v = (ThisBuild / version).value
-          st.put(ReleaseKeys.versions, (v, v))
-        },
-        releaseStepTask(makeSite),
-        releaseStepCommandAndRemaining("^test"),
-        releaseStepCommandAndRemaining("^sbt-paradox-material-theme/scripted"),
-        setReleaseVersion,
-        tagRelease,
-        releaseStepCommandAndRemaining("paradox-material-theme/publishSigned"),
-        releaseStepCommandAndRemaining("^sbt-paradox-material-theme/publishSigned"),
-        // FIXME: releaseStepCommand("sonatypeRelease"),
-        pushChanges,
-        releaseStepTask(ghpagesPushSite)
-      )
-    },
     ghpagesNoJekyll := true,
     makeSite / includeFilter := "*.html" | "*.css" | "*.png" | "*.png" | "*.js" | "*.woff" | "*.woff2" | "*.ttf",
     makeSite / mappings ++= (Compile / paradoxMaterialTheme / mappings).value,
