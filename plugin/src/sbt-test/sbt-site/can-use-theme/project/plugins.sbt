@@ -1,2 +1,7 @@
-addSbtPlugin("com.github.sbt"   % "sbt-paradox-material-theme" % sys.props("project.version"))
-addSbtPlugin("com.typesafe.sbt" % "sbt-site"                   % "1.3.1")
+sys.props.get("project.version") match {
+  case Some(x) => addSbtPlugin("com.github.sbt" % "sbt-paradox-material-theme" % x)
+  case _ => sys.error("""|The system property 'project.version' is not defined.
+                         |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
+}
+
+addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.3.1")
