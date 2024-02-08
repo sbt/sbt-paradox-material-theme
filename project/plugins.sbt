@@ -9,6 +9,6 @@ addSbtPlugin("org.scalameta"         % "sbt-scalafmt"      % "2.5.2")
 libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % sbtVersion.value
 
 // This project is its own plugin :)
-unmanagedSourceDirectories in Compile += baseDirectory.value.getParentFile / "plugin" / "src" / "main" / "scala"
+Compile / unmanagedSourceDirectories += baseDirectory.value.getParentFile / "plugin" / "src" / "main" / "scala"
 libraryDependencies += "org.jsoup" % "jsoup"      % "1.10.3"
 libraryDependencies += "io.circe" %% "circe-core" % "0.8.0"
