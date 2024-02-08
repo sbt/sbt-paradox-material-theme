@@ -41,6 +41,25 @@ inThisBuild(
     dynver := {
       val d = new java.util.Date
       sbtdynver.DynVer.getGitDescribeOutput(d).mkVersion(versionFmt, fallbackVersion(d))
-    }
+    },
+    githubWorkflowBuild := Seq(WorkflowStep.Sbt(List("test", "sbt-paradox-material-theme/scripted", "makeSite"))),
+    githubWorkflowTargetTags ++= Seq("v*"),
+    githubWorkflowPublishTargetBranches := Seq(),
+    githubWorkflowPublish := Seq(
+      WorkflowStep.Sbt(
+        commands = List("ci-release"),
+        name = Some("Publish project"),
+        env = Map(
+          "PGP_PASSPHRASE" -> "${{ secrets.PGP_PASSPHRASE }}",
+          "PGP_SECRET" -> "${{ secrets.PGP_SECRET }}",
+          "SONATYPE_PASSWORD" -> "${{ secrets.SONATYPE_PASSWORD }}",
+          "SONATYPE_USERNAME" -> "${{ secrets.SONATYPE_USERNAME }}"
+        )
+      )
+    ),
+    githubWorkflowOSes := Seq("ubuntu-latest", "macos-latest", "windows-latest"),
+    githubWorkflowJavaVersions := Seq(
+      JavaSpec.temurin("8")
+    )
   )
 )
