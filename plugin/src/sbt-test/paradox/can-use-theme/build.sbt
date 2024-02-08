@@ -4,11 +4,11 @@ name := "test"
 enablePlugins(ParadoxMaterialThemePlugin)
 //#enable-plugin
 
-paradoxProperties in Compile ++= Map(
+Compile / paradoxProperties ++= Map(
   "github.base_url" -> "https://github.com/sbt/sbt-paradox-material-theme"
 )
 
-paradoxMaterialTheme in Compile ~= {
+Compile / paradoxMaterialTheme ~= {
   _.withCopyright("test-copyright")
     .withLogo("test-logo")
     .withFavicon("test-favicon")
@@ -25,7 +25,7 @@ def fileContains(file: File, texts: String*) = {
 }
 
 TaskKey[Unit]("checkContent") := {
-  val dest = (target in (Compile, paradox)).value
+  val dest = (Compile / paradox / target).value
 
   fileContains(
     dest / "index.html",

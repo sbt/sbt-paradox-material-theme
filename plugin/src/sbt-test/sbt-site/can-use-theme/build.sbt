@@ -6,11 +6,11 @@ enablePlugins(ParadoxSitePlugin, ParadoxMaterialThemePlugin)
 ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox)
 //#theme-site-settings
 
-paradoxProperties in Paradox ++= Map(
+Paradox / paradoxProperties ++= Map(
   "github.base_url" -> "https://github.com/sbt/sbt-paradox-material-theme"
 )
 
-paradoxMaterialTheme in Paradox ~= {
+Paradox / paradoxMaterialTheme ~= {
   _.withCopyright("test-copyright")
     .withLogo("test-logo")
     .withFavicon("test-favicon")
@@ -27,7 +27,7 @@ def fileContains(file: File, texts: String*) = {
 }
 
 TaskKey[Unit]("checkContent") := {
-  val dest = (target in makeSite).value / (siteSubdirName in Paradox).value
+  val dest = (makeSite / target).value / (Paradox / siteSubdirName).value
 
   fileContains(
     dest / "index.html",
