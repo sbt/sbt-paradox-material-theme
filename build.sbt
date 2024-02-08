@@ -1,7 +1,7 @@
 lazy val root = project("paradox-material-theme-parent", file("."))
   .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin)
   .settings(
-    addCommandAlias("verify", "; ^sbt-paradox-material-theme/scripted ; makeSite"),
+    addCommandAlias("verify", "; sbt-paradox-material-theme/scripted ; makeSite"),
     publish / skip := true,
     ghpagesNoJekyll := true,
     makeSite / includeFilter := "*.html" | "*.css" | "*.png" | "*.png" | "*.js" | "*.woff" | "*.woff2" | "*.ttf",
