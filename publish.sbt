@@ -4,6 +4,15 @@ val repo = new {
   val path = org + "/" + name
 }
 
+def versionFmt(out: sbtdynver.GitDescribeOutput): String = {
+  val snapshotSuffix =
+    if (out.isSnapshot()) "-SNAPSHOT"
+    else ""
+  out.ref.dropPrefix + snapshotSuffix
+}
+
+def fallbackVersion(d: java.util.Date): String = s"HEAD-${sbtdynver.DynVer timestamp d}"
+
 inThisBuild(
   Def.settings(
     organization := "com.github.sbt",
@@ -26,6 +35,12 @@ inThisBuild(
     ),
     dynverSonatypeSnapshots := true,
     git.useGitDescribe := true,
-    git.remoteRepo := s"git@github.com:${repo.path}.git"
+    git.remoteRepo := s"git@github.com:${repo.path}.git",
+    // So that publishLocal doesn't continuously create new versions
+    version := dynverGitDescribeOutput.value.mkVersion(versionFmt, fallbackVersion(dynverCurrentDate.value)),
+    dynver := {
+      val d = new java.util.Date
+      sbtdynver.DynVer.getGitDescribeOutput(d).mkVersion(versionFmt, fallbackVersion(d))
+    }
   )
 )
