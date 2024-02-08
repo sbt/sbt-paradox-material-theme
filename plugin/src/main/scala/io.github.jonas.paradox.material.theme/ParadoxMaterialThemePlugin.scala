@@ -14,15 +14,15 @@ object ParadoxMaterialThemePlugin extends AutoPlugin {
   import autoImport._
   import ParadoxPlugin.autoImport._
 
-  override def requires = ParadoxPlugin
-  override def trigger = noTrigger
+  override lazy val requires = ParadoxPlugin
+  override lazy val trigger = noTrigger
 
-  override def projectSettings: Seq[Setting[_]] = Def.settings(
+  override lazy val projectSettings: Seq[Setting[_]] = Def.settings(
     paradoxMaterialThemeGlobalSettings,
     paradoxMaterialThemeSettings(Compile)
   )
 
-  def paradoxMaterialThemeGlobalSettings: Seq[Setting[_]] = Def.settings(
+  lazy val paradoxMaterialThemeGlobalSettings: Seq[Setting[_]] = Def.settings(
     paradoxMaterialTheme / version :=
       Option(ParadoxPlugin.readProperty("paradox-material-theme.properties", "version"))
         .getOrElse(sys.error("Undefined paradox-material-theme version")),
