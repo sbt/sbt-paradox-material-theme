@@ -1,7 +1,8 @@
+import sbt.internal.inc.Analysis.empty
+
 lazy val root = project("paradox-material-theme-parent", file("."))
   .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin)
   .settings(
-    addCommandAlias("verify", "; sbt-paradox-material-theme/scripted ; makeSite"),
     publish / skip := true,
     ghpagesNoJekyll := true,
     makeSite / includeFilter := "*.html" | "*.css" | "*.png" | "*.png" | "*.js" | "*.woff" | "*.woff2" | "*.ttf",
@@ -11,6 +12,11 @@ lazy val root = project("paradox-material-theme-parent", file("."))
     Compile / paradoxNavigationDepth := 3,
     makeSite := makeSite.dependsOn(Compile / paradox).value,
     paradoxMaterialTheme / version := version.value,
+    // this is to avoid triggering update, which will fail due to be the build using an
+    // intertwined dependency pattern, see
+    // https://stackoverflow.com/questions/37424513/intertwined-dependencies-between-sbt-plugin-and-projects-within-multi-project-bu
+    Compile / compile := empty,
+    Compile / test := (),
     Compile / paradoxProperties ++= Map(
       "project.name" -> "Paradox Material Theme",
       "github.base_url" -> "https://github.com/sbt/sbt-paradox-material-theme"
