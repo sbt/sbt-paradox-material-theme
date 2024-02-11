@@ -1,4 +1,4 @@
-package io.github.jonas.paradox.material.theme
+package com.github.sbt.paradox.material.theme
 
 import com.lightbend.paradox.sbt.ParadoxPlugin
 import sbt._
@@ -6,8 +6,8 @@ import sbt.Keys._
 
 object ParadoxMaterialThemePlugin extends AutoPlugin {
   object autoImport {
-    type ParadoxMaterialTheme = _root_.io.github.jonas.paradox.material.theme.ParadoxMaterialTheme
-    val ParadoxMaterialTheme = _root_.io.github.jonas.paradox.material.theme.ParadoxMaterialTheme
+    type ParadoxMaterialTheme = _root_.com.github.sbt.paradox.material.theme.ParadoxMaterialTheme
+    val ParadoxMaterialTheme = _root_.com.github.sbt.paradox.material.theme.ParadoxMaterialTheme
 
     val paradoxMaterialTheme = settingKey[ParadoxMaterialTheme]("Material theme options")
   }
