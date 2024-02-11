@@ -11,6 +11,8 @@ lazy val root = project("paradox-material-theme-parent", file("."))
     Compile / paradoxNavigationDepth := 3,
     makeSite := makeSite.dependsOn(Compile / paradox).value,
     paradoxMaterialTheme / version := version.value,
+    // this is to avoid triggering update, which will fail
+    Compile / compile := sbt.internal.inc.Analysis.empty,
     Compile / paradoxProperties ++= Map(
       "project.name" -> "Paradox Material Theme",
       "github.base_url" -> "https://github.com/sbt/sbt-paradox-material-theme"

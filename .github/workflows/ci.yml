@@ -31,4 +31,7 @@ jobs:
           cache: sbt
 
       - shell: bash
+        run: sbt compile
+
+      - shell: bash
         run: sbt sbt-paradox-material-theme/scripted
