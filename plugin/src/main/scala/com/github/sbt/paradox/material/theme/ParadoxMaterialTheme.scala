@@ -4,7 +4,7 @@ import java.net.{ URI, URLEncoder }
 import java.util.Locale
 import org.stringtemplate.v4.StringRenderer
 
-case class ParadoxMaterialTheme(properties: Map[String, String]) {
+final case class ParadoxMaterialTheme(properties: Map[String, String]) {
   import ParadoxMaterialTheme._
 
   def withLanguage(locale: Locale) =
