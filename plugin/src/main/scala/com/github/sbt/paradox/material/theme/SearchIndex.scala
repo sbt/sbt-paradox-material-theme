@@ -1,4 +1,4 @@
-package io.github.jonas.paradox.material.theme
+package com.github.sbt.paradox.material.theme
 
 import scala.collection.JavaConverters._
 import com.lightbend.paradox.sbt.ParadoxPlugin.autoImport.paradoxMarkdownToHtml

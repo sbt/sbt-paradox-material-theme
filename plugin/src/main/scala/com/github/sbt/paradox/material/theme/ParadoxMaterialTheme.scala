@@ -1,4 +1,4 @@
-package io.github.jonas.paradox.material.theme
+package com.github.sbt.paradox.material.theme
 
 import java.net.{ URI, URLEncoder }
 import java.util.Locale
