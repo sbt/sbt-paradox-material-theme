@@ -30,7 +30,7 @@ Optionally, it can load fonts, like the [Roboto font] (Apache-2.0), from Google'
 All copyright of their respective authors.
 
  [Paradox]: https://github.com/lightbend/paradox
- [Paradox Material Theme]: https://jonas.github.io/paradox-material-theme/
+ [Paradox Material Theme]: https://sbt.github.io/sbt-paradox-material-theme/
  [MkDocs Material]: https://github.com/squidfunk/mkdocs-material
  [Material Design]: https://material.io/guidelines/material-design/
  [FontAwesome]: http://fontawesome.io/
