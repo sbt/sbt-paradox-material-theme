@@ -1,10 +1,11 @@
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox"        % "0.9.2")
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox-theme"  % "0.9.2")
-addSbtPlugin(("com.github.sbt"       % "sbt-site-paradox"   % "1.5.0").exclude("com.lightbend.paradox", "sbt-paradox"))
-addSbtPlugin("com.github.sbt"        % "sbt-ghpages"        % "0.8.0")
-addSbtPlugin("com.github.sbt"        % "sbt-ci-release"     % "1.5.12")
-addSbtPlugin("org.scalameta"         % "sbt-scalafmt"       % "2.5.2")
-addSbtPlugin("com.github.sbt"        % "sbt-github-actions" % "0.23.0")
+addSbtPlugin(("com.lightbend.paradox" % "sbt-paradox"        % "0.9.2").exclude("com.typesafe.sbt", "sbt-web"))
+addSbtPlugin(("com.lightbend.paradox" % "sbt-paradox-theme"  % "0.9.2").exclude("com.typesafe.sbt", "sbt-web"))
+addSbtPlugin("com.github.sbt"         % "sbt-web"            % "1.5.3")
+addSbtPlugin(("com.github.sbt"        % "sbt-site-paradox"   % "1.5.0").exclude("com.lightbend.paradox", "sbt-paradox"))
+addSbtPlugin("com.github.sbt"         % "sbt-ghpages"        % "0.8.0")
+addSbtPlugin("com.github.sbt"         % "sbt-ci-release"     % "1.5.12")
+addSbtPlugin("org.scalameta"          % "sbt-scalafmt"       % "2.5.2")
+addSbtPlugin("com.github.sbt"         % "sbt-github-actions" % "0.23.0")
 
 libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % sbtVersion.value
 
