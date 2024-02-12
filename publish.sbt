@@ -44,7 +44,7 @@ inThisBuild(
     },
     githubWorkflowBuild := Seq(WorkflowStep.Sbt(List("test", "sbt-paradox-material-theme/scripted", "makeSite"))),
     githubWorkflowTargetTags ++= Seq("v*"),
-    githubWorkflowPublishTargetBranches := Seq(),
+    githubWorkflowPublishTargetBranches := Seq(RefPredicate.StartsWith(Ref.Tag("v"))),
     githubWorkflowPublish := Seq(
       WorkflowStep.Sbt(
         commands = List("ci-release"),
