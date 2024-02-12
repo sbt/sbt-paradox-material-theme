@@ -12,11 +12,11 @@ import sbt.Keys._
 case class SearchIndex(docs: Seq[SearchIndex.Section])
 
 object SearchIndex {
-  implicit val encoder: ObjectEncoder[SearchIndex] = Encoder.forProduct1("docs")(_.docs)
+  implicit val encoder: Encoder[SearchIndex] = Encoder.forProduct1("docs")(_.docs)
 
   case class Section(location: String, title: String, text: String)
   object Section {
-    implicit val encoder: ObjectEncoder[Section] =
+    implicit val encoder: Encoder[Section] =
       Encoder.forProduct3("location", "text", "title")(page => ("/" + page.location, page.text, page.title))
   }
 
