@@ -19,7 +19,7 @@ object ParadoxMaterialThemePlugin extends AutoPlugin {
 
   override lazy val projectSettings: Seq[Setting[_]] = Def.settings(
     paradoxMaterialThemeGlobalSettings,
-    paradoxMaterialThemeSettings(Compile)
+    paradoxMaterialThemeSettings
   )
 
   lazy val paradoxMaterialThemeGlobalSettings: Seq[Setting[_]] = Def.settings(
@@ -29,20 +29,17 @@ object ParadoxMaterialThemePlugin extends AutoPlugin {
     paradoxTheme := Some("com.github.sbt" % "paradox-material-theme" % (paradoxMaterialTheme / version).value)
   )
 
-  def paradoxMaterialThemeSettings(config: Configuration): Seq[Setting[_]] =
-    inConfig(config)(
-      Def.settings(
-        paradoxMaterialTheme := ParadoxMaterialTheme(),
-        paradoxProperties += ("material.theme.version" -> (paradoxMaterialTheme / version).value),
-        paradoxProperties ++= paradoxMaterialTheme.value.paradoxProperties,
-        paradoxMaterialTheme / mappings := Def.taskDyn {
-          if (paradoxProperties.value.contains("material.search"))
-            Def.task(Seq(SearchIndex.mapping(config).value))
-          else
-            Def.task(Seq.empty[(File, String)])
-        }.value,
-        paradox / mappings ++= (paradoxMaterialTheme / mappings).value
-      )
-    )
+  lazy val paradoxMaterialThemeSettings: Seq[Setting[_]] = Def.settings(
+    Compile / paradoxMaterialTheme := ParadoxMaterialTheme(),
+    Compile / paradoxProperties += ("material.theme.version" -> (paradoxMaterialTheme / version).value),
+    Compile / paradoxProperties ++= (Compile / paradoxMaterialTheme).value.paradoxProperties,
+    Compile / paradoxMaterialTheme / mappings := Def.taskDyn {
+      if ((Compile / paradoxProperties).value.contains("material.search"))
+        Def.task(Seq(SearchIndex.mapping(Compile).value))
+      else
+        Def.task(Seq.empty[(File, String)])
+    }.value,
+    Compile / paradox / mappings ++= (Compile / paradoxMaterialTheme / mappings).value
+  )
 
 }

@@ -4,4 +4,4 @@ sys.props.get("project.version") match {
                          |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
 }
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.3.1")
+addSbtPlugin(("com.github.sbt" % "sbt-site-paradox" % "1.5.0").exclude("com.lightbend.paradox", "sbt-paradox"))
