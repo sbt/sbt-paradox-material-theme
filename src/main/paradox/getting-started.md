@@ -13,13 +13,6 @@ And enable the theme plugin in your project's `build.sbt`:
 
 @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
 
-If you are generating your site with [sbt-site] you also need to add a few
-additional settings in `build.sbt`:
-
-@@ snip [build.sbt]($root$/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt) { #theme-site-settings }
-
- [sbt-site]: http://www.scala-sbt.org/sbt-site/generators/paradox.html
-
 ## Configuring the theme
 
 The theme is configurable via Paradox properties which means that you can

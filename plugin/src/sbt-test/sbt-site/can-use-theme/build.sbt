@@ -2,15 +2,11 @@ name := "test"
 
 enablePlugins(ParadoxSitePlugin, ParadoxMaterialThemePlugin)
 
-//#theme-site-settings
-ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox)
-//#theme-site-settings
-
-Paradox / paradoxProperties ++= Map(
+Compile / paradoxProperties ++= Map(
   "github.base_url" -> "https://github.com/sbt/sbt-paradox-material-theme"
 )
 
-Paradox / paradoxMaterialTheme ~= {
+Compile / paradoxMaterialTheme ~= {
   _.withCopyright("test-copyright")
     .withLogo("test-logo")
     .withFavicon("test-favicon")
