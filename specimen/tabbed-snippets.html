@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="paradox-material-theme-parent">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0-M1, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -90,7 +90,7 @@ Type to start searching
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
 <div class="md-header-nav__source">
-<a href="https://github.com/jonas/paradox-material-theme"
+<a href="https://github.com/sbt/sbt-paradox-material-theme"
 title="Go to repository"
 class="md-source"
 data-md-source="github">
@@ -98,7 +98,7 @@ data-md-source="github">
 <i class="fa fa-github"></i>
 </div>
 <div class="md-source__repository">
-jonas/paradox-material-theme
+sbt/sbt-paradox-material-theme
 </div>
 </a>
 
@@ -125,7 +125,7 @@ Paradox Material Theme
 </a>
 </label>
 <div class="md-nav__source">
-<a href="https://github.com/jonas/paradox-material-theme"
+<a href="https://github.com/sbt/sbt-paradox-material-theme"
 title="Go to repository"
 class="md-source"
 data-md-source="github">
@@ -133,7 +133,7 @@ data-md-source="github">
 <i class="fa fa-github"></i>
 </div>
 <div class="md-source__repository">
-jonas/paradox-material-theme
+sbt/sbt-paradox-material-theme
 </div>
 </a>
 
@@ -165,7 +165,7 @@ jonas/paradox-material-theme
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 0.6.0
+<i class="md-icon" title="Version">label_outline</i> 0.7.0-M1
 </label>
 </li>
 </ul>
@@ -194,29 +194,31 @@ jonas/paradox-material-theme
 <div class="md-content__searchable">
 <h1><a href="#tabbed-snippets" name="tabbed-snippets" class="anchor"><span class="anchor-link"></span></a>Tabbed snippets</h1>
 <h2><a href="#library-dependencies" name="library-dependencies" class="anchor"><span class="anchor-link"></span></a>Library dependencies</h2>
-<p>Example of the <a href="http://developer.lightbend.com/docs/paradox/current/directives/dependencies.html"><code>@@dependency</code> directive</a>:</p><dl class="dependency"><dt>sbt</dt><dd><pre class="prettyprint"><code class="language-scala">libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.0.10"</code></pre></dd><dt>Maven</dt><dd><pre class="prettyprint"><code class="language-xml">&lt;dependency&gt;
-  &lt;groupId&gt;com.typesafe.akka&lt;/groupId&gt;
-  &lt;artifactId&gt;akka-http_2.12&lt;/artifactId&gt;
-  &lt;version&gt;10.0.10&lt;/version&gt;
-&lt;/dependency&gt;</code></pre></dd><dt>Gradle</dt><dd><pre class="prettyprint"><code class="language-gradle">dependencies {
-  compile group: 'com.typesafe.akka', name: 'akka-http_2.12', version: '10.0.10'
+<p>Example of the <a href="http://developer.lightbend.com/docs/paradox/current/directives/dependencies.html"><code>@@dependency</code> directive</a>:</p><dl class="dependency"><dt>sbt</dt><dd><pre class="prettyprint"><code class="language-scala">libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.0.10"</code></pre></dd><dt>Maven</dt><dd><pre class="prettyprint"><code class="language-xml">&lt;dependencies&gt
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.typesafe.akka&lt;/groupId&gt;
+    &lt;artifactId&gt;akka-http_2.12&lt;/artifactId&gt;
+    &lt;version&gt;10.0.10&lt;/version&gt;
+  &lt;/dependency&gt
+&lt;/dependencies&gt;</code></pre></dd><dt>Gradle</dt><dd><pre class="prettyprint"><code class="language-gradle">dependencies {
+  implementation "com.typesafe.akka:akka-http_2.12:10.0.10"
 }</code></pre></dd></dl>
 <h2><a href="#snippet-inclusion" name="snippet-inclusion" class="anchor"><span class="anchor-link"></span></a>Snippet inclusion</h2>
 <p>Multiple snippets <a href="http://developer.lightbend.com/docs/paradox/current/directives/snippets.html">included</a> from files:</p>
 <dl>
   <dt>Favicon</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L152-L154" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L141-L143" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withFavicon(&quot;assets/images/favicon.png&quot;)
 }</code></pre></dd>
   <dt>Repository</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L47-L49" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
-  _.withRepository(uri(&quot;https://github.com/jonas/paradox-material-theme&quot;))
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L31-L33" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+  _.withRepository(uri(&quot;https://github.com/sbt/sbt-paradox-material-theme&quot;))
 }</code></pre></dd>
   <dt>Copyright notice</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L74-L79" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L58-L63" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withCopyright(&quot;&quot;&quot;
     Based on &lt;a href=&quot;https://github.com/squidfunk/mkdocs-material&quot;&gt;MkDocs Material&lt;/a&gt;
     by &lt;a href=&quot;https://github.com/squidfunk&quot;&gt;Martin Donath&lt;/a&gt;
@@ -224,19 +226,19 @@ jonas/paradox-material-theme
 }</code></pre></dd>
   <dt>Font</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L140-L142" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L129-L131" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withFont(&quot;Ubuntu&quot;, &quot;Ubuntu Mono&quot;)
 }</code></pre></dd>
 </dl>
 </div>
 <div>
-<a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/specimen/tabbed-snippets.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/src/main/paradox/specimen/tabbed-snippets.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-0.6.0
+0.7.0-M1
 </span>
 </div>
 </article>
@@ -286,7 +288,7 @@ Front matter
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

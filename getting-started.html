@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="paradox-material-theme-parent">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0-M1, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -90,7 +90,7 @@ Type to start searching
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
 <div class="md-header-nav__source">
-<a href="https://github.com/jonas/paradox-material-theme"
+<a href="https://github.com/sbt/sbt-paradox-material-theme"
 title="Go to repository"
 class="md-source"
 data-md-source="github">
@@ -98,7 +98,7 @@ data-md-source="github">
 <i class="fa fa-github"></i>
 </div>
 <div class="md-source__repository">
-jonas/paradox-material-theme
+sbt/sbt-paradox-material-theme
 </div>
 </a>
 
@@ -125,7 +125,7 @@ Paradox Material Theme
 </a>
 </label>
 <div class="md-nav__source">
-<a href="https://github.com/jonas/paradox-material-theme"
+<a href="https://github.com/sbt/sbt-paradox-material-theme"
 title="Go to repository"
 class="md-source"
 data-md-source="github">
@@ -133,7 +133,7 @@ data-md-source="github">
 <i class="fa fa-github"></i>
 </div>
 <div class="md-source__repository">
-jonas/paradox-material-theme
+sbt/sbt-paradox-material-theme
 </div>
 </a>
 
@@ -182,7 +182,7 @@ jonas/paradox-material-theme
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 0.6.0
+<i class="md-icon" title="Version">label_outline</i> 0.7.0-M1
 </label>
 </li>
 </ul>
@@ -228,25 +228,23 @@ jonas/paradox-material-theme
 <div class="md-content__searchable">
 <h1><a href="#getting-started" name="getting-started" class="anchor"><span class="anchor-link"></span></a>Getting started</h1>
 <p>In order to enable the theme add the following line to your project&rsquo;s <code>project/plugins.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;io.github.jonas&quot; % &quot;sbt-paradox-material-theme&quot; % &quot;0.6.0&quot;)
+<pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;com.github.sbt&quot; % &quot;sbt-paradox-material-theme&quot; % &quot;0.7.0-M1&quot;)
 </code></pre>
 <p>And enable the theme plugin in your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/plugin/src/sbt-test/paradox/can-use-theme/build.sbt#L4" target="_blank" title="Go to snippet source"></a><code class="language-sbt">enablePlugins(ParadoxMaterialThemePlugin)</code></pre>
-<p>If you are generating your site with <a href="http://www.scala-sbt.org/sbt-site/generators/paradox.html">sbt-site</a> you also need to add a few additional settings in <code>build.sbt</code>:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/plugin/src/sbt-test/sbt-site/can-use-theme/build.sbt#L6" target="_blank" title="Go to snippet source"></a><code class="language-sbt">ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox)</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/plugin/src/sbt-test/paradox/can-use-theme/build.sbt#L4" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">enablePlugins(ParadoxMaterialThemePlugin)</code></pre>
 <h2><a href="#configuring-the-theme" name="configuring-the-theme" class="anchor"><span class="anchor-link"></span></a>Configuring the theme</h2>
 <p>The theme is configurable via Paradox properties which means that you can provide defaults in your project&rsquo;s <code>build.sbt</code> and override properties in each page&rsquo;s <a href="specimen/front-matter.md">front matter</a>. The preferred way to configure the theme is to use the utility the theme plugin provides which help configure the theme in a concise manner using a builder-like API:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L123-L128" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme := {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L112-L117" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme := {
   ParadoxMaterialTheme()
     .withColor(&quot;red&quot;, &quot;orange&quot;)
     .withLogoIcon(&quot;cloud&quot;)
     .withCopyright(&quot;Copyleft © Jonas Fonseca&quot;)
 }</code></pre>
 <p>The examples given in the following sections use an alternative syntax. The equivalent of the above configuration using this alternative syntax is:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L132-L136" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L121-L125" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withColor(&quot;red&quot;, &quot;orange&quot;)
-   .withLogoIcon(&quot;cloud&quot;)
-   .withCopyright(&quot;Copyleft © Jonas Fonseca&quot;)
+    .withLogoIcon(&quot;cloud&quot;)
+    .withCopyright(&quot;Copyleft © Jonas Fonseca&quot;)
 }</code></pre>
 <p>In both cases, the theme&rsquo;s configuration is added to the Paradox properties. As a result it is also possible to set properties directly using <code>paradoxProperties</code> or <a href="specimen/front-matter.html">front matter</a>. Front matter allows you to tweak the look-and-feel for specific pages. The equivalent of the above configuration can be defined in front matter as:</p>
 <pre class="prettyprint"><code class="language-yaml">---
@@ -259,7 +257,7 @@ material.copyright: Copyleft © Jonas Fonseca
 <p>See the following sections for available options.</p>
 <h2><a href="#changing-the-color-palette" name="changing-the-color-palette" class="anchor"><span class="anchor-link"></span></a>Changing the color palette</h2>
 <p>A default hue is defined for every primary and accent color on Google&rsquo;s Material Design <a href="http://www.materialui.co/colors">color palette</a>, which makes it very easy to change the overall look of the theme. Just set the primary and accent colors using the following variables:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L41-L43" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L25-L27" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withColor(&quot;teal&quot;, &quot;indigo&quot;)
 }</code></pre>
 <p>Color names are case-insensitive, but must match the names of the Material Design color palette. Valid values are: <code>red</code>, <code>pink</code>, <code>purple</code>, <code>deep-purple</code>, <code>indigo</code>, <code>blue</code>, <code>light-blue</code>, <code>cyan</code>, <code>teal</code>, <code>green</code>, <code>light-green</code>, <code>lime</code>, <code>yellow</code>, <code>amber</code>, <code>orange</code>, <code>deep-orange</code>, <code>brown</code>, <code>grey</code>, <code>blue-grey</code> and <code>white</code>. The last four colors can only be used as a primary color.</p>
@@ -322,41 +320,41 @@ material.copyright: Copyleft © Jonas Fonseca
 </script>
 <h2><a href="#changing-the-font-family" name="changing-the-font-family" class="anchor"><span class="anchor-link"></span></a>Changing the font family</h2>
 <p>By default the <a href="https://fonts.google.com/specimen/Roboto">Roboto font family</a> is included with the theme, specifically the regular sans-serif type for text and the <code>monospaced</code> type for code. Both fonts are loaded from <a href="https://fonts.google.com">Google Fonts</a> and can be changed to other fonts, like for example the <a href="https://fonts.google.com/specimen/Ubuntu">Ubuntu font family</a>:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L140-L142" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L129-L131" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withFont(&quot;Ubuntu&quot;, &quot;Ubuntu Mono&quot;)
 }</code></pre>
 <p>The text font will be loaded in weights 400 and <strong>700</strong>, the <code>monospaced</code> font in regular weight. If you want to load fonts from other destinations or don&rsquo;t want to use the Google Fonts loading magic, just set <code>font</code> to <code>false</code>:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L146-L148" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L135-L137" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withoutFont()
 }</code></pre>
 <h2><a href="#adding-a-source-repository" name="adding-a-source-repository" class="anchor"><span class="anchor-link"></span></a>Adding a source repository</h2>
 <p>To include a link to the repository of your project within your documentation, set the following variables via your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L47-L49" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
-  _.withRepository(uri(&quot;https://github.com/jonas/paradox-material-theme&quot;))
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L31-L33" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+  _.withRepository(uri(&quot;https://github.com/sbt/sbt-paradox-material-theme&quot;))
 }</code></pre>
 <p>The name of the repository will be rendered next to the search bar on big screens and as part of the main navigation drawer on smaller screen sizes. Furthermore, if the repository is hosted on GitHub, Bitbucker or Gitlab a logo of the service is shown next to the name of the repository. When the type is set to GitHub, the number of stars and forks is shown.</p><div class="callout note question"><div class="callout-title">Why is there an edit button at the bottom of every article?</div>
 <p>If <code>github.base_url</code> is set, an edit button will appear at the bottom of every article. This behaviour is provided by Paradox. See the <a href="http://developer.lightbend.com/docs/paradox/current/customization/templating.html">Paradox documentation</a> on more guidance regarding the <code>$page.source_url$</code> attribute, which defines whether the edit button is shown or not.</p></div>
 <h2><a href="#adding-a-favicon" name="adding-a-favicon" class="anchor"><span class="anchor-link"></span></a>Adding a favicon</h2>
 <p>A favicon can be changed by providing a path toto an <code>.ico</code> or image file:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L152-L154" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L141-L143" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withFavicon(&quot;assets/images/favicon.png&quot;)
 }</code></pre>
 <h2><a href="#adding-a-logo" name="adding-a-logo" class="anchor"><span class="anchor-link"></span></a>Adding a logo</h2>
 <p>Your logo should have a rectangular shape with a minimum resolution of 128x128, leave some room towards the edges and be composed of high contrast areas on a transparent ground, as it will be placed on the colored header bar and drawer. Simply create the folder <code>assets/images</code>, add your logo and embed it with:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L158-L160" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L147-L149" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withLogo(&quot;assets/images/logo.png&quot;)
 }</code></pre>
 <p>If you do not want to include the logo in your site you can also link to the logo using a URI:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L170-L172" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L159-L161" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withLogoUri(uri(&quot;https://example.org/logo.png&quot;))
 }</code></pre>
 <p>Additionally, the default icon can be changed by setting an arbitrary ligature (or Unicode code point) from the <a href="https://material.io/icons/">Material Design icon font</a>, e.g.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L164-L166" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L153-L155" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withLogoIcon(&quot;cloud&quot;)
 }</code></pre>
 <h2><a href="#adding-social-links" name="adding-social-links" class="anchor"><span class="anchor-link"></span></a>Adding social links</h2>
 <p>Social accounts can be linked in the footer of the documentation using an icon from the <a href="http://fontawesome.io/icons/">FontAwesome</a> webfont. The icons are automatically detected based on the URL:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L53-L58" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L37-L42" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withSocial(
     uri(&quot;https://github.com/jonas&quot;),
     uri(&quot;https://twitter.com/priorarts&quot;)
@@ -364,7 +362,7 @@ material.copyright: Copyleft © Jonas Fonseca
 }</code></pre>
 <h2><a href="#copyright-notice" name="copyright-notice" class="anchor"><span class="anchor-link"></span></a>Copyright Notice</h2>
 <p>To display a copyright notice in the footer configure the text you want to show. Any HTML markup, such as links, can be used:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L74-L79" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L58-L63" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withCopyright(&quot;&quot;&quot;
     Based on &lt;a href=&quot;https://github.com/squidfunk/mkdocs-material&quot;&gt;MkDocs Material&lt;/a&gt;
     by &lt;a href=&quot;https://github.com/squidfunk&quot;&gt;Martin Donath&lt;/a&gt;
@@ -372,7 +370,7 @@ material.copyright: Copyleft © Jonas Fonseca
 }</code></pre>
 <h2><a href="#language" name="language" class="anchor"><span class="anchor-link"></span></a>Language</h2>
 <p>You can define the language of your site:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L62-L64" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L46-L48" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withLanguage(java.util.Locale.ENGLISH)
 }</code></pre>
 <p>This will add a <code>lang</code> attribute to the top-level <code>html</code> element:</p>
@@ -384,7 +382,7 @@ material.copyright: Copyleft © Jonas Fonseca
 <p>If no language is set English (<code>en</code>) is assumed.</p>
 <h2><a href="#site-search" name="site-search" class="anchor"><span class="anchor-link"></span></a>Site search</h2>
 <p>Site search is enabled by default and will automatically generate a <code>search_index.json</code> file that contains all your site&rsquo;s content and add it to your site. If you want to disable search use:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L188-L190" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L177-L179" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withoutSearch()
 }</code></pre>
 <!--
@@ -417,25 +415,25 @@ language.
 -->
 <h3><a href="#search-tokenization" name="search-tokenization" class="anchor"><span class="anchor-link"></span></a>Search tokenization</h3>
 <p>The separator for tokenization can also be customized, which makes it possible to index parts of words that are separated by <code>-</code> or <code>.</code> for example:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L194-L196" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L183-L185" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withSearch(tokenizer = &quot;[\\s\\-\\.]+&quot;)
 }</code></pre>
 <h2><a href="#google-analytics-integration" name="google-analytics-integration" class="anchor"><span class="anchor-link"></span></a>Google Analytics integration</h2>
 <p>The theme makes it easy to integrate site tracking with Google Analytics. Besides basic tracking, clicks on all outgoing links can be tracked as well as how site search is used. Tracking can be activated in your project&rsquo;s <code>build.sbt</code>:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/jonas/paradox-material-theme/tree/master/build.sbt#L68-L70" target="_blank" title="Go to snippet source"></a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/build.sbt#L52-L54" target="_blank" title="Go to snippet source">source</a><code class="language-sbt">Compile / paradoxMaterialTheme ~= {
   _.withGoogleAnalytics(&quot;UA-107934279-1&quot;) // Remember to change this!
 }</code></pre>
 <h2><a href="#more-advanced-customization" name="more-advanced-customization" class="anchor"><span class="anchor-link"></span></a>More advanced customization</h2>
 <p>If you want to change the general appearance of the Material theme, see <a href="customization.html">the customization guide</a> for more information.</p>
 </div>
 <div>
-<a href="https://github.com/jonas/paradox-material-theme/tree/master/src/main/paradox/getting-started.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/sbt/sbt-paradox-material-theme/tree/master/src/main/paradox/getting-started.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-0.6.0
+0.7.0-M1
 </span>
 </div>
 </article>
@@ -485,7 +483,7 @@ Customization
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">
