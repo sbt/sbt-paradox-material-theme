@@ -1,5 +1,20 @@
 # Release notes
 
+## 0.7.0
+
+ - Project is now called `sbt-paradox-material-theme` and moved to the [sbt](https://github.com/sbt) GitHub organization [#38](https://github.com/sbt/sbt-paradox-material-theme/pull/38)
+ - Moved project to `com.github.sbt` Maven groupId [#39](https://github.com/sbt/sbt-paradox-material-theme/pull/39) and [#54](https://github.com/sbt/sbt-paradox-material-theme/pull/54)
+ - Compatible with latest sbt-site 1.5.0 [#56](https://github.com/sbt/sbt-paradox-material-theme/pull/56)
+    - See the sbt-site [Migration Guide](https://www.scala-sbt.org/sbt-site/migration-guide.html)
+    - You don't need to call `ParadoxMaterialThemePlugin.paradoxMaterialThemeSettings(Paradox)` anymore
+ - Fix duplicated slash in URL [#28](https://github.com/sbt/sbt-paradox-material-theme/pull/28)
+ - Update to sbt-web [1.5.4](https://github.com/sbt/sbt-web/releases/tag/1.5.4).
+ - Update jsoup to version [1.17.2](https://github.com/jhy/jsoup/releases/tag/jsoup-1.17.2)
+ - Update circe to version [0.14.6](https://github.com/circe/circe/releases/tag/v0.14.6).
+ - Update to [Paradox version 0.9.2].
+
+ [Paradox version 0.9.2]: https://github.com/lightbend/paradox/releases/tag/v0.9.2
+
 ## 0.6.0
 
  - Update circe to version [0.9.3](https://github.com/circe/circe/releases/tag/v0.9.3).
