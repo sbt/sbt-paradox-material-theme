@@ -3,8 +3,20 @@
 In order to enable the theme add the following line to your
 project's `project/plugins.sbt`:
 
+## JDK 1.8
+
 @@@ vars
 ```sbt
+addSbtPlugin("com.github.sbt" % "sbt-paradox-material-theme" % "$project.version$")
+```
+@@@
+
+## JDK 11+
+
+@@@ vars
+```sbt
+addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.10.6")
+addSbtPlugin("com.lightbend.paradox" % "sbt-paradox-theme" % "0.10.6")
 addSbtPlugin("com.github.sbt" % "sbt-paradox-material-theme" % "$project.version$")
 ```
 @@@
