@@ -1,7 +1,7 @@
 import sbt.internal.inc.Analysis.empty
 
 lazy val root = project("paradox-material-theme-parent", file("."))
-  .enablePlugins(ParadoxMaterialThemePlugin, GhpagesPlugin)
+  .enablePlugins(ParadoxMaterialThemePlugin, SitePreviewPlugin, GhpagesPlugin)
   .settings(
     publish / skip := true,
     ghpagesNoJekyll := true,
