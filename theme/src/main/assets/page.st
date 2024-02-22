@@ -156,7 +156,7 @@ safely do: `url.base + doc.location`.
     "clipboard.copy": "Copy to clipboard",
     "search.config.lang": "en",
     "search.config.pipeline": "trimmer, stopWordFilter",
-    "search.config.separator": "[\\s\\-]+",
+    "search.config.separator": "[\\\\s\\\-]+",
     "search.result.none": "No matching documents",
     "search.result.one": "1 matching document",
     "search.result.other": "# matching documents",
@@ -164,7 +164,7 @@ safely do: `url.base + doc.location`.
 }</script>
 <script>
     app = initialize({
-        base: ".",
+        base: "$page.base$.",
         features: ['navigation.instant', 'navigation.instant.prefetch', 'navigation.instant.progress', 'navigation.instant.preview', 'navigation.tracking', 'navigation.tabs', 'navigation.tabs.sticky', 'navigation.sections', 'navigation.path', 'navigation.prune', 'navigation.top', 'navigation.footer', 'toc.follow', 'search.suggest', 'search.highlight', 'search.share', 'header.autohide', 'announce.dismiss'],
         search: Object.assign({
             worker: "$page.base$assets/javascripts/worker/search.5eca75d3.min.js"
