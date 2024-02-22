@@ -57,17 +57,17 @@ $!
       </nav>
     </div>
   $endif$
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        $ if (page.properties.("material.copyright")) $
-          <div class="md-footer-copyright__highlight">
-            $page.properties.("material.copyright")$
-          </div>
-        $ endif $
-        $poweredby()$
-      </div>
-      $social()$
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+            <div class="md-footer-copyright">
+              $ if (page.properties.("material.copyright")) $
+                <div class="md-footer-copyright__highlight">
+                  $page.properties.("material.copyright")$
+                </div>
+              $ endif $
+              $poweredby()$
+            </div>
+            $social()$
+        </div>
     </div>
-  </div>
 </footer>

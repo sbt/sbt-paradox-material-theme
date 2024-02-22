@@ -20,9 +20,24 @@ $!
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 !$
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   $ if (page.subheaders) $
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        Table of contents
+    </label>
     $page.toc$
   $ endif $
+$!
+    <ul class="md-nav__list" data-md-scrollfix>
+        <li class="md-nav__item">
+            <a href="#commands" class="md-nav__link">
+                Commands
+            </a></li>
+        <li class="md-nav__item">
+            <a href="#project-layout" class="md-nav__link">
+                Project layout
+            </a></li>
+    </ul>
+!$
 </nav>

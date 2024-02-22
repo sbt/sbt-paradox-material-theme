@@ -20,11 +20,10 @@ $!
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 !$
+
 <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="$page.home.href$" title="$page.home.title$" class="md-header-nav__button md-logo">
+    <nav class="md-header-nav md-grid" aria-label="Header">
+        <a href="$page.home.href$" title="$page.home.title$" class="md-header-nav__button md-logo" aria-label="$page.home.title$">
           $ if (page.properties.("material.logo.icon")) $
             <i class="md-icon">$page.properties.("material.logo.icon")$</i>
           $ else $
@@ -35,10 +34,11 @@ $!
             $endif$
           $endif$
         </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
+        <label class="md-header-nav__button md-icon" for="__drawer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/>
+            </svg>
+        </label>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           $ if (page.home.active) $
@@ -53,9 +53,28 @@ $!
           $ endif $
         </div>
       </div>
+        <div class="md-header-nav__title" data-md-component="header-title">
+            <div class="md-header-nav__ellipsis">
+              $ if (page.home.active) $
+                $page.home.title$
+              $ else $
+                <span class="md-header-nav__topic md-ellipsis">
+                  $page.home.title$
+                </span>
+                <span class="md-header-nav__topic md-ellipsis">
+                  $page.title$
+                </span>
+              $ endif $
+            </div>
+        </div>
+
       $ if (page.properties.("material.search")) $
         <div class="md-flex__cell md-flex__cell--shrink">
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          <label class="md-header-nav__button md-icon" for="__search">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/>
+              </svg>
+          </label>
           $search()$
         </div>
       $ else $
@@ -70,6 +89,5 @@ $!
           </div>
         </div>
       $ endif $
-    </div>
-  </nav>
+    </nav>
 </header>
