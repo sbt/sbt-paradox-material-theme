@@ -27,8 +27,8 @@ $!
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="$page.properties.("project.description")$">
-    $ if (page.properties.("project.name")) $
-        <meta property="og:title" content="$page.properties.("project.name")$">
+    $ if (page.properties.("title")) $
+        <meta property="og:title" content="$page.properties.("title")$">
     $ endif $
     $ if (page.properties.("project.description")) $
         <meta property="og:description" content="$page.properties.("project.description")$">
