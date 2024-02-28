@@ -114,10 +114,6 @@ $!
     $partials/header()$
 
     <div class="md-container" data-md-component="container">
-      $ if (page.properties.("material.hero")) $
-        $partials/hero()$
-      $ endif $
-
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
 
