@@ -20,6 +20,10 @@ $!
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 !$
+$!
+FIXME doesn't support import keyword
+{% import "partials/language.html" as lang with context %}
+!$
 <!DOCTYPE html>
 <html lang="$page.properties.("material.language"); null="en"$" class="no-js">
   <head>
