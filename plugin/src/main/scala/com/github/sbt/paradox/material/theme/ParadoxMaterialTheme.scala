@@ -36,10 +36,11 @@ final case class ParadoxMaterialTheme(properties: Map[String, String]) {
       .withoutProperties("logo", "logo.icon")
   }
 
-  def withLogoIcon(icon: String) = {
-    withProperties("logo.icon" -> icon)
-      .withoutProperties("logo", "logo.uri")
-  }
+// FIXME solve font-awesome icon issue
+//  def withLogoIcon(icon: String) = {
+//    withProperties("logo.icon" -> icon)
+//      .withoutProperties("logo", "logo.uri")
+//  }
 
   def withFont(text: String, code: String) =
     withProperties(
@@ -115,7 +116,8 @@ object ParadoxMaterialTheme {
   def apply(): ParadoxMaterialTheme = {
     ParadoxMaterialTheme(Map.empty)
       .withFont("Roboto", "Roboto Mono")
-      .withLogoIcon("local_library")
+    // FIXME solve font-awesome icon issue
+    //  .withLogoIcon("local_library")
       .withFavicon("assets/images/favicon.png")
       .withSearch()
   }

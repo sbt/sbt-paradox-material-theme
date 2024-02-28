@@ -35,7 +35,7 @@ $!
       </a>
     $! Button to open drawer !$
     <label class="md-header__button md-icon" for="__drawer">
-      <i class="md-icon">$page.properties.("material.logo.icon")$</i>
+      $logo()$
     </label>
 
     $! Header title !$
