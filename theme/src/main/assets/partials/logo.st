@@ -1,0 +1,1 @@
+<img src="$page.base$$page.properties.("material.favicon")$" alt="logo" />

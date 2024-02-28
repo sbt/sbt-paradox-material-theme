@@ -21,42 +21,26 @@ $!
   IN THE SOFTWARE.
 !$
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-    <label class="md-nav__title" for="__drawer">
-        <a href="$page.home.href$" title="$page.home.title$" class="md-nav__button md-logo" aria-label="$page.home.title$">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/>
-            </svg>
-        </a>
-    </label>
-    $ if (page.properties.("material.repo")) $
-      <div class="md-nav__source">
-        $source()$
-      </div>
-    $ endif $
-    <ul class="md-nav__list" data-md-scrollfix>
-        <li class="md-nav__item md-nav__item--active"><input class="md-nav__toggle md-toggle"
-                                                              data-md-toggle="toc"
-                                                              type="checkbox"
-                                                              id="__toc">
-            <label class="md-nav__link md-nav__link--active" for="__toc">
-                $page.home.title$
-                <span class="md-nav__icon md-icon">
-                  $ if (page.properties.("material.logo.icon")) $
-                    <i class="md-icon">$page.properties.("material.logo.icon")$</i>
-                  $ else $
-                    $ if (page.properties.("material.logo.uri")) $
-                      <img src="$page.properties.("material.logo.uri")$" width="24" height="24">
-                    $ else $
-                      <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
-                    $endif$
-                  $endif$
-                </span>
-            </label>
-             <a href="$page.home.href$" title="$page.home.title$">
-               $page.home.title$
-            </a>
-        </li>
-    </ul>
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="$page.home.href$"
+      title="$page.home.title$"
+      class="md-nav__button md-logo"
+      aria-label="$page.home.title$"
+      data-md-component="logo"
+    >
+      $logo()$
+    </a>
+    $page.home.title$
+  </label>
+  $ if (page.properties.("material.repo")) $
+    <div class="md-nav__source">
+      $source()$
+    </div>
+  $ endif $
+  <ul class="md-nav__list" data-md-scrollfix>
+    $! TODO nav_item !$
+  </ul>
   $page.groups$
   $page.navigation$
   $toc()$

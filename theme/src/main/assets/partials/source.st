@@ -20,11 +20,13 @@ $!
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 !$
-<a href="$page.properties.("material.repo")$"
-   title="Go to repository"
-   class="md-source"
-   data-md-source="$page.properties.("material.repo.type")$">
-  <div class="md-source__icon">
+<a
+  href="$page.properties.("material.repo")$"
+  title="Go to repository"
+  class="md-source"
+  data-md-source="$page.properties.("material.repo.type")$"
+>
+  <div class="md-source__icon md-icon">
     <i class="fa fa-$page.properties.("material.repo.type")$"></i>
   </div>
   <div class="md-source__repository">

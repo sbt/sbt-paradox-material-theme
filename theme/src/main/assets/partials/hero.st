@@ -21,6 +21,7 @@ $!
   IN THE SOFTWARE.
 !$
 $! FIXME: {% if not feature.tabs %} {% set class = "md-hero md-hero--expand" %} {% endif %} !$
+$! FIXME hero not working !$
 <div class="md-hero md-hero--expand" data-md-component="hero">
   <div class="md-hero__inner md-grid">
     $page.properties.("material.hero")$
