@@ -1,7 +1,5 @@
 package com.github.sbt.paradox.material.theme
 
-import com.github.sbt.paradox.material.theme.SearchPipelineFn.SearchPipelineFn
-
 import scala.collection.JavaConverters._
 import com.lightbend.paradox.sbt.ParadoxPlugin.autoImport.paradoxMarkdownToHtml
 import io.circe._
