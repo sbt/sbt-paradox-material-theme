@@ -23,8 +23,8 @@ $!
 <!DOCTYPE html>
 <html lang="$page.properties.("material.language"); null="en"$" class="no-js">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="$page.properties.("project.description")$">
     <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material-9.5.11">
@@ -36,20 +36,16 @@ $!
     $ elseif (page.properties.("project.description")) $
       <meta name="description" content="$page.properties.("project.description")$">
     $ endif $
-
+    $ if (page.properties.("material.canonical.url")) $
+      <link rel="canonical" href="$page.properties.("material.canonical.url")$">
+    $ endif $
     $ if (page.properties.("author")) $
       <meta name="author" content="$page.properties.("author")$">
     $ elseif (page.properties.("material.author")) $
       <meta name="author" content="$page.properties.("site.author")$">
     $ endif $
-
-    $ if (page.properties.("material.canonical.url")) $
-      <link rel="canonical" href="$page.properties.("material.canonical.url")$">
-    $ endif $
-
     <link rel="prev" href="$page.prev.href$" />
     <link rel="next" href="$page.next.href$" />
-
     <link rel="shortcut icon" href="$page.base$$page.properties.("material.favicon")$">
     $ if (page.properties.("title")) $
       <title>$page.properties.("title")$</title>
@@ -58,16 +54,16 @@ $!
     $ else $
       <title>$page.home.title$</title>
     $ endif $
-
+    <link rel="stylesheet" href="$page.base$assets/stylesheets/main.7e359304.min.css">
     $ if (page.properties.("material.color.primary")) $
       <link rel="stylesheet" href="$page.base$assets/stylesheets/palette.06af60db.min.css">
       $ if (page.properties.("material.color.primary.theme")) $
         <meta name="theme-color" content="$page.properties.("material.color.primary.theme")$" />
       $ endif $
     $ endif $
-
     <link rel="stylesheet" href="$page.base$lib/material__tabs/dist/mdc.tabs.min.css">
     <link rel="stylesheet" href="$page.base$lib/prettify/prettify.css">
+    <script src="$page.base$assets/javascripts/modernizr.1aa3b519.js"></script>
     $ if (page.properties.("material.font.text")) $
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=$page.properties.("material.font.text.url")$:300,400,400i,700|$page.properties.("material.font.code.url")$">
       <style>
@@ -78,7 +74,6 @@ $!
     <link rel="stylesheet" href="$page.base$assets/fonts/font-awesome.css">
     <link rel="stylesheet" href="$page.base$assets/fonts/material-icons.css">
     <link rel="stylesheet" href="$page.base$assets/stylesheets/paradox-material-theme.css">
-    <link rel="stylesheet" href="$page.base$assets/stylesheets/main.7e359304.min.css">
     $ if (page.properties.("material.custom.stylesheet")) $
       <link rel="stylesheet" href="$page.base$$page.properties.("material.custom.stylesheet")$">
     $ endif $
@@ -94,35 +89,17 @@ $!
       data-md-color-accent="$page.properties.("material.color.accent")$"
     $ endif $
   dir="ltr">
-    <input
-      class="md-toggle"
-      data-md-toggle="drawer"
-      type="checkbox"
-      id="__drawer"
-      autocomplete="off"
-    />
-    <input
-      class="md-toggle"
-      data-md-toggle="search"
-      type="checkbox"
-      id="__search"
-      autocomplete="off"
-    />
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off" />
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"/>
     <label class="md-overlay" for="__drawer"></label>
     $! TODO Skip to content !$
     $! TODO Announcement bar !$
     $partials/header()$
-
     <div class="md-container" data-md-component="container">
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
-
           $! Navigation !$
-          <div
-            class="md-sidebar md-sidebar--primary"
-            data-md-component="sidebar"
-            data-md-type="navigation"
-          >
+          <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
             <div class="md-sidebar__scrollwrap">
               <div class="md-sidebar__inner">
                 $partials/nav()$
@@ -132,11 +109,7 @@ $!
 
           $! Table of contents !$
           $ if (page.subheaders) $
-            <div
-              class="md-sidebar md-sidebar--secondary"
-              data-md-component="sidebar"
-              data-md-type="toc"
-            >
+            <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
               <div class="md-sidebar__scrollwrap">
                 <div class="md-sidebar__inner">
                   $partials/toc()$
@@ -159,14 +132,11 @@ $!
              target.checked = target.name.startsWith("__tabbed_")
          </script>
         </div>
-
         $partials/top()$
-
       </main>
-
       $partials/footer()$
-
     </div>
+    <script src="$page.base$assets/javascripts/paradox-material-theme.js"></script>
     $!
 
       The ending "." enables search to work without providing the site URL, since the
@@ -183,9 +153,6 @@ $!
       {
                 "base":  "$page.base$.",
                 "features":  [
-                          "navigation.instant",
-                          "navigation.instant.prefetch",
-                          "navigation.instant.progress",
                           "navigation.path",
                           "navigation.prune",
                           "navigation.indexes",
@@ -210,9 +177,7 @@ $!
                           "select.version":  "Select version"
                 }
     }</script>
-    <script src="$page.base$assets/javascripts/modernizr.1aa3b519.js"></script>
     <script src="$page.base$assets/javascripts/bundle.8fd75fb4.min.js"></script>
-    <script src="$page.base$assets/javascripts/paradox-material-theme.js"></script>
     <script type="text/javascript" src="$page.base$lib/prettify/prettify.js"></script>
     <script type="text/javascript" src="$page.base$lib/prettify/lang-scala.js"></script>
     <script type="text/javascript">

@@ -22,13 +22,7 @@ $!
 !$
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a
-      href="$page.home.href$"
-      title="$page.home.title$"
-      class="md-nav__button md-logo"
-      aria-label="$page.home.title$"
-      data-md-component="logo"
-    >
+    <a href="$page.home.href$" title="$page.home.title$" class="md-nav__button md-logo" aria-label="$page.home.title$" data-md-component="logo">
       $logo()$
     </a>
     $page.home.title$

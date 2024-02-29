@@ -24,9 +24,8 @@ $!
   $ if (page.subheaders) $
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-        Table of contents
+      Table of contents
     </label>
     $page.toc$
   $ endif $
-</nav>
 </nav>

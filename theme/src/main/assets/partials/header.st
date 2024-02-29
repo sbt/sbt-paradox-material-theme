@@ -20,19 +20,13 @@ $!
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 !$
-
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-      $! Link to home !$
-      <a
-        href="$page.home.href$"
-        title="$page.home.title$"
-        class="md-header__button md-logo"
-        aria-label="$page.home.title$"
-        data-md-component="logo"
-      >
-        $logo()$
-      </a>
+    $! Link to home !$
+    <a href="$page.home.href$" title="$page.home.title$" class="md-header__button md-logo" aria-label="$page.home.title$" data-md-component="logo">
+      $logo()$
+    </a>
+
     $! Button to open drawer !$
     <label class="md-header__button md-icon" for="__drawer">
       $logo()$
@@ -57,7 +51,6 @@ $!
         </div>
       </div>
     </div>
-
 
     $! Button to open search modal !$
     $ if (page.properties.("material.search")) $
