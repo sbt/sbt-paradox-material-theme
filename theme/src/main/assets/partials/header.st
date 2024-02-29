@@ -39,6 +39,9 @@ $!
           <span class="md-ellipsis">
            $page.home.title$
           </span>
+          <div class="md-version">
+            <span class="md-version__current">$page.properties.("project.version.short")$</span>
+          </div>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">

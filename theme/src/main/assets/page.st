@@ -161,7 +161,9 @@ $!
                           "search.suggest",
                           "search.highlight",
                           "content.code.copy",
-                          "navigation.footer"
+                          "navigation.footer",
+                          "content.action.edit",
+                          "content.tooltips"
                 ],
                 "search":  "$page.base$assets/javascripts/workers/search.b8dbb3d2.min.js",
                 "translations":  {
