@@ -10,10 +10,12 @@ final case class ParadoxMaterialTheme(properties: Map[String, String]) {
   def withLanguage(locale: Locale) =
     withProperties("language" -> locale.getLanguage)
 
-  def withColor(primaryColor: String, accentColor: String) = {
+  def withColor(colorSchema: String, primaryColor: String, accentColor: String) = {
+    val schema = colorSchema.replace(" ", "-").toLowerCase
     val primary = primaryColor.replace(" ", "-").toLowerCase
     val accent = accentColor.replace(" ", "-").toLowerCase
     val colorProps = withProperties(
+      "color.schema" -> schema,
       "color.primary" -> primary,
       "color.accent" -> accent
     )
