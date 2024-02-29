@@ -25,16 +25,15 @@ $!
     <a href="$page.home.href$" title="$page.home.title$" class="md-nav__button md-logo" aria-label="$page.home.title$" data-md-component="logo">
       $logo()$
     </a>
-    $page.home.title$
+    <a href="$page.home.href$" title="$page.home.title$">
+      $page.home.title$
+    </a>
   </label>
   $ if (page.properties.("material.repo")) $
     <div class="md-nav__source">
       $source()$
     </div>
   $ endif $
-  <ul class="md-nav__list" data-md-scrollfix>
-    $! TODO nav_item !$
-  </ul>
   $page.groups$
   $page.navigation$
   $toc()$
