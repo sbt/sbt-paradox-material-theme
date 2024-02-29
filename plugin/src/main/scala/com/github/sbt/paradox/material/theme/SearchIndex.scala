@@ -1,5 +1,7 @@
 package com.github.sbt.paradox.material.theme
 
+import com.github.sbt.paradox.material.theme.SearchPipelineFn.SearchPipelineFn
+
 import scala.collection.JavaConverters._
 import com.lightbend.paradox.sbt.ParadoxPlugin.autoImport.paradoxMarkdownToHtml
 import io.circe._
@@ -9,7 +11,31 @@ import org.jsoup.nodes.Element
 import sbt._
 import sbt.Keys._
 
-final case class SearchIndex(docs: Seq[SearchIndex.Section])
+/**
+ * typescript type on Scala <code> type SearchPipelineFn =
+ * \| "trimmer" /* Trimmer */
+ * \| "stopWordFilter" /* Stop word filter */
+ * \| "stemmer" /* Stemmer */ </code>
+ */
+object SearchPipelineFn extends Enumeration {
+  type SearchPipelineFn = Value
+
+  val Trimmer: Value = Value("trimmer")
+  val StopWordFilter: Value = Value("stopWordFilter")
+  val Stemmer: Value = Value("stemmer")
+}
+
+/**
+ * The raw typescript interface is as follows: <code> export interface SearchConfig { lang: string[] /* Search languages
+ * */ separator: string /* Search separator */ pipeline: SearchPipelineFn[] /* Search pipeline */ } </code>
+ */
+final case class SearchConfig(
+    lang: Seq[String],
+    separator: String,
+    pipeline: SearchPipelineFn
+)
+
+final case class SearchIndex(docs: Seq[SearchIndex.Section], config: SearchConfig)
 
 object SearchIndex {
   implicit val encoder: Encoder[SearchIndex] = Encoder.forProduct1("docs")(_.docs)
@@ -62,7 +88,8 @@ object SearchIndex {
     }
 
     val sections = mappings.flatMap(readSections).toList
-    val searchIndex = SearchIndex(sections)
+    val config = SearchConfig(Seq("en"), "[\\s\\-]+", SearchPipelineFn.StopWordFilter)
+    val searchIndex = SearchIndex(sections, config)
     val json = searchIndex.asJson.noSpaces
     val out = target / "search_index.json"
     IO.write(out, json)
