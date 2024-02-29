@@ -81,66 +81,100 @@ See the guide on @ref:[customization](customization.md) for more information.
 
   [10]: http://www.materialui.co/colors
 
-### Primary colors
+### Color schema
 
-Click on a tile to change the primary color of the theme:
+Click on a tile to change the color scheme:
 
-<button data-md-color-primary="red">Red</button>
-<button data-md-color-primary="pink">Pink</button>
-<button data-md-color-primary="purple">Purple</button>
-<button data-md-color-primary="deep-purple">Deep Purple</button>
-<button data-md-color-primary="indigo">Indigo</button>
-<button data-md-color-primary="blue">Blue</button>
-<button data-md-color-primary="light-blue">Light Blue</button>
-<button data-md-color-primary="cyan">Cyan</button>
-<button data-md-color-primary="teal">Teal</button>
-<button data-md-color-primary="green">Green</button>
-<button data-md-color-primary="light-green">Light Green</button>
-<button data-md-color-primary="lime">Lime</button>
-<button data-md-color-primary="yellow">Yellow</button>
-<button data-md-color-primary="amber">Amber</button>
-<button data-md-color-primary="orange">Orange</button>
-<button data-md-color-primary="deep-orange">Deep Orange</button>
-<button data-md-color-primary="brown">Brown</button>
-<button data-md-color-primary="grey">Grey</button>
-<button data-md-color-primary="blue-grey">Blue Grey</button>
-<button data-md-color-primary="white">White</button>
+<div class="mdx-switch">
+  <button data-md-color-scheme="default"><code>default</code></button>
+  <button data-md-color-scheme="slate"><code>slate</code></button>
+</div>
 
 <script>
-  var buttons = document.querySelectorAll("button[data-md-color-primary]");
-  Array.prototype.forEach.call(buttons, function(button) {
+  var buttons = document.querySelectorAll("button[data-md-color-scheme]")
+  buttons.forEach(function(button) {
     button.addEventListener("click", function() {
-      document.body.dataset.mdColorPrimary = this.dataset.mdColorPrimary;
+      document.body.setAttribute("data-md-color-switching", "")
+      var attr = this.getAttribute("data-md-color-scheme")
+      document.body.setAttribute("data-md-color-scheme", attr)
+    })
+  })
+</script>
+
+### Primary colors
+
+Click on a tile to change the primary color:
+
+<div class="mdx-switch">
+  <button data-md-color-primary="red"><code>red</code></button>
+  <button data-md-color-primary="pink"><code>pink</code></button>
+  <button data-md-color-primary="purple"><code>purple</code></button>
+  <button data-md-color-primary="deep-purple"><code>deep purple</code></button>
+  <button data-md-color-primary="indigo"><code>indigo</code></button>
+  <button data-md-color-primary="blue"><code>blue</code></button>
+  <button data-md-color-primary="light-blue"><code>light blue</code></button>
+  <button data-md-color-primary="cyan"><code>cyan</code></button>
+  <button data-md-color-primary="teal"><code>teal</code></button>
+  <button data-md-color-primary="green"><code>green</code></button>
+  <button data-md-color-primary="light-green"><code>light green</code></button>
+  <button data-md-color-primary="lime"><code>lime</code></button>
+  <button data-md-color-primary="yellow"><code>yellow</code></button>
+  <button data-md-color-primary="amber"><code>amber</code></button>
+  <button data-md-color-primary="orange"><code>orange</code></button>
+  <button data-md-color-primary="deep-orange"><code>deep orange</code></button>
+  <button data-md-color-primary="brown"><code>brown</code></button>
+  <button data-md-color-primary="grey"><code>grey</code></button>
+  <button data-md-color-primary="blue-grey"><code>blue grey</code></button>
+  <button data-md-color-primary="black"><code>black</code></button>
+  <button data-md-color-primary="white"><code>white</code></button>
+</div>
+
+<script>
+  var buttons = document.querySelectorAll("button[data-md-color-primary]")
+  buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var attr = this.getAttribute("data-md-color-primary")
+      document.body.setAttribute("data-md-color-primary", attr)
     })
   })
 </script>
 
 ### Accent colors
 
-Click on a tile to change the accent color of the theme:
+Click on a tile to change the accent color:
 
-<button data-md-color-accent="red">Red</button>
-<button data-md-color-accent="pink">Pink</button>
-<button data-md-color-accent="purple">Purple</button>
-<button data-md-color-accent="deep-purple">Deep Purple</button>
-<button data-md-color-accent="indigo">Indigo</button>
-<button data-md-color-accent="blue">Blue</button>
-<button data-md-color-accent="light-blue">Light Blue</button>
-<button data-md-color-accent="cyan">Cyan</button>
-<button data-md-color-accent="teal">Teal</button>
-<button data-md-color-accent="green">Green</button>
-<button data-md-color-accent="light-green">Light Green</button>
-<button data-md-color-accent="lime">Lime</button>
-<button data-md-color-accent="yellow">Yellow</button>
-<button data-md-color-accent="amber">Amber</button>
-<button data-md-color-accent="orange">Orange</button>
-<button data-md-color-accent="deep-orange">Deep Orange</button>
+<style>
+  .md-typeset button[data-md-color-accent] > code {
+    background-color: var(--md-code-bg-color);
+    color: var(--md-accent-fg-color);
+  }
+</style>
+
+<div class="mdx-switch">
+  <button data-md-color-accent="red"><code>red</code></button>
+  <button data-md-color-accent="pink"><code>pink</code></button>
+  <button data-md-color-accent="purple"><code>purple</code></button>
+  <button data-md-color-accent="deep-purple"><code>deep purple</code></button>
+  <button data-md-color-accent="indigo"><code>indigo</code></button>
+  <button data-md-color-accent="blue"><code>blue</code></button>
+  <button data-md-color-accent="light-blue"><code>light blue</code></button>
+  <button data-md-color-accent="cyan"><code>cyan</code></button>
+  <button data-md-color-accent="teal"><code>teal</code></button>
+  <button data-md-color-accent="green"><code>green</code></button>
+  <button data-md-color-accent="light-green"><code>light green</code></button>
+  <button data-md-color-accent="lime"><code>lime</code></button>
+  <button data-md-color-accent="yellow"><code>yellow</code></button>
+  <button data-md-color-accent="amber"><code>amber</code></button>
+  <button data-md-color-accent="orange"><code>orange</code></button>
+  <button data-md-color-accent="deep-orange"><code>deep orange</code></button>
+</div>
 
 <script>
-  var buttons = document.querySelectorAll("button[data-md-color-accent]");
-  Array.prototype.forEach.call(buttons, function(button) {
+  var buttons = document.querySelectorAll("button[data-md-color-accent]")
+  buttons.forEach(function(button) {
     button.addEventListener("click", function() {
-      document.body.dataset.mdColorAccent = this.dataset.mdColorAccent;
+      var attr = this.getAttribute("data-md-color-accent")
+      document.body.setAttribute("data-md-color-accent", attr)
     })
   })
 </script>
