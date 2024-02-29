@@ -11,12 +11,6 @@ import org.jsoup.nodes.Element
 import sbt._
 import sbt.Keys._
 
-/**
- * typescript type on Scala <code> type SearchPipelineFn =
- * \| "trimmer" /* Trimmer */
- * \| "stopWordFilter" /* Stop word filter */
- * \| "stemmer" /* Stemmer */ </code>
- */
 object SearchPipelineFn extends Enumeration {
   type SearchPipelineFn = Value
 
@@ -25,25 +19,25 @@ object SearchPipelineFn extends Enumeration {
   val Stemmer: Value = Value("stemmer")
 }
 
-/**
- * The raw typescript interface is as follows: <code> export interface SearchConfig { lang: string[] /* Search languages
- * */ separator: string /* Search separator */ pipeline: SearchPipelineFn[] /* Search pipeline */ } </code>
- */
-final case class SearchConfig(
-    lang: Seq[String],
-    separator: String,
-    pipeline: SearchPipelineFn
-)
-
-final case class SearchIndex(docs: Seq[SearchIndex.Section], config: SearchConfig)
+final case class SearchIndex(docs: Seq[SearchIndex.Section], config: SearchIndex.SearchConfig)
 
 object SearchIndex {
-  implicit val encoder: Encoder[SearchIndex] = Encoder.forProduct1("docs")(_.docs)
+  implicit val encoder: Encoder[SearchIndex] = Encoder.forProduct2("config", "docs")(e => (e.config, e.docs))
 
   final case class Section(location: String, title: String, text: String)
   object Section {
     implicit val encoder: Encoder[Section] =
       Encoder.forProduct3("location", "text", "title")(page => (page.location, page.text, page.title))
+  }
+
+  final case class SearchConfig(
+      lang: Seq[String],
+      separator: String,
+      pipeline: String
+  )
+  object SearchConfig {
+    implicit val encoder: Encoder[SearchConfig] =
+      Encoder.forProduct3("lang", "separator", "pipeline")(config => (config.lang, config.separator, config.pipeline))
   }
 
   val Headers = Set("h1", "h2", "h3", "h4", "h5", "h6")
@@ -88,7 +82,8 @@ object SearchIndex {
     }
 
     val sections = mappings.flatMap(readSections).toList
-    val config = SearchConfig(Seq("en"), "[\\s\\-]+", SearchPipelineFn.StopWordFilter)
+    // TODO configurable
+    val config = SearchConfig(Seq("en"), "[\\s\\-]+", SearchPipelineFn.StopWordFilter.toString)
     val searchIndex = SearchIndex(sections, config)
     val json = searchIndex.asJson.noSpaces
     val out = target / "search_index.json"
