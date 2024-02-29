@@ -208,13 +208,6 @@ the logo using a URI:
 
 @@ snip [build.sbt]($root$/build.sbt) { #logo-uri }
 
-Additionally, the default icon can be changed by setting an arbitrary ligature
-(or Unicode code point) from the [Material Design icon font][16], e.g.
-
-@@ snip [build.sbt]($root$/build.sbt) { #logo-icon }
-
-  [16]: https://material.io/icons/
-
 ## Adding social links
 
 Social accounts can be linked in the footer of the documentation using an icon

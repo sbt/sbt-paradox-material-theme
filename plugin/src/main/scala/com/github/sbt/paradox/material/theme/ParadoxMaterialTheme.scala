@@ -116,8 +116,8 @@ object ParadoxMaterialTheme {
   def apply(): ParadoxMaterialTheme = {
     ParadoxMaterialTheme(Map.empty)
       .withFont("Roboto", "Roboto Mono")
-    // FIXME solve font-awesome icon issue
-    //  .withLogoIcon("local_library")
+      // FIXME solve font-awesome icon issue
+      //  .withLogoIcon("local_library")
       .withFavicon("assets/images/favicon.png")
       .withSearch()
   }

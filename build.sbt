@@ -112,7 +112,6 @@ lazy val optionExamples = Def.settings(
   Compile / paradoxMaterialTheme := {
     ParadoxMaterialTheme()
       .withColor("red", "orange")
-      .withLogoIcon("cloud")
       .withCopyright("Copyleft © Jonas Fonseca")
   }
   // #builder-api
@@ -120,7 +119,6 @@ lazy val optionExamples = Def.settings(
   // #builder-api-v2
   Compile / paradoxMaterialTheme ~= {
     _.withColor("red", "orange")
-      .withLogoIcon("cloud")
       .withCopyright("Copyleft © Jonas Fonseca")
   }
   // #builder-api-v2
@@ -148,12 +146,6 @@ lazy val optionExamples = Def.settings(
     _.withLogo("assets/images/logo.png")
   }
   // #logo
-  ,
-  // #logo-icon
-  Compile / paradoxMaterialTheme ~= {
-    _.withLogoIcon("cloud")
-  }
-  // #logo-icon
   ,
   // #logo-uri
   Compile / paradoxMaterialTheme ~= {
