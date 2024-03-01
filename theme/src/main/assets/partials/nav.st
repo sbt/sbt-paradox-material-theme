@@ -36,5 +36,4 @@ $!
   $ endif $
   $page.groups$
   $page.navigation$
-  $toc()$
 </nav>
