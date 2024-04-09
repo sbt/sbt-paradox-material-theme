@@ -4,4 +4,4 @@ sys.props.get("project.version") match {
                          |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
 }
 
-addSbtPlugin(("com.github.sbt" % "sbt-site-paradox" % "1.6.0").exclude("com.lightbend.paradox", "sbt-paradox"))
+addSbtPlugin(("com.github.sbt" % "sbt-site-paradox" % "1.7.0").exclude("com.lightbend.paradox", "sbt-paradox"))
