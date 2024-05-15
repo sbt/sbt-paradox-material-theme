@@ -25,6 +25,9 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
         scala: [2.12.18]
         java: [temurin@8]
+        exclude:
+          - java: temurin@8
+            os: macos-latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: Ignore line ending differences in git
@@ -52,6 +55,11 @@ jobs:
           distribution: temurin
           java-version: 8
           cache: sbt
+
+      - name: Install sbt
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        run: brew install sbt
 
       - name: Check that workflows are up to date
         shell: bash
