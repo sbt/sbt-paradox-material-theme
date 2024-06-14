@@ -1,6 +1,6 @@
 addSbtPlugin(("com.lightbend.paradox" % "sbt-paradox"        % "0.9.2").exclude("com.typesafe.sbt", "sbt-web"))
 addSbtPlugin(("com.lightbend.paradox" % "sbt-paradox-theme"  % "0.9.2").exclude("com.typesafe.sbt", "sbt-web"))
-addSbtPlugin("com.github.sbt"         % "sbt-web"            % "1.5.6")
+addSbtPlugin("com.github.sbt"         % "sbt-web"            % "1.5.7")
 addSbtPlugin(("com.github.sbt"        % "sbt-site-paradox"   % "1.7.0").exclude("com.lightbend.paradox", "sbt-paradox"))
 addSbtPlugin("com.github.sbt"         % "sbt-ghpages"        % "0.8.0")
 addSbtPlugin("com.github.sbt"         % "sbt-ci-release"     % "1.5.12")
