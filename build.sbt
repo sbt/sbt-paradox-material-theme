@@ -23,7 +23,7 @@ lazy val root = project("paradox-material-theme-parent", file("."))
     ),
     // #color
     Compile / paradoxMaterialTheme ~= {
-      _.withColor("teal", "indigo")
+      _.withColor("default", "teal", "indigo")
     }
     // #color
     ,
@@ -111,16 +111,14 @@ lazy val optionExamples = Def.settings(
   // #builder-api
   Compile / paradoxMaterialTheme := {
     ParadoxMaterialTheme()
-      .withColor("red", "orange")
-      .withLogoIcon("cloud")
+      .withColor("default", "red", "orange")
       .withCopyright("Copyleft © Jonas Fonseca")
   }
   // #builder-api
   ,
   // #builder-api-v2
   Compile / paradoxMaterialTheme ~= {
-    _.withColor("red", "orange")
-      .withLogoIcon("cloud")
+    _.withColor("default", "red", "orange")
       .withCopyright("Copyleft © Jonas Fonseca")
   }
   // #builder-api-v2
@@ -148,12 +146,6 @@ lazy val optionExamples = Def.settings(
     _.withLogo("assets/images/logo.png")
   }
   // #logo
-  ,
-  // #logo-icon
-  Compile / paradoxMaterialTheme ~= {
-    _.withLogoIcon("cloud")
-  }
-  // #logo-icon
   ,
   // #logo-uri
   Compile / paradoxMaterialTheme ~= {
