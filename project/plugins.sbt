@@ -4,7 +4,7 @@ addSbtPlugin("com.github.sbt"         % "sbt-web"            % "1.5.8")
 addSbtPlugin(("com.github.sbt"        % "sbt-site-paradox"   % "1.7.0").exclude("com.lightbend.paradox", "sbt-paradox"))
 addSbtPlugin("com.github.sbt"         % "sbt-ghpages"        % "0.8.0")
 addSbtPlugin("com.github.sbt"         % "sbt-ci-release"     % "1.6.0")
-addSbtPlugin("org.scalameta"          % "sbt-scalafmt"       % "2.5.2")
+addSbtPlugin("org.scalameta"          % "sbt-scalafmt"       % "2.5.4")
 addSbtPlugin("com.github.sbt"         % "sbt-github-actions" % "0.24.0")
 
 libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % sbtVersion.value
