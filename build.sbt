@@ -186,7 +186,7 @@ lazy val optionExamples = Def.settings(
   // #search-tokenizer
 )
 
-lazy val scala212 = "2.12.19"
+lazy val scala212 = "2.12.20"
 
 def project(id: String, base: File): Project = {
   Project(id = id, base = base)
