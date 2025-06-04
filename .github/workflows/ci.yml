@@ -66,6 +66,10 @@ jobs:
       - shell: bash
         run: sbt '++ ${{ matrix.scala }}' test sbt-paradox-material-theme/scripted makeSite
 
+      - name: Clean up Ivy Local repo
+        shell: bash
+        run: rm -rf "$HOME/.ivy2/local"
+
       - name: Compress target directories
         shell: bash
         run: tar cf targets.tar target plugin/target theme/target project/target
