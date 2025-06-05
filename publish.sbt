@@ -33,7 +33,11 @@ inThisBuild(
       name = Some("Clean up Ivy Local repo")
     ),
     githubWorkflowTargetTags ++= Seq("v*"),
-    githubWorkflowPublishTargetBranches := Seq(RefPredicate.StartsWith(Ref.Tag("v"))),
+    githubWorkflowPublishTargetBranches :=
+      Seq(
+        RefPredicate.StartsWith(Ref.Tag("v")),
+        RefPredicate.Equals(Ref.Branch("main"))
+      ),
     githubWorkflowPublish := Seq(
       WorkflowStep.Sbt(
         commands = List("ci-release"),
