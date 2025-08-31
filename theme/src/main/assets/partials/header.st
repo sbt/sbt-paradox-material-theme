@@ -21,55 +21,61 @@ $!
   IN THE SOFTWARE.
 !$
 <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="$page.home.href$" title="$page.home.title$" class="md-header-nav__button md-logo">
-          $ if (page.properties.("material.logo.icon")) $
-            <i class="md-icon">$page.properties.("material.logo.icon")$</i>
-          $ else $
-            $ if (page.properties.("material.logo.uri")) $
-              <img src="$page.properties.("material.logo.uri")$" width="24" height="24">
-            $ else $
-              <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
-            $endif$
-          $endif$
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          $ if (page.home.active) $
-            $page.home.title$
-          $ else $
-            <span class="md-header-nav__topic">
-              $page.home.title$
-            </span>
-            <span class="md-header-nav__topic">
-              $page.title$
-            </span>
-          $ endif $
-        </div>
-      </div>
-      $ if (page.properties.("material.search")) $
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          $search()$
-        </div>
-      $ else $
-        <form name="search" style="display: none">
-          <input type="text" name="query">
-        </form>
-      $ endif $
-      $ if (page.properties.("material.repo")) $
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            $source()$
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    $! Link to home !$
+    <a href="$page.home.href$" title="$page.home.title$" class="md-header__button md-logo" aria-label="$page.home.title$" data-md-component="logo">
+      $logo()$
+    </a>
+
+    $! Button to open drawer !$
+    <label class="md-header__button md-icon" for="__drawer">
+      $logo()$
+    </label>
+
+    $! Header title !$
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+           $page.home.title$
+          </span>
+          <div class="md-version">
+            <span class="md-version__current">$page.properties.("project.version.short")$</span>
           </div>
         </div>
-      $ endif $
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            $ if (page.home.active) $
+              $page.home.title$
+            $ else $
+              $page.title$
+            $ endif $
+          </span>
+        </div>
+      </div>
     </div>
-  </nav>
+
+    $! Button to open search modal !$
+    $ if (page.properties.("material.search")) $
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/>
+        </svg>
+      </label>
+
+      $! Search interface !$
+      $search()$
+    $ else $
+      <form name="search" style="display: none">
+        <input type="text" name="query">
+      </form>
+    $ endif $
+
+    $! Repository information !$
+    $ if (page.properties.("material.repo")) $
+      <div class="md-header__source">
+        $source()$
+      </div>
+    $ endif $
+    </nav>
 </header>
