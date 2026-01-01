@@ -11,5 +11,5 @@ libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % sbtVersion.value
 
 // This project is its own plugin :)
 Compile / unmanagedSourceDirectories += baseDirectory.value.getParentFile / "plugin" / "src" / "main" / "scala"
-libraryDependencies += "org.jsoup" % "jsoup"      % "1.21.2"
+libraryDependencies += "org.jsoup" % "jsoup"      % "1.22.1"
 libraryDependencies += "io.circe" %% "circe-core" % "0.14.13"
