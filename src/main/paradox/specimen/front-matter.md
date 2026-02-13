@@ -1,9 +1,7 @@
 ---
 material.color.primary: red
 material.color.accent: orange
-material.logo.icon: cloud
 material.copyright: Copyleft © Jonas Fonseca
-material.hero: This hero is set in the front-matter
 ---
 # Front matter
 
@@ -13,9 +11,7 @@ This page has been customized using [front matter].
 ---
 material.color.primary: red
 material.color.accent: orange
-material.logo.icon: cloud
 material.copyright: Copyleft © Jonas Fonseca
-material.hero: This hero is set in the front-matter
 ---
 ```
 
