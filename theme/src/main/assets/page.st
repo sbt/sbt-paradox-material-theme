@@ -27,7 +27,7 @@ $!
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="$page.properties.("project.description")$">
-    <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=3.0.3">
+    <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material-9.5.11">
 
     $partials/language()$
 
@@ -44,6 +44,8 @@ $!
     $ elseif (page.properties.("material.author")) $
       <meta name="author" content="$page.properties.("site.author")$">
     $ endif $
+    <link rel="prev" href="$page.prev.href$" />
+    <link rel="next" href="$page.next.href$" />
     <link rel="shortcut icon" href="$page.base$$page.properties.("material.favicon")$">
     $ if (page.properties.("title")) $
       <title>$page.properties.("title")$</title>
@@ -52,9 +54,9 @@ $!
     $ else $
       <title>$page.home.title$</title>
     $ endif $
-    <link rel="stylesheet" href="$page.base$assets/stylesheets/application.451f80e5.css">
+    <link rel="stylesheet" href="$page.base$assets/stylesheets/main.7e359304.min.css">
     $ if (page.properties.("material.color.primary")) $
-      <link rel="stylesheet" href="$page.base$assets/stylesheets/application-palette.22915126.css">
+      <link rel="stylesheet" href="$page.base$assets/stylesheets/palette.06af60db.min.css">
       $ if (page.properties.("material.color.primary.theme")) $
         <meta name="theme-color" content="$page.properties.("material.color.primary.theme")$" />
       $ endif $
@@ -77,33 +79,37 @@ $!
     $ endif $
   </head>
   <body
+    $ if (page.properties.("material.color.scheme")) $
+      data-md-color-scheme="$page.properties.("material.color.scheme")$"
+    $ endif $
     $ if (page.properties.("material.color.primary")) $
       data-md-color-primary="$page.properties.("material.color.primary")$"
     $ endif $
     $ if (page.properties.("material.color.accent")) $
       data-md-color-accent="$page.properties.("material.color.accent")$"
     $ endif $
-  >
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    $! FIXME: Skip to content (0e1850280a1c25d3bc697419288d97582dacbbc3) !$
+  dir="ltr">
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off" />
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"/>
+    <label class="md-overlay" for="__drawer"></label>
+    $! TODO Skip to content !$
+    $! TODO Announcement bar !$
     $partials/header()$
-    <div class="md-container">
-      $ if (page.properties.("material.hero")) $
-        $partials/hero()$
-      $ endif $
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+    <div class="md-container" data-md-component="container">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          $! Navigation !$
+          <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
             <div class="md-sidebar__scrollwrap">
               <div class="md-sidebar__inner">
                 $partials/nav()$
               </div>
             </div>
           </div>
+
+          $! Table of contents !$
           $ if (page.subheaders) $
-            <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
               <div class="md-sidebar__scrollwrap">
                 <div class="md-sidebar__inner">
                   $partials/toc()$
@@ -111,30 +117,25 @@ $!
               </div>
             </div>
           $ endif $
-          <div class="md-content">
+
+          $! Page content !$
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
-              <div class="md-content__searchable">
-                $page.content$
-              </div>
-              $ if (page.source_url) $
-                <div>
-                  <a href="$page.source_url$" title="Edit this page" class="md-source-file md-edit">
-                    Edit this page
-                  </a>
-                </div>
-              $ endif $
-              <div class="print-only">
-                <span class="md-source-file md-version">
-                  $page.properties.("project.version.short")$
-                </span>
-              </div>
+              $partials/content()$
             </article>
           </div>
+
+         $! User preference: content !$
+         <script>
+           var target = document.getElementById(location.hash.slice(1))
+           if (target && target.name)
+             target.checked = target.name.startsWith("__tabbed_")
+         </script>
         </div>
+        $partials/top()$
       </main>
       $partials/footer()$
     </div>
-    <script src="$page.base$assets/javascripts/application.583bbe55.js"></script>
     <script src="$page.base$assets/javascripts/paradox-material-theme.js"></script>
     $!
 
@@ -148,7 +149,37 @@ $!
       safely do: `url.base + doc.location`.
 
     !$
-    <script>app.initialize({version:"0.17",url:{base:"$page.base$."}})</script>
+    <script id="__config" type="application/json">
+      {
+                "base":  "$page.base$.",
+                "features":  [
+                          "navigation.path",
+                          "navigation.prune",
+                          "navigation.indexes",
+                          "toc.follow",
+                          "navigation.top",
+                          "search.suggest",
+                          "search.highlight",
+                          "content.code.copy",
+                          "navigation.footer",
+                          "content.action.edit",
+                          "content.tooltips"
+                ],
+                "search":  "$page.base$assets/javascripts/workers/search.b8dbb3d2.min.js",
+                "translations":  {
+                          "clipboard.copied":  "Copied to clipboard",
+                          "clipboard.copy":  "Copy to clipboard",
+                          "search.result.more.one":  "1 more on this page",
+                          "search.result.more.other":  "# more on this page",
+                          "search.result.none":  "No matching documents",
+                          "search.result.one":  "1 matching document",
+                          "search.result.other":  "# matching documents",
+                          "search.result.placeholder":  "Type to start searching",
+                          "search.result.term.missing":  "Missing",
+                          "select.version":  "Select version"
+                }
+    }</script>
+    <script src="$page.base$assets/javascripts/bundle.8fd75fb4.min.js"></script>
     <script type="text/javascript" src="$page.base$lib/prettify/prettify.js"></script>
     <script type="text/javascript" src="$page.base$lib/prettify/lang-scala.js"></script>
     <script type="text/javascript">

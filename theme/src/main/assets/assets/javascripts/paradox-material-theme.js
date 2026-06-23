@@ -133,7 +133,7 @@ function initParadoxMaterialTheme() {
     root.parentNode.style.visibility = 'visible'
   })
 
-  document.querySelectorAll('.md-sidebar--secondary .md-nav--secondary > ul').forEach(tocRoot => {
+  document.querySelectorAll('nav.md-nav--secondary > ul').forEach(tocRoot => {
     function visitListItem(item) {
       item.classList.add('md-nav__item')
       item.querySelectorAll(':scope> a').forEach(link => {
