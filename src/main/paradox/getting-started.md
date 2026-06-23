@@ -225,6 +225,12 @@ on the URL:
 
   [17]: http://fontawesome.io/icons/
 
+## Open graph metadata
+To enable a nice preview of the site in social media, define the
+following properties in the build:
+
+@@ snip [build.sbt]($root$/build.sbt) { #open-graph }
+
 ## Copyright Notice
 
 To display a copyright notice in the footer configure the
