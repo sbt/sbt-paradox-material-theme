@@ -20,19 +20,10 @@ $!
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 !$
-<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <a href="$page.home.href$" title="$page.home.title$" class="md-nav__button md-logo">
-    <span class="md-nav__button md-logo">
-      $ if (page.properties.("material.logo.icon")) $
-        <i class="md-icon">$page.properties.("material.logo.icon")$</i>
-      $ else $
-        $ if (page.properties.("material.logo.uri")) $
-          <img src="$page.properties.("material.logo.uri")$" width="24" height="24">
-        $ else $
-          <img src="$page.base$$page.properties.("material.logo")$" width="24" height="24">
-        $endif$
-      $endif$
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="$page.home.href$" title="$page.home.title$" class="md-nav__button md-logo" aria-label="$page.home.title$" data-md-component="logo">
+      $logo()$
     </a>
     <a href="$page.home.href$" title="$page.home.title$">
       $page.home.title$
@@ -45,12 +36,5 @@ $!
   $ endif $
   $page.groups$
   $page.navigation$
-  $toc()$
 </nav>
-<ul style="display: none">
-  <li class="md-nav__item md-version" id="project.version">
-    <label class="md-nav__link" for="__version">
-      <i class="md-icon" title="Version">label_outline</i> $page.properties.("project.version.short")$
-    </label>
-  </li>
-</ul>
+
