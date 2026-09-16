@@ -52,8 +52,7 @@ inThisBuild(
     ),
     githubWorkflowOSes := Seq("ubuntu-latest", "macos-latest", "windows-latest"),
     githubWorkflowJavaVersions := Seq(
-      JavaSpec.temurin("8")
-    ),
-    githubWorkflowBuildMatrixExclusions += MatrixExclude(Map("java" -> "temurin@8", "os" -> "macos-latest"))
+      JavaSpec.temurin("17")
+    )
   )
 )

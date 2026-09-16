@@ -1,5 +1,16 @@
 import sbt.internal.inc.Analysis.empty
 
+lazy val scala212 = "2.12.21"
+lazy val scala3 = "3.8.4"
+
+lazy val sbt1 = "1.9.7"
+lazy val sbt2 = "2.0.6"
+
+lazy val sbt1Scripted = "1.12.15"
+
+// Only used to derive the CI build matrix; each project sets its own below.
+ThisBuild / crossScalaVersions := Seq(scala212, scala3)
+
 lazy val root = project("paradox-material-theme-parent", file("."))
   .enablePlugins(ParadoxMaterialThemePlugin, SitePreviewPlugin, GhpagesPlugin)
   .settings(
@@ -69,12 +80,26 @@ lazy val plugin = project("sbt-paradox-material-theme", file("plugin"))
   .enablePlugins(ScriptedPlugin)
   .settings(
     sbtPlugin := true,
+    // sbt 1 plugins are built with Scala 2.12, sbt 2 plugins with Scala 3
+    crossScalaVersions := Seq(scala212, scala3),
+    pluginCrossBuild / sbtVersion := {
+      scalaBinaryVersion.value match {
+        case "2.12" => sbt1
+        case _      => sbt2
+      }
+    },
+    scriptedSbt := {
+      scalaBinaryVersion.value match {
+        case "2.12" => sbt1Scripted
+        case _      => (pluginCrossBuild / sbtVersion).value
+      }
+    },
     previewSite := {},
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
     scriptedBufferLog := false,
     publishLocal := publishLocal.dependsOn(theme / publishLocal).value,
-    addSbtPlugin(("com.lightbend.paradox" % "sbt-paradox" % "0.9.2").exclude("com.typesafe.sbt", "sbt-web")),
-    addSbtPlugin("com.github.sbt" % "sbt-web" % "1.5.8"),
+    addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.11.0"),
+    addSbtPlugin("com.github.sbt"        % "sbt2-compat" % "0.2.0"),
     libraryDependencies += "org.jsoup" % "jsoup"      % "1.23.2",
     libraryDependencies += "io.circe" %% "circe-core" % "0.14.16",
     update := update.dependsOn(theme / publishLocal).value,
@@ -186,32 +211,37 @@ lazy val optionExamples = Def.settings(
   // #search-tokenizer
 )
 
-lazy val scala212 = "2.12.21"
-
 def project(id: String, base: File): Project = {
   Project(id = id, base = base)
     .settings(
       crossScalaVersions := Seq(scala212),
-      scalaVersion := scala212
+      scalaVersion := scala212,
+      compileSettings
     )
 }
 
-// compile settings
-ThisBuild / scalacOptions ++= List(
-  "-unchecked",
-  "-deprecation",
-  "-language:_",
-  "-encoding",
-  "UTF-8"
+lazy val compileSettings = Def.settings(
+  scalacOptions ++= List(
+    "-unchecked",
+    "-deprecation",
+    "-encoding",
+    "UTF-8"
+  ),
+  scalacOptions ++= {
+    scalaBinaryVersion.value match {
+      // keeps the shared plugin sources honest against the Scala 3 build
+      case "2.12" => Seq("-language:_", "-Xsource:3")
+      case _      => Nil
+    }
+  },
+  scalacOptions ++= {
+    if (insideCI.value && scalaBinaryVersion.value == "2.12") {
+      val log = sLog.value
+      log.info("Running in CI, enabling Scala2 optimizer")
+      Seq(
+        "-opt-inline-from:<sources>",
+        "-opt:l:inline"
+      )
+    } else Nil
+  }
 )
-
-ThisBuild / scalacOptions ++= {
-  if (insideCI.value) {
-    val log = sLog.value
-    log.info("Running in CI, enabling Scala2 optimizer")
-    Seq(
-      "-opt-inline-from:<sources>",
-      "-opt:l:inline"
-    )
-  } else Nil
-}
