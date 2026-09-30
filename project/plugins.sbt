@@ -1,5 +1,5 @@
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox"        % "0.11.0")
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox-theme"  % "0.11.0")
+addSbtPlugin("com.lightbend.paradox" % "sbt-paradox"        % "0.11.1")
+addSbtPlugin("com.lightbend.paradox" % "sbt-paradox-theme"  % "0.11.1")
 addSbtPlugin("com.github.sbt"        % "sbt-web"            % "1.6.0-M4")
 addSbtPlugin("com.github.sbt"        % "sbt2-compat"        % "0.2.0")
 addSbtPlugin(("com.github.sbt"       % "sbt-site-paradox"   % "1.8.0").exclude("com.lightbend.paradox", "sbt-paradox"))

@@ -98,7 +98,7 @@ lazy val plugin = project("sbt-paradox-material-theme", file("plugin"))
     scriptedLaunchOpts += "-Dproject.version=" + version.value,
     scriptedBufferLog := false,
     publishLocal := publishLocal.dependsOn(theme / publishLocal).value,
-    addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.11.0"),
+    addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.11.1"),
     addSbtPlugin("com.github.sbt"        % "sbt2-compat" % "0.2.0"),
     libraryDependencies += "org.jsoup" % "jsoup"      % "1.23.2",
     libraryDependencies += "io.circe" %% "circe-core" % "0.14.16",
@@ -230,7 +230,7 @@ lazy val compileSettings = Def.settings(
   scalacOptions ++= {
     scalaBinaryVersion.value match {
       // keeps the shared plugin sources honest against the Scala 3 build
-      case "2.12" => Seq("-language:_", "-Xsource:3")
+      case "2.12" => Seq("-language:_", "-Xsource:3", "-release", "11")
       case _      => Nil
     }
   },

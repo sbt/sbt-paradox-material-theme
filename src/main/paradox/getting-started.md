@@ -17,11 +17,11 @@ And enable the theme plugin in your project's `build.sbt`:
 
 ## Requirements
 
-**JDK 17 or later is required.** The plugin builds on [Paradox] 0.11.0, whose published
-artifact contains Java 17 bytecode, so earlier JDKs fail with an
-`UnsupportedClassVersionError` while parsing markdown. Previous releases of this plugin
-were pinned to Paradox 0.9.x and ran on JDK 8; that pin could not be kept, because 0.11.0
-is the first Paradox release published for sbt 2.
+**JDK 11 or later is required on sbt 1, and JDK 17 or later on sbt 2** (as sbt 2 itself
+requires it). The plugin builds on [Paradox] 0.11.x, whose dependencies contain Java 11
+bytecode, so earlier JDKs fail with an `UnsupportedClassVersionError`. Previous releases
+of this plugin were pinned to Paradox 0.9.x and ran on JDK 8; that pin could not be kept,
+because 0.11.x is the first Paradox release line published for sbt 2.
 
  [Paradox]: https://github.com/lightbend/paradox
 
