@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="generator" content="Paradox, paradox-material-theme=0.8.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.8.0+2-d15e2f19-SNAPSHOT, mkdocs-material=3.0.3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Paradox Material Theme">
 
@@ -160,6 +160,7 @@ sbt/sbt-paradox-material-theme
 <ul>
   <li><a href="release-notes.html#release-notes" class="header">Release notes</a>
   <ul>
+    <li><a href="release-notes.html#0-8-0" class="header">0.8.0</a></li>
     <li><a href="release-notes.html#0-7-0" class="header">0.7.0</a></li>
     <li><a href="release-notes.html#0-6-0" class="header">0.6.0</a></li>
     <li><a href="release-notes.html#0-5-1" class="header">0.5.1</a></li>
@@ -177,7 +178,7 @@ sbt/sbt-paradox-material-theme
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 0.8.0
+<i class="md-icon" title="Version">label_outline</i> 0.8.0+2-d15e2f19*
 </label>
 </li>
 </ul>
@@ -192,6 +193,7 @@ sbt/sbt-paradox-material-theme
 <ul>
   <li><a href="release-notes.html#release-notes" class="header">Release notes</a>
   <ul>
+    <li><a href="release-notes.html#0-8-0" class="header">0.8.0</a></li>
     <li><a href="release-notes.html#0-7-0" class="header">0.7.0</a></li>
     <li><a href="release-notes.html#0-6-0" class="header">0.6.0</a></li>
     <li><a href="release-notes.html#0-5-1" class="header">0.5.1</a></li>
@@ -212,6 +214,37 @@ sbt/sbt-paradox-material-theme
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#release-notes" name="release-notes" class="anchor"><span class="anchor-link"></span></a>Release notes</h1>
+<h2><a href="#0-8-0" name="0-8-0" class="anchor"><span class="anchor-link"></span></a>0.8.0</h2>
+<ul>
+  <li>sbt 2 support: the plugin is now cross-published for sbt 1 and sbt 2 <a href="https://github.com/sbt/sbt-paradox-material-theme/pull/209">#209</a>
+    <ul>
+      <li>The same <code>addSbtPlugin(&quot;com.github.sbt&quot; % &quot;sbt-paradox-material-theme&quot; % &quot;0.8.0&quot;)</code> line works for both.</li>
+    </ul>
+  </li>
+  <li>New minimum JDK: JDK 11 on sbt 1 (JDK 8 is no longer supported) and JDK 17 on sbt 2, see <a href="https://www.scala-sbt.org/sbt-paradox-material-theme/getting-started.html#requirements">Requirements</a>
+    <ul>
+      <li>The plugin now depends on <a href="https://github.com/lightbend/paradox/releases/tag/v0.11.1">Paradox version 0.11.1</a> (previously 0.9.2), the first Paradox release line published for sbt 2.</li>
+      <li>If you followed the previous JDK 11 instructions and added <code>sbt-paradox</code> and <code>sbt-paradox-theme</code> 0.10.6 to <code>project/plugins.sbt</code> yourself, remove those lines.</li>
+    </ul>
+  </li>
+  <li>Add Open Graph and Twitter card metadata (<code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:url</code>, <code>og:site_name</code>, <code>twitter:card</code>) <a href="https://github.com/sbt/sbt-paradox-material-theme/pull/31">#31</a>
+    <ul>
+      <li>Set <code>description</code> and <code>project.image</code> in your build, see <a href="https://www.scala-sbt.org/sbt-paradox-material-theme/getting-started.html#open-graph-metadata">Open Graph metadata</a>.</li>
+    </ul>
+  </li>
+  <li>Page metadata is now HTML-escaped <a href="https://github.com/sbt/sbt-paradox-material-theme/pull/31">#31</a>
+    <ul>
+      <li><code>title</code>, <code>description</code> and <code>author</code> (front matter or build properties), <code>project.description</code>, <code>project.image</code> and <code>material.canonical.url</code> are treated as plain text, so quotes and <code>&lt;</code>, <code>&gt;</code> no longer break the page.</li>
+      <li>HTML entities are no longer interpreted, in those values or in page titles taken from Markdown headings. <code># Akka &amp;amp; Pekko</code> now shows <code>&amp;amp;</code>; write the character itself instead (<code># Akka &amp; Pekko</code>, <code>©</code>).</li>
+    </ul>
+  </li>
+  <li>Fix <code>material.author</code> rendering an empty author meta tag, see <a href="https://www.scala-sbt.org/sbt-paradox-material-theme/getting-started.html#author-metadata">Author metadata</a> <a href="https://github.com/sbt/sbt-paradox-material-theme/pull/31">#31</a></li>
+  <li>Fix duplicate <code>&lt;meta name=&quot;description&quot;&gt;</code> tag <a href="https://github.com/sbt/sbt-paradox-material-theme/pull/31">#31</a></li>
+  <li>Snapshots are now published for every commit to <code>main</code> <a href="https://github.com/sbt/sbt-paradox-material-theme/pull/130">#130</a></li>
+  <li>Update jsoup to version <a href="https://github.com/jhy/jsoup/releases/tag/jsoup-1.23.2">1.23.2</a></li>
+  <li>Update circe to version <a href="https://github.com/circe/circe/releases/tag/v0.14.16">0.14.16</a>.</li>
+</ul>
+<p>See the <a href="https://github.com/sbt/sbt-paradox-material-theme/releases/tag/v0.8.0">GitHub release</a> for the full list of changes.</p>
 <h2><a href="#0-7-0" name="0-7-0" class="anchor"><span class="anchor-link"></span></a>0.7.0</h2>
 <ul>
   <li>Project is now called <code>sbt-paradox-material-theme</code> and moved to the <a href="https://github.com/sbt">sbt</a> GitHub organization <a href="https://github.com/sbt/sbt-paradox-material-theme/pull/38">#38</a></li>
@@ -283,7 +316,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-0.8.0
+0.8.0+2-d15e2f19*
 </span>
 </div>
 </article>
