@@ -10,7 +10,12 @@ import scala.jdk.CollectionConverters._
 
 // PageTemplate's template group is private, so rendering uses our own group
 // with an explicit format="html" for escaped text and quoted attributes.
-private[theme] final class MaterialPageTemplate(directory: File, name: String) extends PageTemplate(directory, name) {
+// The write methods mirror PageTemplate from Paradox 0.11.1 and must be kept
+// in sync when Paradox changes them or adds new ones. If a build replaces
+// paradoxTemplate with Paradox's own PageTemplate, format="html" is ignored
+// and values are rendered unescaped.
+private[theme] final class MaterialPageTemplate(directory: File, defaultName: String)
+    extends PageTemplate(directory, defaultName) {
   private val templates = new STRawGroupDir(directory.getAbsolutePath, '$', '$')
   private val renderer = new StringRenderer
   templates.registerRenderer(
