@@ -253,6 +253,16 @@ material.canonical.url: https://example.org/docs/getting-started.html
 ---
 ```
 
+## Author metadata
+
+To add an author meta tag to every page, set `material.author` in the build:
+
+```sbt
+Compile / paradoxProperties += "material.author" -> "Jane Doe"
+```
+
+A page can override it by setting `author` in its front matter.
+
 ## Copyright Notice
 
 To display a copyright notice in the footer configure the
