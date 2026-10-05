@@ -5,6 +5,7 @@ name := "open-graph"
 
 enablePlugins(ParadoxMaterialThemePlugin)
 
+val homeTitle = "Paradox & Site &copy;"
 val projectDescription = """Project "description" & <details> &copy;"""
 val projectImage = "https://example.org/images/preview.png?size=large&name=docs"
 val pageTitle = """Custom "title" & <Guide> &copy;"""
@@ -51,7 +52,7 @@ def checkPage(
   checkMeta(doc, "og:description", description)
   checkMeta(doc, "og:image", image)
   checkMeta(doc, "og:type", Some("website"))
-  checkMeta(doc, "og:site_name", Some("Paradox Site"))
+  checkMeta(doc, "og:site_name", Some(homeTitle))
   checkMeta(doc, "og:url", url)
 
   val cards = doc.select("""meta[name="twitter:card"]""")
@@ -77,10 +78,10 @@ def checkPage(
 
 TaskKey[Unit]("checkMetadata") := {
   val dest = (Compile / paradox / target).value
-  checkPage(dest / "index.html", "Paradox Site", siteAuthor, Some(projectDescription), Some(projectImage))
+  checkPage(dest / "index.html", homeTitle, siteAuthor, Some(projectDescription), Some(projectImage))
   checkPage(
     dest / "heading.html",
-    "Markdown & guide · Paradox Site",
+    s"Markdown & guide · $homeTitle",
     siteAuthor,
     Some(projectDescription),
     Some(projectImage)
@@ -90,7 +91,7 @@ TaskKey[Unit]("checkMetadata") := {
 
 TaskKey[Unit]("checkMissingProperties") := {
   val dest = (Compile / paradox / target).value
-  checkPage(dest / "index.html", "Paradox Site", siteAuthor, None, None)
-  checkPage(dest / "heading.html", "Markdown & guide · Paradox Site", siteAuthor, None, None)
+  checkPage(dest / "index.html", homeTitle, siteAuthor, None, None)
+  checkPage(dest / "heading.html", s"Markdown & guide · $homeTitle", siteAuthor, None, None)
   checkPage(dest / "override.html", pageTitle, pageAuthor, Some(pageDescription), Some(pageImage), Some(pageUrl))
 }

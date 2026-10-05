@@ -1,4 +1,4 @@
-# Paradox Site
+# Paradox & Site &copy;
 
 @@@ index
  - [Heading](heading.md)
