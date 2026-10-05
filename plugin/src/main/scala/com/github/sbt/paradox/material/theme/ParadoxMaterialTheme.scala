@@ -10,10 +10,12 @@ final case class ParadoxMaterialTheme(properties: Map[String, String]) {
   def withLanguage(locale: Locale) =
     withProperties("language" -> locale.getLanguage)
 
-  def withColor(primaryColor: String, accentColor: String) = {
+  def withColor(colorSchema: String, primaryColor: String, accentColor: String) = {
+    val schema = colorSchema.replace(" ", "-").toLowerCase
     val primary = primaryColor.replace(" ", "-").toLowerCase
     val accent = accentColor.replace(" ", "-").toLowerCase
     val colorProps = withProperties(
+      "color.schema" -> schema,
       "color.primary" -> primary,
       "color.accent" -> accent
     )
@@ -36,10 +38,11 @@ final case class ParadoxMaterialTheme(properties: Map[String, String]) {
       .withoutProperties("logo", "logo.icon")
   }
 
-  def withLogoIcon(icon: String) = {
-    withProperties("logo.icon" -> icon)
-      .withoutProperties("logo", "logo.uri")
-  }
+// FIXME solve font-awesome icon issue
+//  def withLogoIcon(icon: String) = {
+//    withProperties("logo.icon" -> icon)
+//      .withoutProperties("logo", "logo.uri")
+//  }
 
   def withFont(text: String, code: String) =
     withProperties(
@@ -115,7 +118,8 @@ object ParadoxMaterialTheme {
   def apply(): ParadoxMaterialTheme = {
     ParadoxMaterialTheme(Map.empty)
       .withFont("Roboto", "Roboto Mono")
-      .withLogoIcon("local_library")
+      // FIXME solve font-awesome icon issue
+      //  .withLogoIcon("local_library")
       .withFavicon("assets/images/favicon.png")
       .withSearch()
   }

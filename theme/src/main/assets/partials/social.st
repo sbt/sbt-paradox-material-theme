@@ -21,7 +21,7 @@ $!
   IN THE SOFTWARE.
 !$
 $ if (page.properties.("material.social")) $
-  <div class="md-footer-social">
-      $page.properties.("material.social")$
+  <div class="md-social">
+    $page.properties.("material.social")$
   </div>
 $ endif $
