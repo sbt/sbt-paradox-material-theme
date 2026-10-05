@@ -1,5 +1,27 @@
 # Release notes
 
+## 0.8.0
+
+ - sbt 2 support: the plugin is now cross-published for sbt 1 and sbt 2 [#209](https://github.com/sbt/sbt-paradox-material-theme/pull/209)
+    - The same `addSbtPlugin("com.github.sbt" % "sbt-paradox-material-theme" % "0.8.0")` line works for both.
+ - New minimum JDK: JDK 11 on sbt 1 (JDK 8 is no longer supported) and JDK 17 on sbt 2, see [Requirements](https://www.scala-sbt.org/sbt-paradox-material-theme/getting-started.html#requirements)
+    - The plugin now depends on [Paradox version 0.11.1] (previously 0.9.2), the first Paradox release line published for sbt 2.
+    - If you followed the previous JDK 11 instructions and added `sbt-paradox` and `sbt-paradox-theme` 0.10.6 to `project/plugins.sbt` yourself, remove those lines.
+ - Add Open Graph and Twitter card metadata (`og:title`, `og:description`, `og:image`, `og:url`, `og:site_name`, `twitter:card`) [#31](https://github.com/sbt/sbt-paradox-material-theme/pull/31)
+    - Set `description` and `project.image` in your build, see [Open Graph metadata](https://www.scala-sbt.org/sbt-paradox-material-theme/getting-started.html#open-graph-metadata).
+ - Page metadata is now HTML-escaped [#31](https://github.com/sbt/sbt-paradox-material-theme/pull/31)
+    - `title`, `description` and `author` (front matter or build properties), `project.description`, `project.image` and `material.canonical.url` are treated as plain text, so quotes and `<`, `>` no longer break the page.
+    - HTML entities are no longer interpreted, in those values or in page titles taken from Markdown headings. `# Akka &amp; Pekko` now shows `&amp;`; write the character itself instead (`# Akka & Pekko`, `©`).
+ - Fix `material.author` rendering an empty author meta tag, see [Author metadata](https://www.scala-sbt.org/sbt-paradox-material-theme/getting-started.html#author-metadata) [#31](https://github.com/sbt/sbt-paradox-material-theme/pull/31)
+ - Fix duplicate `<meta name="description">` tag [#31](https://github.com/sbt/sbt-paradox-material-theme/pull/31)
+ - Snapshots are now published for every commit to `main` [#130](https://github.com/sbt/sbt-paradox-material-theme/pull/130)
+ - Update jsoup to version [1.23.2](https://github.com/jhy/jsoup/releases/tag/jsoup-1.23.2)
+ - Update circe to version [0.14.16](https://github.com/circe/circe/releases/tag/v0.14.16).
+
+ See the [GitHub release](https://github.com/sbt/sbt-paradox-material-theme/releases/tag/v0.8.0) for the full list of changes.
+
+ [Paradox version 0.11.1]: https://github.com/lightbend/paradox/releases/tag/v0.11.1
+
 ## 0.7.0
 
  - Project is now called `sbt-paradox-material-theme` and moved to the [sbt](https://github.com/sbt) GitHub organization [#38](https://github.com/sbt/sbt-paradox-material-theme/pull/38)
