@@ -26,27 +26,24 @@ $!
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="$page.properties.("project.description")$">
-    $ if (page.properties.("title")) $
-        <meta property="og:title" content="$page.properties.("title")$">
-    $ endif $
-    $ if (page.properties.("project.description")) $
-        <meta property="og:description" content="$page.properties.("project.description")$">
-    $ endif $
-    $ if (page.properties.("project.image")) $
-        <meta property="og:image" content="$page.properties.("project.image")$">
-    $ endif $
     <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=3.0.3">
+    <meta property="og:type" content="website">
 
     $partials/language()$
 
     $ if (page.properties.("description")) $
-      <meta name="description" content="$page.properties.("description")$">
+      <meta name="description" content="$page.properties.("description"); format="html"$">
+      <meta property="og:description" content="$page.properties.("description"); format="html"$">
     $ elseif (page.properties.("project.description")) $
-      <meta name="description" content="$page.properties.("project.description")$">
+      <meta name="description" content="$page.properties.("project.description"); format="html"$">
+      <meta property="og:description" content="$page.properties.("project.description"); format="html"$">
+    $ endif $
+    $ if (page.properties.("project.image")) $
+      <meta property="og:image" content="$page.properties.("project.image"); format="html"$">
     $ endif $
     $ if (page.properties.("material.canonical.url")) $
-      <link rel="canonical" href="$page.properties.("material.canonical.url")$">
+      <link rel="canonical" href="$page.properties.("material.canonical.url"); format="html"$">
+      <meta property="og:url" content="$page.properties.("material.canonical.url"); format="html"$">
     $ endif $
     $ if (page.properties.("author")) $
       <meta name="author" content="$page.properties.("author")$">
@@ -55,11 +52,14 @@ $!
     $ endif $
     <link rel="shortcut icon" href="$page.base$$page.properties.("material.favicon")$">
     $ if (page.properties.("title")) $
-      <title>$page.properties.("title")$</title>
+      <title>$page.properties.("title"); format="html"$</title>
+      <meta property="og:title" content="$page.properties.("title"); format="html"$">
     $ elseif (page.title) $
-      <title>$page.title$$ if (!page.home.active) $ · $page.home.title$$ endif $</title>
+      <title>$page.title; format="html"$$ if (!page.home.active) $ · $page.home.title; format="html"$$ endif $</title>
+      <meta property="og:title" content="$page.title; format="html"$$ if (!page.home.active) $ · $page.home.title; format="html"$$ endif $">
     $ else $
-      <title>$page.home.title$</title>
+      <title>$page.home.title; format="html"$</title>
+      <meta property="og:title" content="$page.home.title; format="html"$">
     $ endif $
     <link rel="stylesheet" href="$page.base$assets/stylesheets/application.451f80e5.css">
     $ if (page.properties.("material.color.primary")) $

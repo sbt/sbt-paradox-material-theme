@@ -1,0 +1,5 @@
+> paradox
+> checkMetadata
+> set Compile / paradoxProperties ~= (_ -- Seq("project.description", "project.image"))
+> paradox
+> checkMissingProperties

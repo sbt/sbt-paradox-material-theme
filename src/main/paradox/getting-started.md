@@ -225,11 +225,26 @@ on the URL:
 
   [17]: http://fontawesome.io/icons/
 
-## Open graph metadata
+## Open Graph metadata
+
 To enable a nice preview of the site in social media, define the
 following properties in the build:
 
 @@ snip [build.sbt]($root$/build.sbt) { #open-graph }
+
+Use an absolute URL for `project.image`. The Open Graph title uses the same title
+as the HTML page, and the description uses `description` from page front matter
+or falls back to `project.description`. Front matter can also override `title`
+and `project.image` for a specific page.
+
+The theme sets `og:type` to `website`. To provide `og:url`, set
+`material.canonical.url` in front matter to the absolute URL of that page:
+
+```yaml
+---
+material.canonical.url: https://example.org/docs/getting-started.html
+---
+```
 
 ## Copyright Notice
 
