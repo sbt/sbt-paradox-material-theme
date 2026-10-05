@@ -227,8 +227,8 @@ on the URL:
 
 ## Open Graph metadata
 
-To enable a nice preview of the site in social media, define the
-following properties in the build:
+To enable a nice preview of the site in social media, set a description
+and an image in the build:
 
 @@ snip [build.sbt]($root$/build.sbt) { #open-graph }
 
@@ -236,6 +236,11 @@ Use an absolute URL for `project.image`. The Open Graph title uses the same titl
 as the HTML page, and the description uses `description` from page front matter
 or falls back to `project.description`. Front matter can also override `title`
 and `project.image` for a specific page.
+
+Paradox sets `project.description` from the sbt `description` setting, which
+defaults to the project name. Set `description` as shown above rather than
+overriding `project.description` in `paradoxProperties`, so the site and the
+published artifact share the same description.
 
 The theme sets `og:type` to `website`. To provide `og:url`, set
 `material.canonical.url` in front matter to the absolute URL of that page:
