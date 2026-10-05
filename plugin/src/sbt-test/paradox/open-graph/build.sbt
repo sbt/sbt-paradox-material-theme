@@ -11,10 +11,13 @@ val pageTitle = """Custom "title" & <Guide> &copy;"""
 val pageDescription = """Page "description" & <details> &copy;"""
 val pageImage = "https://example.org/images/page.png?size=large&name=page"
 val pageUrl = "https://example.org/docs/override.html?lang=en&edition=full"
+val siteAuthor = """Site "author" & <Co>"""
+val pageAuthor = """Page "author" & <Co>"""
 
 Compile / paradoxProperties ++= Map(
   "project.description" -> projectDescription,
-  "project.image" -> projectImage
+  "project.image" -> projectImage,
+  "material.author" -> siteAuthor
 )
 
 Compile / paradoxMaterialTheme ~= {
@@ -36,6 +39,7 @@ def checkMeta(doc: Document, property: String, expected: Option[String]): Unit =
 def checkPage(
     file: File,
     title: String,
+    author: String,
     description: Option[String],
     image: Option[String],
     url: Option[String] = None
@@ -59,6 +63,11 @@ def checkPage(
   description.foreach { value =>
     assert(descriptions.first().attr("content") == value, s"Unexpected description: $descriptions")
   }
+  val authors = doc.select("meta[name=author]")
+  assert(authors.size() == 1, s"Expected one author tag in ${file.getName}, found $authors")
+  assert(authors.first().attr("content") == author, s"Expected author '$author', found $authors")
+  assert(authors.first().attributes().size() == 2, s"Unexpected attributes in $authors")
+
   val canonical = doc.select("link[rel=canonical]")
   assert(canonical.size() == url.size, s"Unexpected canonical links in ${file.getName}: $canonical")
   url.foreach { value =>
@@ -68,14 +77,20 @@ def checkPage(
 
 TaskKey[Unit]("checkMetadata") := {
   val dest = (Compile / paradox / target).value
-  checkPage(dest / "index.html", "Paradox Site", Some(projectDescription), Some(projectImage))
-  checkPage(dest / "heading.html", "Markdown & guide · Paradox Site", Some(projectDescription), Some(projectImage))
-  checkPage(dest / "override.html", pageTitle, Some(pageDescription), Some(pageImage), Some(pageUrl))
+  checkPage(dest / "index.html", "Paradox Site", siteAuthor, Some(projectDescription), Some(projectImage))
+  checkPage(
+    dest / "heading.html",
+    "Markdown & guide · Paradox Site",
+    siteAuthor,
+    Some(projectDescription),
+    Some(projectImage)
+  )
+  checkPage(dest / "override.html", pageTitle, pageAuthor, Some(pageDescription), Some(pageImage), Some(pageUrl))
 }
 
 TaskKey[Unit]("checkMissingProperties") := {
   val dest = (Compile / paradox / target).value
-  checkPage(dest / "index.html", "Paradox Site", None, None)
-  checkPage(dest / "heading.html", "Markdown & guide · Paradox Site", None, None)
-  checkPage(dest / "override.html", pageTitle, Some(pageDescription), Some(pageImage), Some(pageUrl))
+  checkPage(dest / "index.html", "Paradox Site", siteAuthor, None, None)
+  checkPage(dest / "heading.html", "Markdown & guide · Paradox Site", siteAuthor, None, None)
+  checkPage(dest / "override.html", pageTitle, pageAuthor, Some(pageDescription), Some(pageImage), Some(pageUrl))
 }

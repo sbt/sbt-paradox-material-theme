@@ -52,9 +52,9 @@ $!
       <meta property="og:url" content="$page.properties.("material.canonical.url"); format="html"$">
     $ endif $
     $ if (page.properties.("author")) $
-      <meta name="author" content="$page.properties.("author")$">
+      <meta name="author" content="$page.properties.("author"); format="html"$">
     $ elseif (page.properties.("material.author")) $
-      <meta name="author" content="$page.properties.("site.author")$">
+      <meta name="author" content="$page.properties.("material.author"); format="html"$">
     $ endif $
     <link rel="shortcut icon" href="$page.base$$page.properties.("material.favicon")$">
     $ if (page.properties.("title")) $
