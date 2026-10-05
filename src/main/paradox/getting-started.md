@@ -3,27 +3,27 @@
 In order to enable the theme add the following line to your
 project's `project/plugins.sbt`:
 
-## JDK 1.8
-
 @@@ vars
 ```sbt
 addSbtPlugin("com.github.sbt" % "sbt-paradox-material-theme" % "$project.version$")
 ```
 @@@
 
-## JDK 11+
-
-@@@ vars
-```sbt
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.10.6")
-addSbtPlugin("com.lightbend.paradox" % "sbt-paradox-theme" % "0.10.6")
-addSbtPlugin("com.github.sbt" % "sbt-paradox-material-theme" % "$project.version$")
-```
-@@@
+The plugin is cross published for sbt 1 and sbt 2, so the same line works for both.
 
 And enable the theme plugin in your project's `build.sbt`:
 
 @@ snip [build.sbt]($root$/plugin/src/sbt-test/paradox/can-use-theme/build.sbt) { #enable-plugin }
+
+## Requirements
+
+**JDK 11 or later is required on sbt 1, and JDK 17 or later on sbt 2** (as sbt 2 itself
+requires it). The plugin builds on [Paradox] 0.11.x, whose dependencies contain Java 11
+bytecode, so earlier JDKs fail with an `UnsupportedClassVersionError`. Previous releases
+of this plugin were pinned to Paradox 0.9.x and ran on JDK 8; that pin could not be kept,
+because 0.11.x is the first Paradox release line published for sbt 2.
+
+ [Paradox]: https://github.com/lightbend/paradox
 
 ## Configuring the theme
 

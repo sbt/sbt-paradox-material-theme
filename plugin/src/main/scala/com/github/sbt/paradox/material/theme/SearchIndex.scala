@@ -1,6 +1,6 @@
 package com.github.sbt.paradox.material.theme
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import com.lightbend.paradox.sbt.ParadoxPlugin.autoImport.paradoxMarkdownToHtml
 import io.circe._
 import io.circe.syntax._
