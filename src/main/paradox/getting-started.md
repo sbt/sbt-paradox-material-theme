@@ -225,6 +225,44 @@ on the URL:
 
   [17]: http://fontawesome.io/icons/
 
+## Open Graph metadata
+
+To enable a nice preview of the site in social media, set a description
+and an image in the build:
+
+@@ snip [build.sbt]($root$/build.sbt) { #open-graph }
+
+Use an absolute URL for `project.image`. The Open Graph title uses the same title
+as the HTML page, and the description uses `description` from page front matter
+or falls back to `project.description`. Front matter can also override `title`
+and `project.image` for a specific page.
+
+Paradox sets `project.description` from the sbt `description` setting, which
+defaults to the project name. Set `description` as shown above rather than
+overriding `project.description` in `paradoxProperties`, so the site and the
+published artifact share the same description.
+
+The theme sets `og:type` to `website`, `og:site_name` to the title of the
+home page, and `twitter:card` to `summary_large_image` when an image is
+configured, or `summary` otherwise. To provide `og:url`, set
+`material.canonical.url` in front matter to the absolute URL of that page:
+
+```yaml
+---
+material.canonical.url: https://example.org/docs/getting-started.html
+---
+```
+
+## Author metadata
+
+To add an author meta tag to every page, set `material.author` in the build:
+
+```sbt
+Compile / paradoxProperties += "material.author" -> "Jane Doe"
+```
+
+A page can override it by setting `author` in its front matter.
+
 ## Copyright Notice
 
 To display a copyright notice in the footer configure the

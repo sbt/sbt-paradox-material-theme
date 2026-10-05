@@ -33,6 +33,14 @@ object ParadoxMaterialThemePlugin extends AutoPlugin {
 
   lazy val paradoxMaterialThemeSettings: Seq[Setting[?]] = Def.settings(
     Compile / paradoxMaterialTheme := ParadoxMaterialTheme(),
+    Compile / paradoxTemplate := Def.uncached {
+      val directory = (Compile / paradoxThemeDirectory).value
+      IO.createDirectory(directory)
+      new MaterialPageTemplate(
+        directory,
+        (Compile / paradoxDefaultTemplateName).value
+      )
+    },
     Compile / paradoxProperties += Def.uncached("material.theme.version" -> (paradoxMaterialTheme / version).value),
     Compile / paradoxProperties ++= Def.uncached((Compile / paradoxMaterialTheme).value.paradoxProperties()),
     Compile / paradoxMaterialTheme / mappings := Def

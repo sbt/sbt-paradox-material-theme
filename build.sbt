@@ -53,6 +53,14 @@ lazy val root = project("paradox-material-theme-parent", file("."))
     }
     // #social
     ,
+    // #open-graph
+    description := "Paradox Material Theme is a theme for Paradox, a static site generator geared towards project documentation"
+    // #open-graph
+    ,
+    // #open-graph
+    Compile / paradoxProperties += "project.image" -> "https://www.scala-sbt.org/sbt-paradox-material-theme/images/material.png"
+    // #open-graph
+    ,
     // #language
     Compile / paradoxMaterialTheme ~= {
       _.withLanguage(java.util.Locale.ENGLISH)
