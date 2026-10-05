@@ -242,7 +242,9 @@ defaults to the project name. Set `description` as shown above rather than
 overriding `project.description` in `paradoxProperties`, so the site and the
 published artifact share the same description.
 
-The theme sets `og:type` to `website`. To provide `og:url`, set
+The theme sets `og:type` to `website`, `og:site_name` to the title of the
+home page, and `twitter:card` to `summary_large_image` when an image is
+configured, or `summary` otherwise. To provide `og:url`, set
 `material.canonical.url` in front matter to the absolute URL of that page:
 
 ```yaml

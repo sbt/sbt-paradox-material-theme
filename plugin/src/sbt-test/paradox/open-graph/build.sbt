@@ -47,7 +47,12 @@ def checkPage(
   checkMeta(doc, "og:description", description)
   checkMeta(doc, "og:image", image)
   checkMeta(doc, "og:type", Some("website"))
+  checkMeta(doc, "og:site_name", Some("Paradox Site"))
   checkMeta(doc, "og:url", url)
+
+  val cards = doc.select("""meta[name="twitter:card"]""")
+  val card = if (image.isDefined) "summary_large_image" else "summary"
+  assert(cards.size() == 1 && cards.first().attr("content") == card, s"Expected twitter:card '$card', found $cards")
 
   val descriptions = doc.select("meta[name=description]")
   assert(descriptions.size() == description.size, s"Unexpected description tags in ${file.getName}: $descriptions")

@@ -28,6 +28,9 @@ $!
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="generator" content="Paradox, paradox-material-theme=$page.properties.("material.theme.version")$, mkdocs-material=3.0.3">
     <meta property="og:type" content="website">
+    $ if (page.home.title) $
+      <meta property="og:site_name" content="$page.home.title; format="html"$">
+    $ endif $
 
     $partials/language()$
 
@@ -40,6 +43,9 @@ $!
     $ endif $
     $ if (page.properties.("project.image")) $
       <meta property="og:image" content="$page.properties.("project.image"); format="html"$">
+      <meta name="twitter:card" content="summary_large_image">
+    $ else $
+      <meta name="twitter:card" content="summary">
     $ endif $
     $ if (page.properties.("material.canonical.url")) $
       <link rel="canonical" href="$page.properties.("material.canonical.url"); format="html"$">
