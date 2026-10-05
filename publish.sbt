@@ -54,7 +54,9 @@ inThisBuild(
     // JDK 17 comes first as the publish job runs on it: Scala 3.8 and sbt 2 need JDK 17
     githubWorkflowJavaVersions := Seq(
       JavaSpec.temurin("17"),
-      JavaSpec.temurin("11")
+      JavaSpec.temurin("11"),
+      JavaSpec.temurin("21"),
+      JavaSpec.temurin("25")
     ),
     githubWorkflowBuildMatrixExclusions += MatrixExclude(Map("scala" -> "3.8.4", "java" -> "temurin@11"))
   )
