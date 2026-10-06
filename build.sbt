@@ -1,7 +1,7 @@
 import sbt.internal.inc.Analysis.empty
 
 lazy val scala212 = "2.12.21"
-lazy val scala3 = "3.8.4"
+lazy val scala3 = "3.9.0"
 
 lazy val sbt1 = "1.9.7"
 lazy val sbt2 = "2.0.10"
