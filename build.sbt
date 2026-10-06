@@ -109,7 +109,7 @@ lazy val plugin = project("sbt-paradox-material-theme", file("plugin"))
     addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.11.1"),
     addSbtPlugin("com.github.sbt"        % "sbt2-compat" % "0.2.0"),
     libraryDependencies += "org.jsoup" % "jsoup"      % "1.23.2",
-    libraryDependencies += "io.circe" %% "circe-core" % "0.14.16",
+    libraryDependencies += "io.circe" %% "circe-core" % "0.14.17",
     update := update.dependsOn(theme / publishLocal).value,
     Compile / resourceGenerators += Def.task {
       val file = (Compile / resourceManaged).value / "paradox-material-theme.properties"
