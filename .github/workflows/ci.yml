@@ -100,7 +100,7 @@ jobs:
 
       - name: Compress target directories
         shell: bash
-        run: tar cf targets.tar target plugin/target theme/target project/target
+        run: tar chf targets.tar target plugin/target theme/target project/target
 
       - name: Upload target directories
         uses: actions/upload-artifact@v7
