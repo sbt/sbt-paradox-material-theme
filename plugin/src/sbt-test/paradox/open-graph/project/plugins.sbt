@@ -3,4 +3,4 @@ sys.props.get("project.version") match {
   case _       => sys.error("The system property 'project.version' is not defined.")
 }
 
-libraryDependencies += "org.jsoup" % "jsoup" % "1.23.2"
+libraryDependencies += "org.jsoup" % "jsoup" % "1.24.1"
