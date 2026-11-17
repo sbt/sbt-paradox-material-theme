@@ -1,12 +1,12 @@
 import sbt.internal.inc.Analysis.empty
 
 lazy val scala212 = "2.12.21"
-lazy val scala3 = "3.8.4"
+lazy val scala3 = "3.9.0"
 
 lazy val sbt1 = "1.9.7"
-lazy val sbt2 = "2.0.10"
+lazy val sbt2 = "2.1.0"
 
-lazy val sbt1Scripted = "1.12.15"
+lazy val sbt1Scripted = "1.13.1"
 
 // Only used to derive the CI build matrix; each project sets its own below.
 ThisBuild / crossScalaVersions := Seq(scala212, scala3)

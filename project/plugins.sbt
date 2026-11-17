@@ -7,7 +7,7 @@ addSbtPlugin("com.github.sbt"        % "sbt-ci-release"     % "1.12.1")
 addSbtPlugin("org.scalameta"         % "sbt-scalafmt"       % "2.6.2")
 addSbtPlugin("com.github.sbt"        % "sbt-github-actions" % "0.32.2")
 
-libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % sbtVersion.value
+libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % "1.13.1"
 
 // This project is its own plugin :)
 Compile / unmanagedSourceDirectories += baseDirectory.value.getParentFile / "plugin" / "src" / "main" / "scala"
